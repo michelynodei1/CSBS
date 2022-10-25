@@ -1,38 +1,3 @@
-body {
-    padding: 30px 30px;
-    }
-h1{
-    color:green;
-}
-h2{
-    color:gold;
-    background:green;
-}
-/*Top Navigation Bar */
-.topnav {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: rgb(27, 25, 25);
-  }
-  
-  li {
-    float: left;
-  }
-  
-  li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-  
-  li a:hover {
-    background-color: #111;
-  }
-/*SIDE navigation Bar*/
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 body {
   color: #333;
@@ -52,12 +17,11 @@ body {
 .container .sidebar {
   background-color: #333;
   color: #fff;
-  width: 10%;
-  height: 95%;
+  width: 30%;
+  height: 100%;
   padding: 0 1rem;
   position: fixed;
-  top: 10;
-  bottom: ;
+  top: 0;
   left: 0;
   transition: width 0.1s ease-in-out;
 }
@@ -74,14 +38,14 @@ body {
   height: 55px;
 }
 .container .sidebar .sidebartop .logo {
-  width: 20%;
+  width: 70%;
 }
 .container .sidebar .sidebartop .logo img {
   height: auto;
   width: 100%;
 }
 .container .sidebar .sidebartop .menu {
-  width: 70%;
+  width: 20%;
   text-align: end;
 }
 .container .sidebar .sidebartop .menu i {
@@ -184,50 +148,6 @@ body {
   font-size: 1.5rem;
 }
 .container .main {
-  margin-left: calc(10% + 2rem);
+  margin-left: calc(30% + 2rem);
   padding: 1rem;
-}
-/*Collasped Navigation Bar*/
-.short .sidebar {
-  width: 5%;
-  text-align: center;
-}
-.short .sidebar .logo, .short .sidebar .searchInput, .short .sidebar .text, .short .sidebar .avatar, .short .sidebar .name {
-  display: none;
-}
-.short .sidebar .sidebartop {
-  display: block;
-  height: 75px;
-}
-.short .sidebar .sidebartop .logo-mobile {
-  display: none;
-}
-.short .sidebar .sidebartop .menu {
-  width: 150%;
-  text-align: center;
-}
-.short .sidebar .text.hover {
-  display: block !important;
-  background-color: rgba(255, 255, 255, 0.9);
-  color: #333;
-  padding: 0.5rem;
-  box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.25);
-  position: absolute;
-  left: 3rem;
-  top: 1rem;
-  border-radius: 0.25rem;
-}
-.short .sidebar .account {
-  display: block;
-}
-.short .sidebar .account .logout {
-  width: 100%;
-  text-align: center;
-}
-.short .sidebar .search {
-  margin: 1.75rem -0.2rem;
-}
-.short .main {
-  margin-left: calc(5% + 2rem);
 }/*# sourceMappingURL=style.css.map */
-  
