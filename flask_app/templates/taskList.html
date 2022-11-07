@@ -8,10 +8,13 @@
         <!-- styles -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
         <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
-        
-         <!--Navigation Top Bar-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+	    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,700;0,900;1,400&family=Montserrat:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+         
+        <!--Navigation Top Bar-->
          <ul class="topnav">
-            <li><a class="active" href="#home">Home</a></li>
+            <li><a class="active" href="{{ url_for('index') }}">Home</a></li>
             <li><a href="#news">News</a></li>
             <li><a href="#contact">Contact</a></li>
             <li><a href="#about">About</a></li>
@@ -50,7 +53,7 @@
                 <ul>
                     <li><a href="#"><i class="bi bi-compass"></i><span class="text">Overview</span></a></li>
                     <li><a href="#"><i class="bi bi-calendar"></i><span class="text">Calendar</span></a></li>
-                    <li><a href="{{ url_for('myWork')}}"><i class="bi bi-list-check"></i><span class="text">My Work!</span></a></li>
+                    <li><a href="{{ url_for('myWork')}}"><i class="bi bi-list-check"></i><span class="text">My Work</span></a></li>
                     <li><a href="#"><i class="bi bi-people"></i><span class="text">Users</span></a></li>
                     <li><a href="#"><i class="bi bi-gear"></i><span class="text">Settings</span></a></li>
                
@@ -94,25 +97,60 @@
      
         <!-- Navbar items -->
         <div class="nav-links">
-          <a href="#">Task</a>
+          <a  href="#">Task</a>
           <a href="#">Calendar</a>
-          <a href="{{ url_for('taskList')}}">To-Do List</a>
+          <a class="active" href="#">To-Do List</a>
           <a href="#">Notes</a>
         </div>
     </div>
     
      <!--Page Content Here-->
      <div class="main">
-   
-        <h1>Welcome  to the 49er Notes App!</h1>
 
-        <h2>Use this site to maintain and organize your notes.</h2>
+        <!-- Greeting -->
+        <section class="greeting">
+			<h2 class="title">
+				What's up, <input type="text" id="name" placeholder="Name here" />
+			</h2>
+		</section>
+        <!-- End of Greeting -->
 
-        <h3>Coursee notes</h3>
 
-        <h3>To Do</h3>
+        <!-- New Todo -->
+		<section class="create-todo">
+			<h3>CREATE A TODO</h3>
+			<form id="new-todo-form">
+				<h4>What's on your todo?</h4>
+				<input 
+					type="text" 
+					placeholder="e.g. Get some milk"
+					name="content"
+					id="content" />
+				
+				<h4>Pick a category</h4>
+				<div class="options">
+					<label>
+						<input type="radio" name="category" id="category1" value="business" /> 
+						<span class="bubble business"></span>
+						<div>Business</div>
+					</label>
+					<label>
+						<input type="radio" name="category" id="category2" value="personal" />
+						<span class="bubble personal"></span>
+						<div>Personal</div>
+					</label>
+				</div>
+                <input type="submit" value="Add todo" />
+			</form>
+		</section>
+		<!-- End of New Todo -->
 
-        <h3>Work note1s</h3>
+        <!-- Todo List -->
+		<section class="todo-list">
+			<h3>TODO LIST</h3>
+			<div class="list" id="todo-list"></div>
+		</section>
+		
     </div>
     <script src="{{url_for('static', filename='init.js')}}"></script>
     </body>

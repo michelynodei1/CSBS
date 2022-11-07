@@ -19,10 +19,10 @@
         
          <!--Navigation Top Bar-->
          <ul class="topnav">
-            <li><a class="active" href="#home">Home</a></li>
+            <li><a class="active" href="{{ url_for('index') }}">Home</a></li>
             <li><a href="#news">News</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a href="{{ url_for('index') }}">login</a></li>
         </ul>
     </head>
     <body>   
@@ -87,7 +87,7 @@
     </div>
      <!--Page Content Here-->
      <div class="main">
- 
+   
         <!-- Some of these content are taken from the CCI Website-->
 		<h1>COLLEGE OF COMPUTING AND INFORMATICS</h1>
 		<p>The College of Computing and Informatics is committed to being the recognized leader for competitive, innovative, and market-responsive computing and informatics education.
