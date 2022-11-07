@@ -8,6 +8,14 @@
         <!-- styles -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
         <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+
+        <link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.min.css">
+	    <link rel="stylesheet" href="AccordionCSS.css">
+
+
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	    <script src="jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+        <script src="AccordionJavascript.js"></script>
         
          <!--Navigation Top Bar-->
          <ul class="topnav">
@@ -38,7 +46,7 @@
               
               <div id="Project" class="tabcontent">
                 <h3>General?</h3>
-                <p>ICons of the projects worked on and the name </p>
+                <p>Icons of the projects worked on and the name </p>
               </div>
               
               <div id="Chat" class="tabcontent">
@@ -79,16 +87,78 @@
     </div>
      <!--Page Content Here-->
      <div class="main">
-   
-        <h1>Welcome  to the 49er Notes App!</h1>
+ 
+        <!-- Some of these content are taken from the CCI Website-->
+		<h1>COLLEGE OF COMPUTING AND INFORMATICS</h1>
+		<p>The College of Computing and Informatics is committed to being the recognized leader for competitive, innovative, and market-responsive computing and informatics education.
+			Through this commitment, the College develops focused, trend-setting research excellence with national and international recognition,
+			and is recognized as the industry leader for partnerships and collaborations.</p>
+        <!-- Tabs HTML code -->
+        <div id="accordion" class="accordion" role="tablist">
+            <h3 class="ui-accordion-header" role="tab">
+                
+            
+        Undergraduate Studies
+        </h3>
+            <div id="tab1" class="accordion-text">
+           <p>The College of Computing and Informatics (CCI) offers a B.S. and a B.A. in Computer Science (CS)
+	<p>Computer science students at CCI have the opportunity to engage in research,
+									get involved in student organizations and collaborate on interdisciplinary teams
+									in addition to learning about entrepreneurship and starting companies while
+									competing in computing contests, networking with corporate recruiters and
+									interning at top companies. Students graduate with the skills and knowledge
+									to pursue rewarding careers or continue their studies in graduate school.</p>							as well as opportunities to earn a CS Minor or an undergraduate certificate in Game Design.
+									<p>In addition, the College offers an Honors program and an Early Entry program.</p>
+        </div>
+		<h3 class="ui-accordion-header" role="tab">
+                
+            
+        Master's Program
+        </h3>	
+            <div id='tab2' class='accordion-text'>
+                <p>With Master's programs in <strong>Computer Science, Cybersecurity, Information Technology, Bioinformatics, Architecture/Computer Science,
+									Architecture/Information Technology, Data Science/Business Analytics and Health Informatics </strong>,
+									CCI offers one of the fastest-growing and most diverse graduate programs in the country.</p>
+				<p>In addition to receiving a top-notch, nationally-ranked technical education, CCI students develop the kind of business savvy,
+					 entrepreneurial spirit and communication skills necessary for success in the workplace.
+					 Our students are regularly targeted for Fortune 500 employment opportunities,
+					 many of which begin as internships and mentoring relationships established in our Business Partners program.</p>
+                
+                
+            </div>
+            <h3 class='ui-accordion-header' role='tab'>
+                
+                A MESSAGE FROM OUR DEAN
+            </h3>
 
-        <h2>Use this site to maintain and organize your notes.</h2>
+            <div id='tab3' class='accordion-text'>
+                
+                 <p>Welcome and thank you for your interest in the College of Computing and Informatics (CCI) at UNC Charlotte.</p>
+					<p>We live in the golden age of information technology (IT). IT is transforming every aspect of society – our homes, workplaces, communities, industries,
+									and economy. Technology is no longer just a tool for productivity; it is now a driving force for
+									innovation and a catalyst for social and economic transformation.</p>
+								<p>As the fastest growing college in the UNC system, the largest computing college in North Carolina,
+									and one of the largest in the nation, CCI prides itself on being innovative in its research and education,
+									inclusive in its design and operation, and responsive to the rapidly changing needs and ambitions of its constituencies.</p>
+                
+                
+                
+                
+                
+            </div>
+                
+                
+                 </div>
+			     
 
-        <h3>Course notes</h3>
 
-        <h3>To Do</h3>
+               
+                
+			   
 
-        <h3>Work note1s</h3>
+
+               
+                
     </div>
     <script src="{{url_for('static', filename='init.js')}}"></script>
     </body>
