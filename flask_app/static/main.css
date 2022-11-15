@@ -1,14 +1,17 @@
 body {
     padding: 30px 30px;
     overflow: scroll;
-    }
-h1 .welcome{
-    color:green;
 }
-h2.welcome{
-    color:gold;
-    background:green;
+
+h1 .welcome {
+    color: green;
 }
+
+h2.welcome {
+    color: gold;
+    background: green;
+}
+
 /*Top Navigation Bar */
 .topnav {
     list-style-type: none;
@@ -16,644 +19,701 @@ h2.welcome{
     padding: 0;
     overflow: hidden;
     background-color: rgb(27, 25, 25);
-  }
-  
-  li {
+}
+
+li {
     float: left;
-  }
-  
-  li a {
+}
+
+li a {
     display: block;
     color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-  }
-  
-  li a:hover {
+}
+
+li a:hover {
     background-color: #111;
-  }
+}
+
 /*SIDE navigation Bar*/
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 body {
-  color: #333;
-  padding: 0;
-  margin: 0;
-  position: relative;
-  min-height: 100vh;
-  overflow: auto;
-  font-family: "Open Sans", sans-serif;
-  font-size: 14px;
+    color: #333;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    min-height: 100vh;
+    overflow: auto;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
 }
 
 .container {
-  display: flex;
-  flex-flow: row wrap;
+    display: flex;
+    flex-flow: row wrap;
 }
+
 .container .sidebar {
-  background-color: #333;
-  color: #fff;
-  width: 10%;
-  height: 93.7%;
-  padding: 0 1rem;
-  position: fixed;
-  top: 10;
-  bottom:0 ;
-  left: 0;
-  transition: width 0.1s ease-in-out;
+    background-color: #333;
+    color: #fff;
+    width: 10%;
+    height: 93.7%;
+    padding: 0 1rem;
+    position: fixed;
+    top: 10;
+    bottom: 0;
+    left: 0;
+    transition: width 0.1s ease-in-out;
 }
+
 .container .sidebar a {
-  color: #fff;
-  text-decoration: none;
+    color: #fff;
+    text-decoration: none;
 }
+
 .container .sidebar .sidebartop {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding-top: 1rem;
-  height: 55px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-top: 1rem;
+    height: 55px;
 }
+
 .container .sidebar .sidebartop .logo {
-  width: 20%;
+    width: 20%;
 }
+
 .container .sidebar .sidebartop .logo img {
-  height: auto;
-  width: 100%;
+    height: auto;
+    width: 100%;
 }
+
 .container .sidebar .sidebartop .menu {
-  width: 70%;
-  text-align: end;
+    width: 70%;
+    text-align: end;
 }
+
 .container .sidebar .sidebartop .menu i {
-  cursor: pointer;
-  font-size: 1.75rem;
+    cursor: pointer;
+    font-size: 1.75rem;
 }
+
 .container .sidebar .sidebartop .logo-mobile {
-  display: none;
+    display: none;
 }
+
 .container .sidebar .search {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
-  position: relative;
-  margin: 1rem 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+    margin: 1rem 0;
 }
+
 .container .sidebar .search button {
-  cursor: pointer;
-  width: auto;
-  background-color: transparent;
-  border: 0;
-  color: #fff;
-  position: absolute;
-  font-size: 1.25rem;
-  left: 1.5rem;
-  top: 50%;
-  transform: translate(-50%, -50%);
+    cursor: pointer;
+    width: auto;
+    background-color: transparent;
+    border: 0;
+    color: #fff;
+    position: absolute;
+    font-size: 1.25rem;
+    left: 1.5rem;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
+
 .container .sidebar .search input {
-  background-color: #404040;
-  border: 0px;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  width: calc(100% + 1rem);
+    background-color: #404040;
+    border: 0px;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    width: calc(100% + 1rem);
 }
+
 .container .sidebar .search input::-moz-placeholder {
-  padding-left: 1.5rem;
+    padding-left: 1.5rem;
 }
+
 .container .sidebar .search input:-ms-input-placeholder {
-  padding-left: 1.5rem;
+    padding-left: 1.5rem;
 }
+
 .container .sidebar .search input::placeholder {
-  padding-left: 1.5rem;
+    padding-left: 1.5rem;
 }
+
 .container .sidebar nav ul {
-  padding: 0;
-  margin: 0;
-  list-style: none;
+    padding: 0;
+    margin: 0;
+    list-style: none;
 }
+
 .container .sidebar nav ul li {
-  display: block;
-  align-items: center;
-  padding: 1.25rem 0;
-  position: relative;
-  background-color: transparent;
-  transition: background-color 0.25s ease-in-out;
+    display: block;
+    align-items: center;
+    padding: 1.25rem 0;
+    position: relative;
+    background-color: transparent;
+    transition: background-color 0.25s ease-in-out;
 }
+
 .container .sidebar nav ul li a {
-  display: block;
+    display: block;
 }
+
 .container .sidebar nav ul li a i {
-  font-size: 1.25rem;
+    font-size: 1.25rem;
 }
+
 .container .sidebar nav ul li a .text {
-  position: relative;
-  left: 1rem;
-  top: -0.2rem;
+    position: relative;
+    left: 1rem;
+    top: -0.2rem;
 }
+
 .container .sidebar .account {
-  display: flex;
-  justify-content: space-between;
-  align-content: center;
-  align-items: center;
-  width: calc(100% - 2rem);
-  position: absolute;
-  bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    width: calc(100% - 2rem);
+    position: absolute;
+    bottom: 1rem;
 }
+
 .container .sidebar .account .avatar {
-  margin-right: 1rem;
-  width: 20%;
+    margin-right: 1rem;
+    width: 20%;
 }
+
 .container .sidebar .account .avatar img {
-  border-radius: 50%;
-  height: 50px;
-  width: 50px;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
 }
+
 .container .sidebar .account .name {
-  flex: 1 1 auto;
+    flex: 1 1 auto;
 }
+
 .container .sidebar .account .name h4 {
-  padding: 0;
-  margin: 0;
+    padding: 0;
+    margin: 0;
 }
+
 .container .sidebar .account .logout {
-  flex: 1 1 auto;
-  text-align: end;
+    flex: 1 1 auto;
+    text-align: end;
 }
+
 .container .sidebar .account .logout i {
-  font-size: 1.5rem;
+    font-size: 1.5rem;
 }
+
 .container .main {
-  margin-left: calc(10% + 2rem);
-  padding: 1rem;
-  overflow: auto;
+    margin-left: calc(10% + 2rem);
+    padding: 1rem;
+    overflow: auto;
 }
+
 /*Collasped Navigation Bar*/
 .short .sidebar {
-  width: 5%;
-  text-align: center;
+    width: 5%;
+    text-align: center;
 }
+
 .short .sidebar .logo, .short .sidebar .searchInput, .short .sidebar .text, .short .sidebar .avatar, .short .sidebar .name {
-  display: none;
+    display: none;
 }
+
 .short .sidebar .sidebartop {
-  display: block;
-  height: 75px;
+    display: block;
+    height: 75px;
 }
+
 .short .sidebar .sidebartop .logo-mobile {
-  display: none;
+    display: none;
 }
+
 .short .sidebar .sidebartop .menu {
-  width: 150%;
-  text-align: center;
+    width: 150%;
+    text-align: center;
 }
+
 .short .sidebar .text.hover {
-  display: block !important;
-  background-color: rgba(255, 255, 255, 0.9);
-  color: #333;
-  padding: 0.5rem;
-  box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.25);
-  position: absolute;
-  left: 3rem;
-  top: 1rem;
-  border-radius: 0.25rem;
+    display: block !important;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+    padding: 0.5rem;
+    box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.25);
+    position: absolute;
+    left: 3rem;
+    top: 1rem;
+    border-radius: 0.25rem;
 }
+
 .short .sidebar .account {
-  display: block;
+    display: block;
 }
+
 .short .sidebar .account .logout {
-  width: 100%;
-  text-align: center;
+    width: 100%;
+    text-align: center;
 }
+
 .short .sidebar .search {
-  margin: 1.75rem -0.2rem;
+    margin: 1.75rem -0.2rem;
 }
+
 .short .main {
-  margin-left: calc(5% + 2rem);
-  overflow: auto;
+    margin-left: calc(5% + 2rem);
+    overflow: auto;
 }
-  
+
 /* Style the tab */
 .tab {
-  overflow: hidden;
-  border-radius: 7px;
-  border:none;
-  background-color: none;
+    overflow: hidden;
+    border-radius: 7px;
+    border: none;
+    background-color: none;
 }
 
 /* Style the buttons inside the tab */
 .tab button {
-  background-color: inherit;
-  float: left;
-  border-radius:7px;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 10px 10px;
-  transition: 0.3s;
-  font-size: 13px;
+    background-color: inherit;
+    float: left;
+    border-radius: 7px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 10px;
+    transition: 0.3s;
+    font-size: 13px;
 }
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-  background-color: #ddd;
+    background-color: #ddd;
 }
- button{
- border:3px solid #ddd
- }
- 
+
+button {
+    border: 3px solid #ddd
+}
+
 /* Create an active/current tablink class */
 .tab button.active {
-  background-color: #ccc;
+    background-color: #ccc;
 }
 
 /* Style the tab content */
 .tabcontent {
-  display: none;
-  padding: 30px 12px;
-  border: none;
-  border-top: none;
+    display: none;
+    padding: 30px 12px;
+    border: none;
+    border-top: none;
 }
 
 /*MY WORK PAGE STYLING CSS*/
 /*Header for Nav Bar*/
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-body{
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background-image: url(background-img.jpg);
-  background-size: cover;
-  background-attachment: fixed;
-}
-.navbar{
-  height: 50px;
-  width: 90%;
-  margin-left: 10%;
-  padding: 10px 40px;
-  background-color: #dddd;
-  position: relative;
-  border-bottom:solid 1px #000000;
-  
-}
-.navbar .nav-header{
-  display: inline;
-}
-.navbar .nav-header .nav-logo{
-  display: inline-block;
-  margin-top: -7px;
-}
-.navbar .nav-links{
-  display: inline;
-  float: right;
-  font-size: 18px;
-}
- 
-.navbar .nav-links {
-  display: inline-block;
-  padding: 5px 15px;
-  margin-left: 20px;
-  font-size: 17px;
-  color: rgb(9, 14, 90);
-}
-.navbar .nav-links a {
-  padding: 10px 12px;
-  text-decoration: none;
-  font-weight: 550;
-  color: white;
-}
-/* Hover effects */
-.navbar .nav-links a:hover{
-  background-color: rgba(0, 0, 0, 0.3);
-}
- 
-/* responsive navbar toggle button */
-.navbar #nav-check, .navbar .nav-btn{
-  display: none;
-}
-.active {
-  background-color: #04AA6D;
-  color: white;
-}
-@media (max-width:100px) {
-  .navbar .nav-btn{
-    display: inline-block;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-  }
 
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-image: url(background-img.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+}
 
-  .navbar .nav-btn label {
-    display: inline-block;
-    width: 80px;
-    height: 70px;
-    padding: 25px;
-  }
-  .navbar .nav-btn label span {
-    display: block;
-    height: 10px;
-    width: 25px;
-    border-top: 3px solid #eee;
-  }
-  .navbar .nav-btn label:hover, .navbar  {
-    background-color: rgb(9, 14, 90);
-    transition: all 0.5s ease;
-  }
-  .navbar .nav-links{
-    position: absolute;
-    display: block;
-    text-align: center;
-    width: 50%;
-    background-color: rgb(9, 14, 90);
-    transition: all 0.3s ease-in;
-    overflow-y: hidden;
-    top: 70px;
-    right: 0px;
-  }
-  .navbar .nav-links a {
-    display: block;
-  }
- 
-  /* when nav toggle button not checked */
-  .navbar .nav-links {
-    height: 0px;
-  }
- 
-  /* when nav toggle button is checked */
-  .navbar .nav-links {
-    height: calc(100vh - 70px);
-    overflow-y: auto;
-  }
-  .navbar .nav-links  {
-    padding: 10px 40px ;
-    margin: 20px;
-    font-size:  18px;
-    font-weight: bold;
-    color: rgb(9, 14, 90);
-  }
-  /* Responsive dropdown code */
-  .navbar .nav-links .navbar   {
-    float: none;
-    width: 100%;
-  }
-  .navbar .nav-links  .navbar   {
+.navbar {
+    height: 50px;
+    width: 90%;
+    margin-left: 10%;
+    padding: 10px 40px;
+    background-color: #dddd;
     position: relative;
-    background-color: rgb(220, 220, 250);
-    top: 0px;
-    left: 0px;
-  }
-  /* Text color */
-  .navbar .nav-links .drop-content a {
+    border-bottom: solid 1px #000000;
+
+}
+
+.navbar .nav-header {
+    display: inline;
+}
+
+.navbar .nav-header .nav-logo {
+    display: inline-block;
+    margin-top: -7px;
+}
+
+.navbar .nav-links {
+    display: inline;
+    float: right;
+    font-size: 18px;
+}
+
+.navbar .nav-links {
+    display: inline-block;
+    padding: 5px 15px;
+    margin-left: 20px;
+    font-size: 17px;
     color: rgb(9, 14, 90);
-  }  
-  
-  
+}
+
+.navbar .nav-links a {
+    padding: 10px 12px;
+    text-decoration: none;
+    font-weight: 550;
+    color: white;
+}
+
+/* Hover effects */
+.navbar .nav-links a:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* responsive navbar toggle button */
+.navbar #nav-check, .navbar .nav-btn {
+    display: none;
+}
+
+.active {
+    background-color: #04AA6D;
+    color: white;
+}
+
+@media (max-width: 100px) {
+    .navbar .nav-btn {
+        display: inline-block;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+    }
+
+
+    .navbar .nav-btn label {
+        display: inline-block;
+        width: 80px;
+        height: 70px;
+        padding: 25px;
+    }
+
+    .navbar .nav-btn label span {
+        display: block;
+        height: 10px;
+        width: 25px;
+        border-top: 3px solid #eee;
+    }
+
+    .navbar .nav-btn label:hover, .navbar {
+        background-color: rgb(9, 14, 90);
+        transition: all 0.5s ease;
+    }
+
+    .navbar .nav-links {
+        position: absolute;
+        display: block;
+        text-align: center;
+        width: 50%;
+        background-color: rgb(9, 14, 90);
+        transition: all 0.3s ease-in;
+        overflow-y: hidden;
+        top: 70px;
+        right: 0px;
+    }
+
+    .navbar .nav-links a {
+        display: block;
+    }
+
+    /* when nav toggle button not checked */
+    .navbar .nav-links {
+        height: 0px;
+    }
+
+    /* when nav toggle button is checked */
+    .navbar .nav-links {
+        height: calc(100vh - 70px);
+        overflow-y: auto;
+    }
+
+    .navbar .nav-links {
+        padding: 10px 40px;
+        margin: 20px;
+        font-size: 18px;
+        font-weight: bold;
+        color: rgb(9, 14, 90);
+    }
+
+    /* Responsive dropdown code */
+    .navbar .nav-links .navbar {
+        float: none;
+        width: 100%;
+    }
+
+    .navbar .nav-links .navbar {
+        position: relative;
+        background-color: rgb(220, 220, 250);
+        top: 0px;
+        left: 0px;
+    }
+
+    /* Text color */
+    .navbar .nav-links .drop-content a {
+        color: rgb(9, 14, 90);
+    }
+
 
 }
 
-.title
-  {
-  float:right;
-  }
-  /*Task List Page Styling*/
-  /* Variables */
+.title {
+    float: right;
+}
+
+/*Task List Page Styling*/
+/* Variables */
 :root {
-	--primary: #EA40A4;
-	--business: #3a82ee;
-	--personal: var(--primary);
-	--light: #EEE;
-	--grey: #888;
-	--dark: #313154;
-	--danger: #ff5b57;
+    --primary: #EA40A4;
+    --business: #3a82ee;
+    --personal: var(--primary);
+    --light: #EEE;
+    --grey: #888;
+    --dark: #313154;
+    --danger: #ff5b57;
 
-	--shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 
-	--business-glow: 0px 0px 4px rgba(58, 130, 238, 0.75);
-	--personal-glow: 0px 0px 4px rgba(234, 64, 164, 0.75);
+    --business-glow: 0px 0px 4px rgba(58, 130, 238, 0.75);
+    --personal-glow: 0px 0px 4px rgba(234, 64, 164, 0.75);
 }
+
 /* End of Variables */
 
 /* Resets */
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: 'montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'montserrat', sans-serif;
 }
 
 input:not([type="radio"]):not([type="checkbox"]), button {
-	appearance: none;
-	border: none;
-	outline: none;
-	background: none;
-	cursor: initial;
+    appearance: none;
+    border: none;
+    outline: none;
+    background: none;
+    cursor: initial;
 }
+
 /* End of Resets */
 
 body {
-	background: var(--light);
-	color: var(--dark);
+    background: var(--light);
+    color: var(--dark);
 }
 
 section {
-	margin-top: 2rem;
-	margin-bottom: 2rem;
-	padding-left: 1.5rem;
-	padding-right: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
 }
 
 h3 {
-	color: var(--dark);
-	font-size: 1rem;
-	font-weight: 400;
-	margin-bottom: 0.5rem;
+    color: var(--dark);
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
 }
 
 h4 {
-	color: var(--grey);
-	font-size: 0.875rem;
-	font-weight: 700;
-	margin-bottom: 0.5rem;
+    color: var(--grey);
+    font-size: 0.875rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
 }
 
 .greeting .title {
-	display: flex;
+    display: flex;
 }
 
 .greeting .title input {
-	margin-left: 0.5rem;
-	flex: 1 1 0%;
-	min-width: 0;
+    margin-left: 0.5rem;
+    flex: 1 1 0%;
+    min-width: 0;
 }
 
-.greeting .title, 
+.greeting .title,
 .greeting .title input {
-	color: var(--dark);
-	font-size: 1.5rem;
-	font-weight: 700;
+    color: var(--dark);
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
 .create-todo input[type="text"] {
-	display: block;
-	width: 100%;
-	font-size: 1.125rem;
-	padding: 1rem 1.5rem;
-	color: var(--dark);
-	background-color: #FFF;
-	border-radius: 0.5rem;
-	box-shadow: var(--shadow);
-	margin-bottom: 1.5rem;
+    display: block;
+    width: 100%;
+    font-size: 1.125rem;
+    padding: 1rem 1.5rem;
+    color: var(--dark);
+    background-color: #FFF;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 1.5rem;
 }
 
 .create-todo .options {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	grid-gap: 1rem;
-	margin-bottom: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .create-todo .options label {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	background-color: #FFF;
-	padding: 1.5rem;
-	box-shadow: var(--shadow);
-	border-radius: 0.5rem;
-	cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFF;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    border-radius: 0.5rem;
+    cursor: pointer;
 }
 
 input[type="radio"],
 input[type="checkbox"] {
-	display: none;
+    display: none;
 }
 
 .bubble {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 20px;
-	height: 20px;
-	border-radius: 999px;
-	border: 2px solid var(--business);
-	box-shadow: var(--business-glow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 999px;
+    border: 2px solid var(--business);
+    box-shadow: var(--business-glow);
 }
 
 .bubble.personal {
-	border-color: var(--personal);
-	box-shadow: var(--personal-glow);
+    border-color: var(--personal);
+    box-shadow: var(--personal-glow);
 }
 
 .bubble::after {
-	content: '';
-	display: block;
-	opacity: 0;
-	width: 0px;
-	height: 0px;
-	background-color: var(--business);
-	box-shadow: var(--business-glow);
-	border-radius: 999px;
-	transition: 0.2s ease-in-out;
+    content: '';
+    display: block;
+    opacity: 0;
+    width: 0px;
+    height: 0px;
+    background-color: var(--business);
+    box-shadow: var(--business-glow);
+    border-radius: 999px;
+    transition: 0.2s ease-in-out;
 }
 
 .bubble.personal::after {
-	background-color: var(--personal);
-	box-shadow: var(--personal-glow);
+    background-color: var(--personal);
+    box-shadow: var(--personal-glow);
 }
 
 input:checked ~ .bubble::after {
-	width: 10px;
-	height: 10px;
-	opacity: 1;
+    width: 10px;
+    height: 10px;
+    opacity: 1;
 }
 
 .create-todo .options label div {
-	color: var(--dark);
-	font-size: 1.125rem;
-	margin-top: 1rem;
+    color: var(--dark);
+    font-size: 1.125rem;
+    margin-top: 1rem;
 }
 
 .create-todo input[type="submit"] {
-	display: block;
-	width: 100%;
-	font-size: 1.125rem;
-	padding: 1rem 1.5rem;
-	color: #FFF;
-	font-weight: 700;
-	text-transform: uppercase;
-	background-color: var(--primary);
-	box-shadow: var(--personal-glow);
-	border-radius: 0.5rem;
-	cursor: pointer;
-	transition: 0.2s ease-out;
+    display: block;
+    width: 100%;
+    font-size: 1.125rem;
+    padding: 1rem 1.5rem;
+    color: #FFF;
+    font-weight: 700;
+    text-transform: uppercase;
+    background-color: var(--primary);
+    box-shadow: var(--personal-glow);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: 0.2s ease-out;
 }
 
 .create-todo input[type="submit"]:hover {
-	opacity: 0.75;
+    opacity: 0.75;
 }
 
 .todo-list .list {
-	margin: 1rem 0;
+    margin: 1rem 0;
 }
 
 .todo-list .todo-item {
-	display: flex;
-	align-items: center;
-	background-color: #FFF;
-	padding: 1rem;
-	border-radius: 0.5rem;
-	box-shadow: var(--shadow);
-	margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    background-color: #FFF;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 1rem;
 }
 
 .todo-item label {
-	display: block;
-	margin-right: 1rem;
-	cursor: pointer;
+    display: block;
+    margin-right: 1rem;
+    cursor: pointer;
 }
 
 .todo-item .todo-content {
-	flex: 1 1 0%;
+    flex: 1 1 0%;
 }
 
 .todo-item .todo-content input {
-	color: var(--dark);
-	font-size: 1.125rem;
+    color: var(--dark);
+    font-size: 1.125rem;
 }
 
 .todo-item .actions {
-	display: flex;
-	align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .todo-item .actions button {
-	display: block;
-	padding: 0.5rem;
-	border-radius: 0.25rem;
-	color: #FFF;
-	cursor: pointer;
-	transition: 0.2s ease-in-out;
+    display: block;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    color: #FFF;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
 }
 
 .todo-item .actions button:hover {
-	opacity: 0.75;
+    opacity: 0.75;
 }
 
 .todo-item .actions .edit {
-	margin-right: 0.5rem;
-	background-color: var(--primary);
+    margin-right: 0.5rem;
+    background-color: var(--primary);
 }
 
 .todo-item .actions .delete {
-	background-color: var(--danger);
+    background-color: var(--danger);
 }
 
 .todo-item.done .todo-content input {
-	text-decoration: line-through;
-	color: var(--grey);
+    text-decoration: line-through;
+    color: var(--grey);
 }
