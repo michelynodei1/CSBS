@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,6 +27,7 @@
     <div class="sidebar">
         <div class="sidebartop">
             <div class="logo">
+                {# !!! This produces no image on webpage due to source !!! #}
                 <img src="/images/logo.png" alt="">
             </div>
             <div class="menu">
@@ -51,7 +53,7 @@
 
         <nav>
             <ul>
-                <li><a href="#"><i class="bi bi-compass"></i><span class="text">Overview</span></a></li>
+                <li><a href="{{ url_for('index') }}"><i class="bi bi-compass"></i><span class="text">Overview</span></a></li>
                 <li><a href="#"><i class="bi bi-calendar"></i><span class="text">Calendar</span></a></li>
                 <li><a href="{{ url_for('myWork') }}"><i class="bi bi-list-check"></i><span class="text">My Work!</span></a></li>
                 <li><a href="#"><i class="bi bi-people"></i><span class="text">Users</span></a></li>
@@ -62,11 +64,12 @@
 
         <div class="account">
             <div class="avatar">
+                {# !!! This produces no image on webpage due to source !!! #}
                 <img src="/images/avatar.jpg" alt="">
             </div>
             <div class="name">
                 <h4>CSBS</h4>
-                Adminstrator
+                Administrator
             </div>
             <div class="logout">
                 <a href="#"><i class="bi bi-box-arrow-left"></i></a>
@@ -105,7 +108,7 @@
 
     <h2>Use this site to maintain and organize your notes.</h2>
 
-    <h3>Coursee notes</h3>
+    <h3>Course notes</h3>
 
     <h3>To Do</h3>
 

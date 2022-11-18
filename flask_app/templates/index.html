@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Homepage">
-    <title>Homepage</title>
+    <title>Home | Overview</title>
 
-    <!-- Sidebar Styles -->
+    <!-- Styles -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
 
@@ -23,7 +23,7 @@
     <!--Navigation Top Bar-->
     <ul class="topnav">
         <li><a class="active" href="{{ url_for('index') }}">Home</a></li>
-        <li><a href="{{ url_for('index') }}">Login</a></li>
+        <li><a href="#">Login</a></li>
     </ul>
 </head>
 
@@ -33,6 +33,7 @@
     <div class="sidebar">
         <div class="sidebartop">
             <div class="logo">
+                {# !!! This produces no image on webpage due to source !!! #}
                 <img src="/images/logo.png" alt="">
             </div>
             <div class="menu">
@@ -58,24 +59,24 @@
 
         <nav>
             <ul>
-                <li><a href="#"><i class="bi bi-compass"></i><span class="text">Overview</span></a></li>
+                <li><a href="{{ url_for('index') }}"><i class="bi bi-compass"></i><span class="text">Overview</span></a></li>
                 <li><a href="#"><i class="bi bi-calendar"></i><span class="text">Calendar</span></a></li>
                 <li><a href="{{ url_for('myWork') }}"><i class="bi bi-list-check"></i><span class="text">My Work</span></a>
                 </li>
                 <li><a href="#"><i class="bi bi-people"></i><span class="text">Users</span></a></li>
                 <li><a href="#"><i class="bi bi-gear"></i><span class="text">Settings</span></a></li>
-
             </ul>
         </nav>
 
 
         <div class="account">
             <div class="avatar">
+                {# !!! This produces no image on webpage due to source !!! #}
                 <img src="/images/avatar.jpg" alt="">
             </div>
             <div class="name">
                 <h4>CSBS</h4>
-                Adminstrator
+                Administrator
             </div>
             <div class="logout">
                 <a href="#"><i class="bi bi-box-arrow-left"></i></a>
@@ -87,68 +88,62 @@
 <!--Page Content (Currently Placeholder Content from UNCC Website)-->
 <div class="main">
 
-    <h1>COLLEGE OF COMPUTING AND INFORMATICS</h1>
+    <h1>OVERVIEW</h1>
+    <br>
+    <br>
 
     <div>
-        <p>The College of Computing and Informatics is committed to being the recognized leader for competitive,
-            innovative,
-            and market-responsive computing and informatics education.
-            Through this commitment, the College develops focused, trend-setting research excellence with national and
-            international recognition,
-            and is recognized as the industry leader for partnerships and collaborations.</p>
+        <p>[_______________________] Search Bar Here?</p>
     </div>
+    <br>
+    <br>
 
     <div>
         <h3>
-            Undergraduate Studies
+            <strong>--Recent--</strong>
         </h3>
 
         <div>
-            <p>The College of Computing and Informatics (CCI) offers a B.S. and a B.A. in Computer Science (CS)
-            <p>Computer science students at CCI have the opportunity to engage in research,
-                get involved in student organizations and collaborate on interdisciplinary teams
-                in addition to learning about entrepreneurship and starting companies while
-                competing in computing contests, networking with corporate recruiters and
-                interning at top companies. Students graduate with the skills and knowledge
-                to pursue rewarding careers or continue their studies in graduate school.</p> as well as opportunities
-            to earn a CS Minor or an undergraduate certificate in Game Design.
-            <p>In addition, the College offers an Honors program and an Early Entry program.</p>
+            <p>List of Recently Viewed/Shared/Edited Projects:<br>
+                Project 1<br>
+                Project 2<br>
+                Project 3<br>
+            </p>
         </div>
+        <br>
+        <br>
 
         <h3>
-            Master's Program
+            <strong>--Projects--</strong>
         </h3>
 
         <div>
-            <p>With Master's programs in <strong>Computer Science, Cybersecurity, Information Technology,
-                Bioinformatics, Architecture/Computer Science,
-                Architecture/Information Technology, Data Science/Business Analytics and Health Informatics </strong>,
-                CCI offers one of the fastest-growing and most diverse graduate programs in the country.</p>
-            <p>In addition to receiving a top-notch, nationally-ranked technical education, CCI students develop the
-                kind of business savvy,
-                entrepreneurial spirit and communication skills necessary for success in the workplace.
-                Our students are regularly targeted for Fortune 500 employment opportunities,
-                many of which begin as internships and mentoring relationships established in our Business Partners
-                program.</p>
+            <p>[__] Add Project Button</p>
+            <br>
+            <p>List of Projects Here:<br>
+                Project 1<br>
+                Project 2<br>
+                Project 3<br>
+            </p>
         </div>
+        <br>
+        <br>
 
         <h3>
-            A MESSAGE FROM OUR DEAN
+            <strong>--Tasks--</strong>
         </h3>
 
         <div>
-            <p>Welcome and thank you for your interest in the College of Computing and Informatics (CCI) at UNC
-                Charlotte.</p>
-            <p>We live in the golden age of information technology (IT). IT is transforming every aspect of society –
-                our homes, workplaces, communities, industries,
-                and economy. Technology is no longer just a tool for productivity; it is now a driving force for
-                innovation and a catalyst for social and economic transformation.</p>
-            <p>As the fastest growing college in the UNC system, the largest computing college in North Carolina,
-                and one of the largest in the nation, CCI prides itself on being innovative in its research and
-                education,
-                inclusive in its design and operation, and responsive to the rapidly changing needs and ambitions of its
-                constituencies.</p>
+            <p>[__] Add Task Button</p>
+            <br>
+            <p>List of Tasks Here:<br>
+                Task 1<br>
+                Task 2<br>
+                Task 3<br>
+            </p>
         </div>
+        <br>
+        <br>
     </div>
 
 </div>

@@ -29,7 +29,7 @@ app = Flask(__name__)
 
 
 # ///// ROUTES /////
-# - Homepage | Overview -
+# - Home | Overview -
 @app.route('/')
 def index():
     return render_template('index.html')
