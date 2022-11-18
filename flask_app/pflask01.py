@@ -14,15 +14,22 @@ app = Flask(__name__)
 
 # ///// DATABASE CONFIG /////
 # # --- Not Using Yet ---
-# # configure database connection
+# # Configure database connection
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///flask_note_app.db'  # (db file name may change)
-# # disables a feature that signals the application every time a change is about to be made in the database
+# # Disables a feature that signals the application every time a change is about to be made in the database
 # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# # Binds SQLAlchemy db object to this Flask app
+# db.init_app(app)
+
+# # Setup models
+# with app.app_context():
+    # db.create_all()  # Run under the app context
 # # ---------------------
 
 
 # ///// ROUTES /////
-# - Homepage -
+# - Homepage | Overview -
 @app.route('/')
 def index():
     return render_template('index.html')
