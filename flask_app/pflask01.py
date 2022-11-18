@@ -1,30 +1,46 @@
-# imports
-import os  # os is used to get environment variables IP & PORT
-from flask import Flask  # Flask is the web app that we will customize
-from flask import render_template
+# ///// IMPORTS /////
+import os  # used to get environment variables IP & PORT
+from flask import Flask  # Flask is the web app that we are customizing
+from flask import render_template, request, redirect, url_for
 
-app = Flask(__name__)  # create an app
+# # ---Not Using Yet---
+# from database import db  # importing database instance
+# from models import Note as Note  # (Model names may change)
+# from models import Note as Note  # (Model names may change)
+# # -------------------
+
+# ///// APP CREATION /////
+app = Flask(__name__)
+
+# ///// DATABASE CONFIG /////
+# # --- Not Using Yet ---
+# # configure database connection
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///flask_note_app.db'  # (db file name may change)
+# # disables a feature that signals the application every time a change is about to be made in the database
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# # ---------------------
 
 
-# @app.route is a decorator. It gives the function "index" special powers.
-# In this case it makes it so anyone going to "your-url/" makes this function
-# get called. What it returns is what is shown as the web page
+# ///// ROUTES /////
+# - Homepage -
 @app.route('/')
-@app.route('/index')
 def index():
     return render_template('index.html')
 
 
+# - My Work -
 @app.route('/myWork')
 def myWork():
     return render_template('myWork.html')
 
 
+# - Task List -
 @app.route('/taskList')
 def taskList():
     return render_template('taskList.html')
 
 
+# ///// HOST & PORT CONFIG /////
 app.run(host=os.getenv('IP', '127.0.0.1'), port=int(os.getenv('PORT', 5000)), debug=True)
 
 # To see the web page in your web browser, go to the url,
