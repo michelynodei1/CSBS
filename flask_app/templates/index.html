@@ -113,11 +113,13 @@
                 <br>
 
                 <h3>
-                    <strong>--Projects--</strong>
+                    <a href="{{ url_for('projects_list') }}"><strong>--Projects--</strong></a>
                 </h3>
 
                 <div>
-                    <a href="{{ url_for('create_project')}}">Add Project</a>
+                    <p>
+                        <a href="{{ url_for('create_project')}}">[Add Project]</a>
+                    </p>
                     <br>
                     <p>List of Projects Here:<br>
                         Project 1<br>
