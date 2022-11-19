@@ -28,17 +28,43 @@ app = Flask(__name__)
 # # ---------------------
 
 
+# ///// MOCK VARIABLES /////
+# Project List
+projects = {1: {'title': 'First Project'},
+            2: {'title': 'Second Project'},
+            3: {'title': 'Third Project'}
+            }
+
+
 # ///// ROUTES /////
 # - Home | Overview -
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html',)
+
+
+# - Projects List -
+@app.route('/projects')
+def projects_list():
+    return render_template('projects_list.html', projects=projects)
 
 
 # - Add Project -
-@app.route('/add-project')
-def add_project():
-    return render_template('add_project.html')
+@app.route('/projects/create-project', methods=['GET', 'POST'])
+def create_project():
+
+    if request.method == 'POST':
+        # get project title data
+        title = request.form['title']
+        # get the last ID used and increment by 1
+        p_id = len(projects) + 1
+        # create new project
+        projects[p_id] = {'title': title}
+        # ready to render response - redirect to projects list
+        return redirect(url_for('projects_list'))
+    else:
+        # GET request - show 'create project' form
+        return render_template('create_project.html')
 
 
 # - My Work -

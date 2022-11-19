@@ -13,18 +13,17 @@
 
     <body>
         <nav>
-            <a href="{{ url_for('index') }}"> Home</a>
+            <a href="{{ url_for('index') }}">Home</a> ||
+            <a href="{{ url_for('projects_list') }}">Projects</a> ||
+            <a href="{{ url_for('create_project') }}">Add Project</a> ||
         </nav>
 
         <!--Page Content -->
         <div class="main">
-            <h1>New Project</h1>
-            <br>
-            <br>
+            <h1>Create Project</h1>
 
-            <form action="new" method="post">
-                <label for="Title">Title:</label>
-                <input type="text" id="Title" name="Title">
+            <form action="create-project" method="post">
+                <p><label>Title:</label><input type="text" name="title"/></p>
                 <br>
                 <p><input type="submit" value="Add Project"></p>
             </form>
