@@ -35,6 +35,12 @@ def index():
     return render_template('index.html')
 
 
+# - Add Project -
+@app.route('/add-project')
+def add_project():
+    return render_template('add_project.html')
+
+
 # - My Work -
 @app.route('/myWork')
 def myWork():

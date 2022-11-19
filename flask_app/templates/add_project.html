@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Create New Project">
+        <title>Add Project</title>
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='test.css') }}">
+    </head>
+
+    <body>
+        <nav>
+            <a href="{{ url_for('index') }}"> Home</a>
+        </nav>
+
+        <!--Page Content -->
+        <div class="main">
+            <h1>New Project</h1>
+            <br>
+            <br>
+
+            <form action="new" method="post">
+                <label for="Title">Title:</label>
+                <input type="text" id="Title" name="Title">
+                <br>
+                <p><input type="submit" value="Add Project"></p>
+            </form>
+
+        </div>
+
+        <script src="{{ url_for('static', filename='init.js') }}"></script>
+    </body>
+
+</html>
