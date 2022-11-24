@@ -29,11 +29,20 @@ app = Flask(__name__)
 
 
 # ///// MOCK VARIABLES /////
+# User
+user_info = {'name': 'Team CSBS'}
+
 # Project List
 projects = {1: {'title': 'First Project'},
             2: {'title': 'Second Project'},
             3: {'title': 'Third Project'}
             }
+
+# Task List
+tasks = {1: {'title': 'First Task'},
+         2: {'title': 'Second Task'},
+         3: {'title': 'Third Task'}
+         }
 
 
 # ///// ROUTES /////
