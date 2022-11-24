@@ -9,8 +9,10 @@ from flask import render_template, request, redirect, url_for
 # from models import Note as Note  # (Model names may change)
 # # -------------------
 
+
 # ///// APP CREATION /////
 app = Flask(__name__)
+
 
 # ///// DATABASE CONFIG /////
 # # --- Not Using Yet ---
@@ -74,6 +76,12 @@ def create_project():
     else:
         # GET request - show 'create project' form
         return render_template('create_project.html')
+
+
+# - Specific Project Page -
+@app.route('/projects/<project_id>')
+def project_overview(project_id):
+    return render_template('project_overview.html', project=projects[int(project_id)])
 
 
 # - My Work -
