@@ -1,3 +1,64 @@
-body {
-    padding: 30px 30px;
-    }
+/* ADDED BY ME -Rachel */
+*{
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    padding-top: 3%;
+    padding-left: 10%;
+}
+
+table {
+    padding-top: 4%;
+    padding-left: 10%;
+}
+
+form {
+    padding-top: 4%;
+    padding-left: 10%;
+}
+
+
+
+/* COPIED FROM PROJECT'S MAIN.CSS */
+
+/* - Top Navigation Bar - */
+.topnav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(27, 25, 25);
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #504e4e;
+}
+
+/* - Hover Effects - */
+.navbar .nav-links a:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* - Responsive Navbar Toggle Button - */
+.navbar #nav-check, .navbar .nav-btn {
+    display: none;
+}
+
+.active {
+    background-color: #04AA6D;
+    color: white;
+}

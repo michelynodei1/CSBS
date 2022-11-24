@@ -9,28 +9,23 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ url_for('static', filename='test.css') }}">
+
+        <!--Navigation Top Bar-->
+        <ul class="topnav">
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('projects_list') }}">Projects</a></li>
+            <li><a class="active" href="{{ url_for('create_project') }}">Add Project</a></li>
+        </ul>
     </head>
 
     <body>
-        <nav>
-            <a href="{{ url_for('index') }}">Home</a> ||
-            <a href="{{ url_for('projects_list') }}">Projects</a> ||
-            <a href="{{ url_for('create_project') }}">Add Project</a> ||
-        </nav>
+        <h1>Create Project</h1>
 
-        <!--Page Content -->
-        <div class="main">
-            <h1>Create Project</h1>
-
-            <form action="create-project" method="post">
-                <p><label>Title:</label><input type="text" name="title"/></p>
-                <br>
-                <p><input type="submit" value="Add Project"></p>
-            </form>
-
-        </div>
-
-        <script src="{{ url_for('static', filename='init.js') }}"></script>
+        <form action="create-project" method="post">
+            <p><label>Title:</label><input type="text" name="title"/></p>
+            <br>
+            <p><input type="submit" value="Add Project"></p>
+        </form>
     </body>
 
 </html>

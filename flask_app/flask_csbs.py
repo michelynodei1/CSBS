@@ -5,8 +5,8 @@ from flask import render_template, request, redirect, url_for
 
 # # ---Not Using Yet---
 # from database import db  # importing database instance
-# from models import Note as Note  # (Model names may change)
-# from models import Note as Note  # (Model names may change)
+# from models import Note as Note  # (Model names may change -Rachel)
+# from models import Note as Note  # (Model names may change -Rachel)
 # # -------------------
 
 
@@ -17,7 +17,7 @@ app = Flask(__name__)
 # ///// DATABASE CONFIG /////
 # # --- Not Using Yet ---
 # # Configure database connection
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///flask_note_app.db'  # (db file name may change)
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///flask_note_app.db'  # (db file name may change -Rachel)
 # # Disables a feature that signals the application every time a change is about to be made in the database
 # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -31,7 +31,7 @@ app = Flask(__name__)
 
 
 # ///// MOCK VARIABLES /////
-# User
+# User Info
 user_info = {'name': 'Team CSBS'}
 
 # Project List

@@ -9,18 +9,19 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ url_for('static', filename='test.css') }}">
+
+        <!--Navigation Top Bar-->
+        <ul class="topnav">
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a class="active" href="{{ url_for('projects_list') }}">Projects</a></li>
+            <li><a href="{{ url_for('create_project') }}">Add Project</a></li>
+        </ul>
     </head>
 
     <body>
-        <nav>
-            <a href="{{ url_for('index') }}">Home</a> ||
-            <a href="{{ url_for('projects_list') }}">Projects</a> ||
-            <a href="{{ url_for('create_project') }}">Add Project</a> ||
-        </nav>
-
         <h1>Projects</h1>
 
-        <div class="main">
+        <div>
             <table>
                 <tr>
                     <th>Title</th>

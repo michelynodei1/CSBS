@@ -20,10 +20,11 @@
         {#    <script src="jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>#}
         {#    <script src="AccordionJavascript.js"></script>#}
 
-        <!--Navigation Top Bar-->
+        <!--Top Navigation Bar-->
         <ul class="topnav">
             <li><a class="active" href="{{ url_for('index') }}">Home</a></li>
-            <li><a href="#">Login</a></li>
+            <li><a href="{{ url_for('projects_list') }}">Projects</a></li>
+            <li><a href="{{ url_for('create_project') }}">Add Project</a></li>
         </ul>
     </head>
 
