@@ -41,9 +41,9 @@ projects = {1: {'title': 'First Project'},
             }
 
 # Task List
-tasks = {1: {'title': 'First Task'},
-         2: {'title': 'Second Task'},
-         3: {'title': 'Third Task'}
+tasks = {1: {'title': 'First Task', 'text': 'This is the first task'},
+         2: {'title': 'Second Task', 'text': 'This is the second task'},
+         3: {'title': 'Third Task', 'text': 'This is the third task'}
          }
 
 
@@ -85,15 +85,15 @@ def project_overview(project_id):
 
 
 # - My Work -
-@app.route('/myWork')
-def myWork():
-    return render_template('myWork.html')
+@app.route('/my-work')
+def my_work():
+    return render_template('my_work.html')
 
 
 # - Task List -
-@app.route('/taskList')
-def taskList():
-    return render_template('taskList.html')
+@app.route('/task-list')
+def task_list():
+    return render_template('task_list.html')
 
 
 # ///// HOST & PORT CONFIG /////
