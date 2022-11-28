@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="List of Projects">
+        <title>Projects</title>
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='test.css') }}">
+
+        <!--Navigation Top Bar-->
+        <ul class="topnav">
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a class="active" href="{{ url_for('projects_list') }}">Projects</a></li>
+            <li><a href="{{ url_for('create_project') }}">Add Project</a></li>
+        </ul>
+    </head>
+
+    <body>
+        <h1>Projects</h1>
+
+        <div>
+            <table>
+                <tr>
+                    <th>Title</th>
+                </tr>
+
+                {% for key, value in projects.items() %}
+                    <tr>
+                        <td>{{ value.title }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </body>
+
+</html>

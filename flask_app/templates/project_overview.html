@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="View a Specific Project">
+        <title>Project View</title>
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='test.css') }}">
+    </head>
+
+    <body>
+        <nav>
+            <a href="{{ url_for('index') }}">Home</a> ||
+            <a href="{{ url_for('projects_list') }}">Projects</a> ||
+            <a href="{{ url_for('create_project') }}">Add Project</a> ||
+        </nav>
+
+        <h1>{{ project.title }}</h1>
+    </body>
+
+</html>

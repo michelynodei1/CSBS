@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Create New Project">
+        <title>Add Project</title>
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='test.css') }}">
+
+        <!--Navigation Top Bar-->
+        <ul class="topnav">
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('projects_list') }}">Projects</a></li>
+            <li><a class="active" href="{{ url_for('create_project') }}">Add Project</a></li>
+        </ul>
+    </head>
+
+    <body>
+        <h1>Create Project</h1>
+
+        <form action="create-project" method="post">
+            <p><label>Title:</label><input type="text" name="title"/></p>
+            <br>
+            <p><input type="submit" value="Add Project"></p>
+        </form>
+    </body>
+
+</html>

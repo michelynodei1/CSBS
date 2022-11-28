@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="My Work">
+    <title>My Work</title>
+
+    <!-- styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+
+    <!--Navigation Top Bar-->
+    <ul class="topnav">
+        <li><a class="active" href="#home">Home</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about">About</a></li>
+    </ul>
+</head>
+
+<body>
+
+<!--Sidebar - collapsable sidebar-->
+<div class="container">
+    <div class="sidebar">
+        <div class="sidebartop">
+            <div class="logo">
+                {# !!! This produces no image on webpage due to source !!! #}
+                <img src="/images/logo.png" alt="">
+            </div>
+            <div class="menu">
+                <i class="bi bi-list"></i>
+            </div>
+        </div>
+        <!--Project and Chat Tab-->
+        <div class="tab">
+            <button class="tablinks" onclick="openCity(event, 'Project')">Projects</button>
+            <button class="tablinks" onclick="openCity(event, 'Chat')">Chat</button>
+
+
+            <div id="Project" class="tabcontent">
+                <h3>General?</h3>
+                <p>ICons of the projects worked on and the name </p>
+            </div>
+
+            <div id="Chat" class="tabcontent">
+                <h3>Chats</h3>
+                <p>icon of user and an + sign</p>
+            </div>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}"><i class="bi bi-compass"></i><span class="text">Overview</span></a></li>
+                <li><a href="#"><i class="bi bi-calendar"></i><span class="text">Calendar</span></a></li>
+                <li><a href="{{ url_for('my_work') }}"><i class="bi bi-list-check"></i><span class="text">My Work!</span></a></li>
+                <li><a href="#"><i class="bi bi-people"></i><span class="text">Users</span></a></li>
+                <li><a href="#"><i class="bi bi-gear"></i><span class="text">Settings</span></a></li>
+
+            </ul>
+        </nav>
+
+        <div class="account">
+            <div class="avatar">
+                {# !!! This produces no image on webpage due to source !!! #}
+                <img src="/images/avatar.jpg" alt="">
+            </div>
+            <div class="name">
+                <h4>CSBS</h4>
+                Administrator
+            </div>
+            <div class="logout">
+                <a href="#"><i class="bi bi-box-arrow-left"></i></a>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--Nav Bar My work -->
+<div class="navbar">
+
+    <!-- Navbar logo -->
+    <div class="nav-header">
+
+        <div class="nav-logo">
+            <img src="https://media.istockphoto.com/photos/hot-air-balloons-flying-over-the-botan-canyon-in-turkey-picture-id1297349747?b=1&k=20&m=1297349747&s=170667a&w=0&h=oH31fJty_4xWl_JQ4OIQWZKP8C6ji9Mz7L4XmEnbqRU=" width="50px" alt="logo">
+            <h2 class="title">My Work</h2>
+        </div>
+
+    </div>
+
+
+    <!-- Navbar items -->
+    <div class="nav-links">
+        <a href="#">Task</a>
+        <a href="#">Calendar</a>
+        <a href="{{ url_for('task_list') }}">To-Do List</a>
+        <a href="#">Notes</a>
+    </div>
+</div>
+
+<!--Page Content Here-->
+<div class="main">
+
+    <h1>Welcome to the 49er Notes App!</h1>
+
+    <h2>Use this site to maintain and organize your notes.</h2>
+
+    <h3>Course notes</h3>
+
+    <h3>To Do</h3>
+
+    <h3>Work note1s</h3>
+</div>
+<script src="{{ url_for('static', filename='init.js') }}"></script>
+</body>
+</html>
