@@ -6,8 +6,6 @@ from models import User
 from database import db
 
 
-
-
 class RegisterForm(FlaskForm):
     class Meta:
         csrf = False
@@ -28,7 +26,6 @@ class RegisterForm(FlaskForm):
     confirmPassword = PasswordField('Confirm Password', validators=[
         Length(min=6, max=10)
     ])
-
     submit = SubmitField('Submit')
 
     def validate_email(self, field):
@@ -37,21 +34,21 @@ class RegisterForm(FlaskForm):
 
 
 class LoginForm(FlaskForm):
-        class Meta:
-            csrf = False
+    class Meta:
+        csrf = False
 
-        email = StringField('Email', [
+    email = StringField('Email', [
         Email(message='Not a valid email address.'),
         DataRequired()])
 
-        password = PasswordField('Password', [
+    password = PasswordField('Password', [
         DataRequired(message="Please enter a password.")])
 
-        submit = SubmitField('Submit')
+    submit = SubmitField('Submit')
 
-        def validate_email(self, field):
-            if db.session.query(User).filter_by(email=field.data).count() == 0:
-                raise ValidationError('Incorrect username or password.')
+    def validate_email(self, field):
+        if db.session.query(User).filter_by(email=field.data).count() == 0:
+            raise ValidationError('Incorrect username or password.')
 
 class CommentForm(FlaskForm):
     class Meta:

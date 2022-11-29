@@ -10,7 +10,7 @@
     </head>
 
     <ul class="topnav">
-        <li><a class="active" href="{{ url_for('index') }}">Home</a></li>
+        <li><a class="active" href="{{ url_for('overview') }}">Overview</a></li>
         <li><a href="#news">News</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="#about">About</a></li>
@@ -47,7 +47,7 @@
   
               <nav>
                 <ul>
-                    <li><a href="{{ url_for('index') }}"><i class="bi bi-compass"></i><span class="text">Overview</span></a></li>
+                    <li><a href="{{ url_for('overview') }}"><i class="bi bi-compass"></i><span class="text">Overview</span></a></li>
                     <li><a href="#"><i class="bi bi-calendar"></i><span class="text">Calendar</span></a></li>
                     <li><a href="{{ url_for('myWork') }}"><i class="bi bi-list-check"></i><span class="text">My Work</span></a></li>
                     <li><a href="#"><i class="bi bi-people"></i><span class="text">Users</span></a></li>
@@ -56,7 +56,6 @@
                 </ul>
                 
             </nav>
-
        
         
         <div class="account">
@@ -83,7 +82,7 @@
     <main>
         <div class="center">
        <nav>
-        <a href="{{ url_for('index') }}"> Home</a> ||
+        <a href="{{ url_for('overview') }}"> Overview</a> ||
             <a href="{{ url_for('get_notes') }}"> My Notes</a> ||
             <a href="{{ url_for('new_note') }}">Add Note</a> ||
          
