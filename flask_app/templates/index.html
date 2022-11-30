@@ -10,138 +10,146 @@
         <!-- Styles -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
         <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
-        
-         <!--Navigation Top Bar-->
-         <ul class="topnav">
-            <li><a class="active" href="#home">Home</a></li>
-            <li><a href="#news">News</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#about">About</a></li>
+
+        {#    --Accordion Styles - Not is Use-- #}
+        {#    <link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.min.css">#}
+        {#    <link rel="stylesheet" href="AccordionCSS.css">#}
+        {##}
+        {##}
+        {#    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>#}
+        {#    <script src="jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>#}
+        {#    <script src="AccordionJavascript.js"></script>#}
+
+        <!--Top Navigation Bar-->
+        <ul class="topnav">
+            <li><a class="active" href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('projects_list') }}">Projects</a></li>
+            <li><a href="{{ url_for('create_project') }}">Add Project</a></li>
         </ul>
     </head>
-    <body>   
-      
-    <!--SiDe bar collapsable side bar-->
-    <div class="container">
-        <div class="sidebar">
-            <div class="sidebartop">
-                <div class="logo">
-                    <img src="/images/logo.png" alt="">
-                </div>
-                <div class="menu">
-                    <i class="bi bi-list"></i>
-                </div>
-            </div>
-            <!--Project and Chat Tab-->
-            <div class="tab">
-                <button class="tablinks" onclick="openCity(event, 'Project')">Projects</button>
-                <button class="tablinks" onclick="openCity(event, 'Chat')">Chat</button>
-                
-              
-              <div id="Project" class="tabcontent">
-                <h3>General?</h3>
-                <p>Icons of the projects worked on and the name </p>
-              </div>
-              
-              <div id="Chat" class="tabcontent">
-                <h3>Chats</h3>
-                <p>icon of user and an + sign</p> 
-              </div>
 
-            <nav>
-                <ul>
-                    <li><a href="#"><i class="bi bi-compass"></i><span class="text">Overview</span></a></li>
-                    <li><a href="#"><i class="bi bi-calendar"></i><span class="text">Calendar</span></a></li>
-                    <li><a href="{{ url_for('myWork') }}"><i class="bi bi-list-check"></i><span class="text">My Work</span></a></li>
-                    <li><a href="#"><i class="bi bi-people"></i><span class="text">Users</span></a></li>
-                    <li><a href="#"><i class="bi bi-gear"></i><span class="text">Settings</span></a></li>
-               
-                </ul>
-                
-            </nav>
+    <body>
+        <!--Sidebar - Collapsable-->
+        <div class="container">
+            <div class="sidebar">
+                <div class="sidebartop">
+                    <div class="logo">
+                        {# !!! This produces no image on webpage due to source !!! -Rachel #}
+                        <img src="/images/logo.png" alt="">
+                    </div>
+                    <div class="menu">
+                        <i class="bi bi-list"></i>
+                    </div>
+                </div>
+                <!--Project and Chat Tab-->
+{#              <div class="tab">#}
+{#                  <button class="tablinks" onclick="openCity(event, 'Project')">Projects</button>#}
+{#                  <button class="tablinks" onclick="openCity(event, 'Chat')">Chat</button>#}
+{##}
+{##}
+{#                  <div id="Project" class="tabcontent">#}
+{#                      <h3>General?</h3>#}
+{#                      <p>Icons of the projects worked on and the name </p>#}
+{#                  </div>#}
+{##}
+{#                  <div id="Chat" class="tabcontent">#}
+{#                      <h3>Chats</h3>#}
+{#                      <p>icon of user and an + sign</p>#}
+{#                  </div>#}
+{#              </div>#}
 
-            
-              
-            <div class="account">
-                <div class="avatar">
-                    <img src="/images/avatar.jpg" alt="">
+                <nav>
+                    <ul>
+                        <li><a href="{{ url_for('index') }}"><i class="bi bi-compass"></i><span class="text">Overview</span></a></li>
+                        <li><a href="#"><i class="bi bi-calendar"></i><span class="text">Calendar</span></a></li>
+                        <li><a href="{{ url_for('my_work') }}"><i class="bi bi-list-check"></i><span class="text">My Work</span></a></li>
+                        <li><a href="#"><i class="bi bi-people"></i><span class="text">Users</span></a></li>
+                        <li><a href="#"><i class="bi bi-gear"></i><span class="text">Settings</span></a></li>
+                    </ul>
+                </nav>
+
+
+                <div class="account">
+                    <div class="avatar">
+                        {# !!! This produces no image on webpage due to source !!! -Rachel #}
+                        <img src="/images/avatar.jpg" alt="">
+                    </div>
+                    <div class="name">
+                        <h4>CSBS</h4>
+                        Administrator
+                    </div>
+                    <div class="logout">
+                        <a href="#"><i class="bi bi-box-arrow-left"></i></a>
+                    </div>
                 </div>
-                <div class="name">
-                    <h4>CSBS</h4>
-                    Adminstrator
-                </div>
-                <div class="logout">
-                    <a href="#"><i class="bi bi-box-arrow-left"></i></a>
-                </div>
-                
             </div>
         </div>
-       
-       
-    </div>
-    <main>
-      <div class="center">
-      <!-- Some of these content are taken from the CCI Website-->
 
-      <nav>
-      <a href="{{ url_for('get_notes') }}"> <h2>View My Notes</h2></a> ||
-      <a href="{{ url_for('new_note') }}"><h2>Add Notes</h2></a> 
-      </nav>
-      
-      <p>The CSBS is committed to being the recognized leader for competitive, innovative, and market-responsive computing and informatics education in the form of creating notes.
-        Through this commitment, CSBS develops focused, trend-setting research excellence with national and international recognition,
-        and is recognized as the industry leader for partnerships and project collaborations.</p>
-          <!-- Tabs HTML code -->
-          
-                  
-              
-          Undergraduate Studies
-          </h3>
-             
-             <p>The   College of Computing and Informatics (CCI) offers a B.S. and a B.A. in Computer Science (CS)
-    <p>Computer science students at CCI have the opportunity to engage in research,
-                    get involved in student organizations and collaborate on interdisciplinary teams
-                    in addition to learning about entrepreneurship and starting companies while
-                    competing in computing contests, networking with corporate recruiters and
-                    interning at top companies. Students graduate with the skills and knowledge
-                    to pursue rewarding careers or continue their studies in graduate school.</p>							as well as opportunities to earn a CS Minor or an undergraduate certificate in Game Design.
-                    <p>In addition, the College offers an Honors program and an Early Entry program.</p>
-          </div>
-                  
-              
-          <div class="center">
+        <!--Page Content-->
+        <div class="main">
+
+            <h1>OVERVIEW</h1>
             <br>
             <br>
-           <h2><p><b>Recent Personal Tasks</b></p></h2>
-             <p><section class="todo-list">
-              <h3>TODO LIST</h3>
-              <p><a href="{{ url_for('taskList') }}">Check out this cool taskList!</a></p>
-              <div class="list" id="todo-list"></div>
-            </section></p>
-          </div>
 
-               
-                
-			   
-    </main>    
-                
-                
-                
+            <div>
+                <p>[_______________________] Search Bar Here?</p>
             </div>
-          </div>
-                
-                 </div>
-			     
+            <br>
+            <br>
 
+            <div>
+                <h3>
+                    <strong>--Recent--</strong>
+                </h3>
 
-               
-                
-			   
+                <div>
+                    <p>List of Recently Viewed/Shared/Edited Projects:<br>
+                        Project 1<br>
+                        Project 2<br>
+                        Project 3<br>
+                    </p>
+                </div>
+                <br>
+                <br>
 
+                <h3>
+                    <a href="{{ url_for('projects_list') }}"><strong>--Projects--</strong></a>
+                </h3>
 
-               
-                
-    </div>
-    <script src="{{url_for('static', filename='init.js')}}"></script>
+                <div>
+                    <p>
+                        <a href="{{ url_for('create_project')}}">[Add Project]</a>
+                    </p>
+                    <br>
+                    <p>List of Projects Here:<br>
+                        Project 1<br>
+                        Project 2<br>
+                        Project 3<br>
+                    </p>
+                </div>
+                <br>
+                <br>
+
+                <h3>
+                    <strong>--Tasks--</strong>
+                </h3>
+
+                <div>
+                    <p>[__] Add Task Button</p>
+                    <br>
+                    <p>List of Tasks Here:<br>
+                        Task 1<br>
+                        Task 2<br>
+                        Task 3<br>
+                    </p>
+                </div>
+                <br>
+                <br>
+            </div>
+        </div>
+
+        <script src="{{ url_for('static', filename='init.js') }}"></script>
     </body>
+
 </html>

@@ -1,4 +1,6 @@
+# ///// IMPORTS /////
 from flask_sqlalchemy import SQLAlchemy
 
-# Initialize the Flask-SQLAlchemy extension instance
+# Initialize the Flask-SQLAlchemy Extension Instance
 db = SQLAlchemy()
+
