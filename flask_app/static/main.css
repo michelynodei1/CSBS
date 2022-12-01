@@ -275,6 +275,15 @@ body {
     overflow: auto;
 }
 
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 30px 12px;
+  border: none;
+  border-top: none;
+}
+  
+
 /* Style the tab */
 .tab {
     overflow: hidden;
@@ -716,4 +725,10 @@ input:checked ~ .bubble::after {
 .todo-item.done .todo-content input {
     text-decoration: line-through;
     color: var(--grey);
+}
+
+.center {
+  margin: auto;
+  width: 75%;
+  padding-left: 25%;
 }

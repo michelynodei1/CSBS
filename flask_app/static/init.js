@@ -38,6 +38,7 @@ function showHover() {
     }
 }
 
+
 /**
  * get search button click if short sidebar or mobile
  */
