@@ -188,6 +188,7 @@ def logout():
 
     return redirect(url_for('index'))
 
+#Fix functionality to work with the add task functions 
 @app.route('/notes/<note_id>/comment', methods=['POST'])
 def new_comment(note_id):
     if session.get('user'):
