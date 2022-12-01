@@ -88,18 +88,18 @@ def project_overview(project_id):
 
 
 # - My Work -
-@app.route('/my-work')
+@app.route('/myWork')
 def my_work():
-    return render_template('my_work.html')
+    return render_template('myWork.html')
 
 
 # - Task List -
 @app.route('/task-list', methods=['GET', 'POST'])
 def task_list():
     if request.method == 'POST':
-        return redirect(url_for('index'))
+        return redirect(url_for('Overview'))
 
-    return render_template('task-list.html')
+    return render_template('taskList.html')
 
 
 # !!! BELOW IS ALL WORK-IN-PROGRESS !!!
