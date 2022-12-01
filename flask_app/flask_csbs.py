@@ -2,13 +2,13 @@
 import os  # used to get environment variables IP & PORT
 from flask import Flask  # Flask is the web app that we are customizing
 from flask import render_template, request, redirect, url_for
-from flask import session
-import bcrypt
 
 # # ---Not Using Yet---
 # from database import db  # importing database instance
 # from models import Note as Note  # (Model names may change -Rachel)
 # from models import Note as Note  # (Model names may change -Rachel)
+# from flask import session
+# import bcrypt
 # from models import Comment as Comment
 # from forms import RegisterForm, LoginForm, CommentForm
 # # -------------------
