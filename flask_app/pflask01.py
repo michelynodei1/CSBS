@@ -15,12 +15,14 @@ from models import Comment as Comment
 from database import db
 from flask import session
 from forms import RegisterForm, LoginForm, CommentForm
-
+from flask_socketio import SocketIO,send
 app = Flask(__name__)     # create an app
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///flask_note_app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']= False
 app.config['SECRET_KEY'] = 'SE3155'
+socketio = SocketIO(app,cors_allowed_origins="*")
+
 
 #  Bind SQLAlchemy db object to this Flask app
 db.init_app(app)
@@ -188,6 +190,7 @@ def logout():
 
     return redirect(url_for('index'))
 
+#Fix functionality to work with the add task functions 
 @app.route('/notes/<note_id>/comment', methods=['POST'])
 def new_comment(note_id):
     if session.get('user'):
@@ -214,9 +217,32 @@ def taskList():
     if request.method == 'POST':
 
 
-        return redirect(url_for('index'))
+        return redirect(url_for('overview'))
         
     return render_template('taskList.html')
+
+#live chat
+
+
+def messageReceived(message):
+    print("Recieved message: " +message)
+    if message != "User connected!":
+        send(message,broadcast=True)
+
+@app.route('/chat',methods=['GET', 'POST'])
+def chat():
+    return render_template('chat.html')
+
+
+@socketio.on('my event')
+def handle_my_custom_event(json, methods=['GET', 'POST']):
+    print('received my event: ' + str(json))
+    socketio.emit('my response', json, callback=messageReceived)
+
+
+if __name__=="main":
+    socketio.run(app, host="localhost")
+
 
 
 

@@ -50,8 +50,8 @@ tasks = {1: {'title': 'First Task', 'text': 'This is the first task'},
 # ///// ROUTES /////
 # - Home | Overview -
 @app.route('/')
-def index():
-    return render_template('index.html',)
+def overview():
+    return render_template('overview.html', )
 
 
 # - Projects List -
@@ -85,15 +85,18 @@ def project_overview(project_id):
 
 
 # - My Work -
-@app.route('/my-work')
+@app.route('/myWork')
 def my_work():
-    return render_template('my_work.html')
+    return render_template('myWork.html')
 
 
 # - Task List -
 @app.route('/task-list')
 def task_list():
-    return render_template('task_list.html')
+    if request.method == 'POST':
+        return redirect(url_for('overview'))
+
+    return render_template('taskList.html')
 
 
 # ///// HOST & PORT CONFIG /////

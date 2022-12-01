@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Flask_Chat_App</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
+</head>
+<body>
+3
+  <h3 style='color: #ccc;font-size: 30px;'>No message yet..</h3>
+ 
+
+  
+
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        var socket = io.connect("http://localhost:5000");
+        socket.on( 'connect', function() {
+            socket.send("User connected!" );
+        });
+        socket.on( 'message', function(data){
+            $('#messages').append($('<p>').text(data));
+        });
+        $('#sendBtn').on('click',function() {
+            socket.send($('#username').val()+':'+$('#message').val());
+            $('#message').val('');
+        });
+    })
+       
+  </script>
+   <div class="messages">
+
+   </div>
+
+    <input type="text" class="username" placeholder="User Name" required>
+    <input type="text" class="message" placeholder="Messages">
+    <button id="sendBtn">Send</button>
+  
+    <script src="{{url_for('static', filename='init.js')}}"></script>
+</body>
+</html>
