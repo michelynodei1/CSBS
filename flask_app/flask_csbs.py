@@ -54,8 +54,8 @@ tasks = {1: {'title': 'First Task', 'text': 'This is the first task'},
 # ///// ROUTES /////
 # - Home | Overview -
 @app.route('/')
-def index():
-    return render_template('index.html', )
+def overview():
+    return render_template('overview.html', )
 
 
 # - Projects List -
@@ -97,7 +97,7 @@ def my_work():
 @app.route('/task-list', methods=['GET', 'POST'])
 def task_list():
     if request.method == 'POST':
-        return redirect(url_for('Overview'))
+        return redirect(url_for('overview'))
 
     return render_template('taskList.html')
 
