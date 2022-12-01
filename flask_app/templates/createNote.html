@@ -17,7 +17,7 @@
             <li><a href="#about">About</a></li>
         </ul>
     </head>
-    <body>
+    <body>  
 
         <!--SiDe bar collapsable side bar-->
     <div class="container">
@@ -34,45 +34,45 @@
             <div class="tab">
                 <button class="tablinks" onclick="openCity(event, 'Project')">Projects</button>
                 <button class="tablinks" onclick="openCity(event, 'Chat')">Chat</button>
-
-
+                
+              
               <div id="Project" class="tabcontent">
                 <h3>General?</h3>
                 <p>ICons of the projects worked on and the name </p>
               </div>
-
+              
               <div id="Chat" class="tabcontent">
                 <h3>Chats</h3>
-                <p>icon of user and an + sign</p>
+                <p>icon of user and an + sign</p> 
               </div>
-
-
+  
+  
               <nav>
                 <ul>
-                    <li><a href="{{ url_for('index') }}"><i class="bi bi-compass"></i><span class="text">Overview</span></a></li>
+                    <li><a href="{{ url_for('overview') }}"><i class="bi bi-compass"></i><span class="text">Overview</span></a></li>
                     <li><a href="#"><i class="bi bi-calendar"></i><span class="text">Calendar</span></a></li>
-                    <li><a href="{{ url_for('my_work') }}"><i class="bi bi-list-check"></i><span class="text">My Work</span></a></li>
+                    <li><a href="{{ url_for('myWork') }}"><i class="bi bi-list-check"></i><span class="text">My Work</span></a></li>
                     <li><a href="#"><i class="bi bi-people"></i><span class="text">Users</span></a></li>
                     <li><a href="#"><i class="bi bi-gear"></i><span class="text">Settings</span></a></li>
-
+               
                 </ul>
-
+                
             </nav>
-
-
-
+  
+              
+                
             <div class="account">
               <div class="avatar">
                   <img src="/images/avatar.jpg" alt="">
               </div>
               <div class="name">
                   <h4>CSBS</h4>
-                  Administrator
+                  Adminstrator
               </div>
               <div class="logout">
                   <a href="#"><i class="bi bi-box-arrow-left"></i></a>
               </div>
-
+                  
               </div>
           </div>
           <main>
@@ -93,7 +93,7 @@
                       {% else %}
                           Add your new note here....
                       {% endif %}
-
+  
                   </textarea>
               </p>
               <p>

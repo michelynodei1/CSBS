@@ -13,7 +13,7 @@
                 <a href="{{url_for('overview')}}">Overview</a>||
                 <a href="{{url_for('get_notes')}}">My Notes</a>||
                 <a href="{{url_for('new_note')}}">add Notes</a>||
-
+                
             </nav>
             {% if user %}
                 <nav>
@@ -28,9 +28,9 @@
             <nav>
                 <a href="{{url_for('logout')}}">Logout</a>
             </nav>
-
-
-
+        
+          
+        
         </div>
         <h1>Welcome {% if user %}{{user}}{% endif %}to the 49er Notes App!</h1>
 

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="UNCC Notes App">
+        <title>CSBS Notes App - View your Notes</title>
+        <!-- styles -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    </head>
+
+    <ul class="topnav">
+        <li><a class="active" href="{{ url_for('overview') }}">Overview</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about">About</a></li>
+    </ul>
+
+    <body>
+        
+
+
+
+           <!--SiDe bar collapsable side bar-->
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebartop">
+                <div class="logo">
+                    <img src="/images/logo.png" alt="">
+                </div>
+                <div class="menu">
+                    <i class="bi bi-list"></i>
+                </div>
+            </div>
+            <!--Project and Chat Tab-->
+            <div class="tab">
+                <button class="tablinks" onclick="openCity(event, 'Project')">Projects</button>
+                <button class="tablinks" onclick="openCity(event, 'Chat')">Chat</button>
+                
+              
+              <div id="Project" class="tabcontent">
+                <h3>General?</h3>
+                <p>ICons of the projects worked on and the name </p>
+              </div>
+              
+              <div id="Chat" class="tabcontent">
+                <h3>Chats</h3>
+                <p>icon of user and an + sign</p> 
+              </div>
+  
+  
+              <nav>
+                <ul>
+                    <li><a href="{{ url_for('overview') }}"><i class="bi bi-compass"></i><span class="text">Overview</span></a></li>
+                    <li><a href="#"><i class="bi bi-calendar"></i><span class="text">Calendar</span></a></li>
+                    <li><a href="{{ url_for('myWork') }}"><i class="bi bi-list-check"></i><span class="text">My Work</span></a></li>
+                    <li><a href="#"><i class="bi bi-people"></i><span class="text">Users</span></a></li>
+                    <li><a href="#"><i class="bi bi-gear"></i><span class="text">Settings</span></a></li>
+               
+                </ul>
+                
+            </nav>
+                
+            </nav>
+
+       
+        
+        <div class="account">
+            <div class="avatar">
+                <img src="/images/avatar.jpg" alt="">
+            </div>
+            <div class="name">
+                <h4>CSBS</h4>
+                Adminstrator
+            </div>
+            <div class="logout">
+                <a href="#"><i class="bi bi-box-arrow-left"></i></a>
+            </div>
+                
+            </div>
+        </div>
+      
+       
+    </div>
+
+        <main> 
+            <div class="center">
+                <nav>
+
+            <a href="{{ url_for('overview') }}"> Overiew</a> ||
+            <a href="{{ url_for('get_notes') }}"> My Notes</a> ||
+            <a href="{{ url_for('new_note') }}">Add Note</a> ||
+            
+        </nav>
+        <h1>Welcome to the CSBS Notes Application!</h1>
+        <h1>Previous notes</h1>
+
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Date Created</th>
+                <th> Options</th>
+            </tr>
+            {% for note in notes %}
+            <tr>
+                <td><a href="{{ url_for('get_note', note_id=note.id) }}">{{ note.title }}</a></td> 
+                <td>{{ note.date }}</td>
+                <td><a href="{{ url_for('update_note', note_id=note.id) }}">Edit/View</a></td>
+
+                <td>
+                    <form action="{{ url_for('delete_note', note_id=note.id) }}" method="post">
+                        <input type ="submit" value="Delete">
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        </div>
+        </main>
+    </body>
+</html>
