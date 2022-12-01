@@ -732,3 +732,23 @@ input:checked ~ .bubble::after {
   width: 75%;
   padding-left: 25%;
 }
+
+.greenishTextblackTextBox{
+    color:#04AA6D;
+    outline: 2px solid black;
+}
+
+.greenishText{
+    color:#04AA6D;
+}
+
+.centertext {
+    margin: auto;
+    width: 50%;
+
+    
+}
+.blacktextBox{
+    color:#000000;
+    outline: 2px solid black;
+}
