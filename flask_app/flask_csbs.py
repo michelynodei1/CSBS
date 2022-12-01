@@ -2,17 +2,20 @@
 import os  # used to get environment variables IP & PORT
 from flask import Flask  # Flask is the web app that we are customizing
 from flask import render_template, request, redirect, url_for
+from flask import session
+import bcrypt
 
 # # ---Not Using Yet---
 # from database import db  # importing database instance
 # from models import Note as Note  # (Model names may change -Rachel)
 # from models import Note as Note  # (Model names may change -Rachel)
+# from models import Comment as Comment
+# from forms import RegisterForm, LoginForm, CommentForm
 # # -------------------
 
 
 # ///// APP CREATION /////
 app = Flask(__name__)
-
 
 # ///// DATABASE CONFIG /////
 # # --- Not Using Yet ---
@@ -20,13 +23,14 @@ app = Flask(__name__)
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///flask_note_app.db'  # (db file name may change -Rachel)
 # # Disables a feature that signals the application every time a change is about to be made in the database
 # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# app.config['SECRET_KEY'] = 'SE3155'
 
 # # Binds SQLAlchemy db object to this Flask app
 # db.init_app(app)
 
 # # Setup models
 # with app.app_context():
-    # db.create_all()  # Run under the app context
+# db.create_all()  # Run under the app context
 # # ---------------------
 
 
@@ -51,7 +55,7 @@ tasks = {1: {'title': 'First Task', 'text': 'This is the first task'},
 # - Home | Overview -
 @app.route('/')
 def index():
-    return render_template('index.html',)
+    return render_template('index.html', )
 
 
 # - Projects List -
@@ -63,7 +67,6 @@ def projects_list():
 # - Add Project -
 @app.route('/projects/create-project', methods=['GET', 'POST'])
 def create_project():
-
     if request.method == 'POST':
         # get project title data
         title = request.form['title']
@@ -91,9 +94,15 @@ def my_work():
 
 
 # - Task List -
-@app.route('/task-list')
+@app.route('/task-list', methods=['GET', 'POST'])
 def task_list():
-    return render_template('task_list.html')
+    if request.method == 'POST':
+        return redirect(url_for('index'))
+
+    return render_template('task-list.html')
+
+
+# !!! BELOW IS ALL WORK-IN-PROGRESS !!!
 
 
 # ///// HOST & PORT CONFIG /////
