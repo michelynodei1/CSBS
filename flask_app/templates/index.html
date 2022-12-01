@@ -149,6 +149,18 @@
             </div>
         </div>
 
+        <!-- Added Later -->
+        <div class="center">
+            <br>
+            <br>
+           <h2><p><b>Recent Personal Tasks</b></p></h2>
+             <p><section class="todo-list">
+              <h3>TODO LIST</h3>
+              <p><a href="{{ url_for('task_list') }}">Check out this cool taskList!</a></p>
+              <div class="list" id="todo-list"></div>
+            </section></p>
+        </div>
+
         <script src="{{ url_for('static', filename='init.js') }}"></script>
     </body>
 
