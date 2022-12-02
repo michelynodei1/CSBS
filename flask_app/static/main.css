@@ -748,7 +748,8 @@ input:checked ~ .bubble::after {
 
     
 }
-.blacktextBox{
+.blackTextBox{
     color:#000000;
     outline: 2px solid black;
 }
+

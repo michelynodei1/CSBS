@@ -7,7 +7,9 @@
         <title>UNCC Notes App - New Note</title>
         <!-- styles -->
         <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
-    </head>
+        <!--Javascript for sidebar-->
+        <script src="{{url_for('static', filename='init.js')}}"></script>
+    
 
     <ul class="topnav">
         <li><a class="active" href="{{ url_for('overview') }}">Overview</a></li>
@@ -15,7 +17,7 @@
         <li><a href="#contact">Contact</a></li>
         <li><a href="#about">About</a></li>
     </ul>
-
+    </head>
     <body>
                    <!--SiDe bar collapsable side bar-->
     <div class="container">
@@ -82,9 +84,9 @@
     <main>
         <div class="center">
        <nav>
-        <a href="{{ url_for('overview') }}"> Overview</a> ||
-            <a href="{{ url_for('get_notes') }}"> My Notes</a> ||
-            <a href="{{ url_for('new_note') }}">Add Note</a> ||
+        <a class="greenishText" href="{{ url_for('overview') }}"> Overview</a> ||
+        <a class="greenishText" href="{{ url_for('get_notes') }}"> My Notes</a> ||
+        <a class="greenishText" href="{{ url_for('new_note') }}">Add Note</a> 
          
        </nav>
 
@@ -96,11 +98,11 @@
         {% else %}
             <form action="new" method ="post">
         {% endif %}
-           <p><label>Title</label></p>
+           <p class="greenishText"><label>Title</label></p>
            <p><textarea type="text" name="title" value="{% if note %}{{note.title}} {% endif %}">
 
             </textarea>
-           <p><label>Note </label></p>
+           <p class="greenishText"><label>Note </label></p>
            <p>
                 <textarea name="noteText"  rows="6" cols="0" >
                     {% if note %}
@@ -111,9 +113,10 @@
 
                 </textarea>
             </p>
+            <br>
             <p>
                 {% if note %}
-                    <input type="submit" value="Update Note"/>
+                    <input class="greenishTextblackTextBox" type="submit" value="Update Note"/> 
                 {% else %}
                     <input type="submit" value="Add Note"/>
                 {% endif %}

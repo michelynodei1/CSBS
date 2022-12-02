@@ -87,17 +87,17 @@
             <nav>
             <a href="{{ url_for('overview') }}"> Overview</a> ||
             <a href="{{ url_for('get_notes') }}"> My Notes</a> ||
-            <a href="{{ url_for('new_note') }}">Add Note</a> ||
+            <a href="{{ url_for('new_note') }}">Add Note</a> 
             
         </nav>
-        <h1>Welcome to the CSBS Notes App!</h1>
-        <h1>Note details</h1>
+        <h1 class="centerText">Welcome to the CSBS Notes Application!</h1>
+        <h1 class="centerText">Add a Comment</h1>
 
         <table>
             <tr>
-                <th>Title</th>
-                <th>Text</th>
-                <th>Date</th>
+                <th class="centerText">Title</th>
+                <th class="centerText">Text</th>
+                <th class="centerText">Date</th>
             </tr>
             <tr>
                 <td>{{ note.title }}</td>

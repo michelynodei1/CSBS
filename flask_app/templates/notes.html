@@ -7,6 +7,8 @@
         <title>CSBS Notes App - View your Notes</title>
         <!-- styles -->
         <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+        <!--Javascript for sidebar-->
+        <script src="{{url_for('static', filename='init.js')}}"></script>
     </head>
 
     <ul class="topnav">
@@ -85,11 +87,11 @@
 
         <main> 
             <div class="center">
-                <nav>
+                <nav class="greenishText">
 
-            <a href="{{ url_for('overview') }}"> Overiew</a> ||
-            <a href="{{ url_for('get_notes') }}"> My Notes</a> ||
-            <a href="{{ url_for('new_note') }}">Add Note</a> ||
+            <a class='greenishText' href="{{ url_for('overview') }}"> Overiew</a> ||
+            <a class="greenishText" href="{{ url_for('get_notes') }}"> My Notes</a> ||
+            <a class="greenishText" href="{{ url_for('new_note') }}">Add Note</a> ||
             
         </nav>
         <h1>Welcome to the CSBS Notes Application!</h1>
@@ -97,17 +99,18 @@
 
         <table>
             <tr>
-                <th>Title</th>
-                <th>Date Created</th>
-                <th> Options</th>
+                <th class="greenishTextblackTextBox">Title</th>
+                <th class="greenishTextblackTextBox">Date Created</th>
+                <th class="greenishTextblackTextBox"> Options</th>
+                <th class="greenishTextblackTextBox">Remove</th>
             </tr>
             {% for note in notes %}
             <tr>
-                <td><a href="{{ url_for('get_note', note_id=note.id) }}">{{ note.title }}</a></td> 
-                <td>{{ note.date }}</td>
-                <td><a href="{{ url_for('update_note', note_id=note.id) }}">Edit/View</a></td>
+                <td class="greenishTextblackTextBox"><a href="{{ url_for('get_note', note_id=note.id) }}">{{ note.title }}</a></td> 
+                <td class="blackTextBox">{{ note.date }}</td>
+                <td class="greenishTextblackTextBox"><a href="{{ url_for('update_note', note_id=note.id) }}">Edit/View</a></td>
 
-                <td>
+                <td class="greenishTextblackTextBox">
                     <form action="{{ url_for('delete_note', note_id=note.id) }}" method="post">
                         <input type ="submit" value="Delete">
                     </form>
