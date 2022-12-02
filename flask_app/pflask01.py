@@ -222,7 +222,7 @@ def taskList():
 
 #live chat
 
-
+@socketio.on('message')
 def messageReceived(message):
     print("Recieved message: " +message)
     if message != "User connected!":
