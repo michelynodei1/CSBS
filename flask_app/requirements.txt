@@ -10,3 +10,6 @@ MarkupSafe==2.1.1
 SQLAlchemy==1.4.44
 Werkzeug==2.2.2
 zipp==3.10.0
+flask-socketio
+eventlet
+flask

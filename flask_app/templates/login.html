@@ -100,7 +100,11 @@
         <p>  
             hello
         </p>
-        <div class="formwrapper">
+
+        <h1>Login</h1>
+        <h3>{{ message }}</h3>
+        
+       <div class="formwrapper">
             <h2 class="title">Login</h2>
             <form method="POST" action="/login">
                 <div class="form-field">{{ form.email.label }} {{ form.email }}
@@ -123,6 +127,6 @@
                 </div>
                 {{ form.submit }}
             </form>
-        </div>
+        </div> 
     </body>
 </html>

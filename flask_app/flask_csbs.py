@@ -50,6 +50,7 @@ tasks = {1: {'title': 'First Task', 'text': 'This is the first task'},
 # ///// ROUTES /////
 # - Home | Overview -
 @app.route('/')
+@app.route('/overview')
 def overview():
     return render_template('overview.html', )
 

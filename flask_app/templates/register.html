@@ -35,7 +35,22 @@
         <h1>Welcome {% if user %}{{user}}{% endif %}to the 49er Notes App!</h1>
 
         <h2>Use this site to maintain and organize your notes.</h2>
-        <div class="formwrapper">
+
+        <h1>Sign Up</h1>
+        <h3>{{ message }}</h3>
+        <form method="post" action="/signup">
+            <label>Username:</label>
+            <input type="text" name="username">
+            <br>
+            <label>Email:</label>
+            <input type="email" name="email">
+            <br>
+            <label>Password:</label>
+            <input type="password" name="password">
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+         <div class="formwrapper">
             <h2 class="title">Register</h2>
             <form method="POST" action="/register">
                 <div class="form-field">{{ form.firstname.label }} {{ form.firstname }}
