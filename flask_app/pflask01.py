@@ -3,26 +3,29 @@
 # imports
 import os                 # os is used to get environment variables IP & PORT
 from flask import Flask   # Flask is the web app that we will customize
-from flask import render_template
+from flask import render_template,request
 from flask import redirect
 from flask import url_for
 from flask import request
+from flask import jsonify
 from models import User as User
 from models import Note as Note
 from flask import session
 import bcrypt
+from flask_sqlalchemy import SQLAlchemy
+
+from database import db as db_helper
 from models import Comment as Comment
 from database import db
 from flask import session
 from forms import RegisterForm, LoginForm, CommentForm
-from flask_socketio import SocketIO,send
+from flask_socketio import SocketIO, join_room
 app = Flask(__name__)     # create an app
+socketio = SocketIO(app)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///flask_note_app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']= False
 app.config['SECRET_KEY'] = 'SE3155'
-socketio = SocketIO(app,cors_allowed_origins="*")
-
 
 #  Bind SQLAlchemy db object to this Flask app
 db.init_app(app)
@@ -35,14 +38,89 @@ with app.app_context():
 # In this case it makes it so anyone going to "your-url/" makes this function
 # get called. What it returns is what is shown as the web page
 @app.route('/')
-@app.route('/overview')
 
-def overview():
-    return render_template('overview.html')
+@app.route('/home')
+def home():
+    return render_template('home.html')
+
+
 
 @app.route('/myWork')
 def myWork():
     return render_template('myWork.html')
+
+#chat
+@app.route('/chat')
+def chat():
+    return render_template("chat.html")
+
+@app.route('/chatroom')
+def chatroom():
+    username = request.args.get('username')
+    room = request.args.get('room')
+
+    if username and room:
+        return render_template('chatroom.html',username=username,room=room)
+    else:
+        return redirect(url_for('chat'))
+@socketio.on('send_message')
+def handle_send_message_event(data):
+    app.logger.info("{} has sent message to the room {}:{}".format(data['username'],data['room'],data['message']))
+
+    socketio.emit('receive_message', data, room=data['room'])
+
+@socketio.on('join_room')
+def handle_join_room_event(data):
+    app.logger.info("{} has joined the room {}".format(data['username'], data['room']))
+    join_room(data['room'])
+    socketio.emit('join_room_announcement', data)
+
+#Todo List Overview
+@app.route("/delete/<int:task_id>", methods=['POST'])
+def delete(task_id):
+    """ recieved post requests for entry delete """
+
+    try:
+        db_helper.remove_task_by_id(task_id)
+        result = {'success': True, 'response': 'Removed task'}
+    except:
+        result = {'success': False, 'response': 'Something went wrong'}
+
+    return jsonify(result)
+
+@app.route("/edit/<int:task_id>", methods=['POST'])
+def update(task_id):
+    """ recieved post requests for entry updates """
+
+    data = request.get_json()
+
+    try:
+        if "status" in data:
+            db_helper.update_status_entry(task_id, data["status"])
+            result = {'success': True, 'response': 'Status Updated'}
+        elif "description" in data:
+            db_helper.update_task_entry(task_id, data["description"])
+            result = {'success': True, 'response': 'Task Updated'}
+        else:
+            result = {'success': True, 'response': 'Nothing Updated'}
+    except:
+        result = {'success': False, 'response': 'Something went wrong'}
+
+    return jsonify(result)
+
+
+@app.route("/create", methods=['POST'])
+def create():
+    """ recieves post requests to add new task """
+    data = request.get_json()
+    db_helper.insert_new_task(data['description'])
+    result = {'success': True, 'response': 'Done'}
+    return jsonify(result)   
+
+@app.route('/overview')
+def overview():
+    # items = db_helper.fetch_todo()#
+    return render_template('overview.html')
 
 #Brought in from Flask#06
 @app.route('/notes')
@@ -154,7 +232,7 @@ def register():
         session['user'] = first_name
         session['user_id'] = new_user.id  # access id value from user model of this newly added user
         # show user dashboard view
-        return redirect(url_for('get_notes'))
+        return redirect(url_for('login'))
 
     # something went wrong - display register view
     return render_template('register.html', form=form)
@@ -172,7 +250,7 @@ def login():
             session['user'] = the_user.first_name
             session['user_id'] = the_user.id
             # render view
-            return redirect(url_for('get_notes'))
+            return redirect(url_for('overview'))
 
         # password check failed
         # set error message to alert user
@@ -188,7 +266,7 @@ def logout():
     if session.get('user'):
         session.clear()
 
-    return redirect(url_for('index'))
+    return redirect(url_for('home'))
 
 #Fix functionality to work with the add task functions 
 @app.route('/notes/<note_id>/comment', methods=['POST'])
@@ -217,36 +295,15 @@ def taskList():
     if request.method == 'POST':
 
 
-        return redirect(url_for('overview'))
+        return redirect(url_for('index'))
         
     return render_template('taskList.html')
 
-#live chat
 
+if __name__ =='__main__':
+    #socketio.run(app, debug=True)
 
-def messageReceived(message):
-    print("Recieved message: " +message)
-    if message != "User connected!":
-        send(message,broadcast=True)
-
-@app.route('/chat',methods=['GET', 'POST'])
-def chat():
-    return render_template('chat.html')
-
-
-@socketio.on('my event')
-def handle_my_custom_event(json, methods=['GET', 'POST']):
-    print('received my event: ' + str(json))
-    socketio.emit('my response', json, callback=messageReceived)
-
-
-if __name__=="main":
-    socketio.run(app, host="localhost")
-
-
-
-
-app.run(host=os.getenv('IP', '127.0.0.1'),port=int(os.getenv('PORT', 5000)),debug=True)
+    socketio.run(app,host=os.getenv('IP', '127.0.0.1'),port=int(os.getenv('PORT', 5000)),debug=True)
 
 # To see the web page in your web browser, go to the url,
 #   http://127.0.0.1:5000

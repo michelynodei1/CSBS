@@ -16,3 +16,6 @@ SQLAlchemy==1.4.44
 Werkzeug==2.2.2
 WTForms==3.0.1
 zipp==3.10.0
+flask-socketio
+eventlet
+flask

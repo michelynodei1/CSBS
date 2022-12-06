@@ -1,42 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>Flask_Chat_App</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
-</head>
-<body>
-3
-  <h3 style='color: #ccc;font-size: 30px;'>No message yet..</h3>
- 
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="ChatHomePage">
+        <title>My Chat App</title>
 
-  
+        <!-- Styles -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+        
+         <!--Navigation Top Bar-->
+         <ul class="topnav">
+            <li><a class="active" href="#home">Home</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="{{url_for('login')}}">Sign In</a></li>
+            <li><a href="{{url_for('register')}}">Register</a></li>
+        </ul>
+    </head>
+    <body class="topNavBody">
+        <!--SiDe bar collapsable side bar-->
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebartop">
+                <div class="logo">
+                    <img src="/images/logo.png" alt="">
+                </div>
+                <div class="menu">
+                    <i class="bi bi-list"></i>
+                </div>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('overview') }}"><i class="bi bi-compass"></i><span class="text">Overview</span></a></li>
+                    <li><a href="#"><i class="bi bi-calendar"></i><span class="text">Calendar</span></a></li>
+                    <li><a href="{{ url_for('myWork') }}"><i class="bi bi-list-check"></i><span class="text">My Work</span></a></li>
+                    <li><a href="{{ url_for('chat') }}"><i class="bi bi-chat"></i><span class="text">Chat</span></a></li>
+                    <li><a href="#"><i class="bi bi-gear"></i><span class="text">Settings</span></a></li>
+                    <li><a href="{{url_for('logout')}}"><i class="bi bi-box-arrow-left"></i><span class="text">Logout</span></a></li>
+                </ul>
+                
+            </nav>
 
-  
-  <script type="text/javascript">
-    $(document).ready(function(){
-        var socket = io.connect("http://localhost:5000");
-        socket.on( 'connect', function() {
-            socket.send("User connected!" );
-        });
-        socket.on( 'message', function(data){
-            $('#messages').append($('<p>').text(data));
-        });
-        $('#sendBtn').on('click',function() {
-            socket.send($('#username').val()+':'+$('#message').val());
-            $('#message').val('');
-        });
-    })
+            
+              
+            <div class="account">
+                
+                <div class="name">
+                    <h4>CSBS</h4>
+                    
+                </div>
+            </div>
+        </div>
        
-  </script>
-   <div class="messages">
-
-   </div>
-
-    <input type="text" class="username" placeholder="User Name" required>
-    <input type="text" class="message" placeholder="Messages">
-    <button id="sendBtn">Send</button>
-  
+       
+    </div>
+    <div class="chathome">
+        <h1 class="mychat">My Chat App </h1>
+        <form action="/chatroom">
+            <div>
+                <label>Enter your username:</label>
+                <input type="text" name="username">
+            </div>
+            <div>
+                <label>Enter your room id:</label>
+                <input type="text" name="room">
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
     <script src="{{url_for('static', filename='init.js')}}"></script>
 </body>
-</html>

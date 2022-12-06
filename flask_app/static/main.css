@@ -39,7 +39,7 @@ li a:hover {
 
 /*SIDE navigation Bar*/
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
-body {
+.topNavBody {
     color: #333;
     padding: 0;
     margin: 0;
@@ -47,7 +47,7 @@ body {
     min-height: 100vh;
     overflow: auto;
     font-family: "Open Sans", sans-serif;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .container {
@@ -59,7 +59,7 @@ body {
     background-color: #333;
     color: #fff;
     width: 10%;
-    height: 93.7%;
+    height: 93.72%;
     padding: 0 1rem;
     position: fixed;
     top: 10;
@@ -79,7 +79,7 @@ body {
     justify-content: space-between;
     align-items: flex-start;
     padding-top: 1rem;
-    height: 55px;
+    height: 70px;
 }
 
 .container .sidebar .sidebartop .logo {
@@ -92,7 +92,7 @@ body {
 }
 
 .container .sidebar .sidebartop .menu {
-    width: 70%;
+    width: 100%;
     text-align: end;
 }
 
@@ -114,7 +114,7 @@ body {
     margin: 1rem 0;
 }
 
-.container .sidebar .search button {
+.container .sidebar  button {
     cursor: pointer;
     width: auto;
     background-color: transparent;
@@ -127,23 +127,23 @@ body {
     transform: translate(-50%, -50%);
 }
 
-.container .sidebar .search input {
+.container .sidebar  input {
     background-color: #404040;
     border: 0px;
     padding: 1rem;
     border-radius: 0.5rem;
-    width: calc(100% + 1rem);
+    width: calc(100% + 2rem);
 }
 
-.container .sidebar .search input::-moz-placeholder {
+.container .sidebar  input::-moz-placeholder {
     padding-left: 1.5rem;
 }
 
-.container .sidebar .search input:-ms-input-placeholder {
+.container .sidebar  input:-ms-input-placeholder {
     padding-left: 1.5rem;
 }
 
-.container .sidebar .search input::placeholder {
+.container .sidebar  input::placeholder {
     padding-left: 1.5rem;
 }
 
@@ -216,9 +216,11 @@ body {
 }
 
 .container .main {
-    margin-left: calc(10% + 2rem);
-    padding: 1rem;
-    overflow: auto;
+    border:3px solid green;
+   
+    position:relative;
+    width:100%;
+    padding: 10px;
 }
 
 /*Collapsed Navigation Bar*/
@@ -270,9 +272,24 @@ body {
     margin: 1.75rem -0.2rem;
 }
 
-.short .main {
-    margin-left: calc(5% + 2rem);
-    overflow: auto;
+
+.main{
+    border:3px solid green;
+    float:center;
+    position:fixed;
+    width:50%;
+    height:200px;
+    margin-left:400px;
+    margin-top: 100px;
+    padding: 20px;
+    text-align: center;
+}
+
+.todo{
+width:50%;
+margin-top: 10%;
+margin-left: 30%;
+overflow: auto;
 }
 
 /* Style the tab content */
@@ -489,18 +506,18 @@ body {
 /*Task List Page Styling*/
 /* Variables */
 :root {
-    --primary: #EA40A4;
-    --business: #3a82ee;
+    --primary: #04AA6D;
+    --business: #d7e207;
     --personal: var(--primary);
     --light: #EEE;
     --grey: #888;
-    --dark: #313154;
+    --dark: green;
     --danger: #ff5b57;
 
     --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 
-    --business-glow: 0px 0px 4px rgba(58, 130, 238, 0.75);
-    --personal-glow: 0px 0px 4px rgba(234, 64, 164, 0.75);
+    --business-glow: 0px 0px 4px rgba(238, 253, 103, 0.75);
+    --personal-glow: 0px 0px 4px rgba(125, 250, 63, 0.903);
 }
 
 /* End of Variables */
@@ -523,7 +540,7 @@ input:not([type="radio"]):not([type="checkbox"]), button {
 
 /* End of Resets */
 
-body {
+.taskBody {
     background: var(--light);
     color: var(--dark);
 }
@@ -661,7 +678,104 @@ input:checked ~ .bubble::after {
     cursor: pointer;
     transition: 0.2s ease-out;
 }
+/*The Chat App Style*/
+.chathome{
+    border:3px solid green;
+    float:center;
+    position:fixed;
+    width:40%;
+    height:500px;
+    margin-left:400px;
+    margin-top: 100px;
+    padding: 20px;
+    text-align: center;
+    font-size: 20px;
+    padding-top: 25px;
+    background-color: rgba(221, 221, 221, 0.858);
+}
+.userid{
+    padding-top:10px;
 
+}
+.chathome input[type="text"] {
+    display: block;
+    width: 30%;
+    font-size: 1.125rem;
+    padding: 1rem 1.5rem;
+    color: var(--dark);
+    background-color: #FFF;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow);
+    margin-left:35%;
+    margin-top: 20px;
+    margin-bottom: 1.5rem;
+}
+.chathome button[type="submit"] {
+    display: block;
+    width: 30%;
+    font-size: 1.125rem;
+    padding: 1rem 1.5rem;
+    color: #FFF;
+    font-weight: 700;
+    text-transform: uppercase;
+    background-color: var(--primary);
+    box-shadow: var(--personal-glow);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: 0.2s ease-out;
+    margin-top: 10px;
+    margin-left: 35%;
+}
+.chathome button[type="submit"]:hover {
+    opacity: 0.75;
+}
+.mychat{
+    padding-bottom: 50px;
+    color:#04AA6D;
+}
+/*chat room style*/
+.chatroom{
+    padding: 20px;
+    text-align: center;
+    font-size: 20px;
+    padding-bottom: 100px;
+    height: auto;
+    background-color: rgba(221, 221, 221, 0.858);
+}
+.chatroom input[type="text"] {
+    display: block;
+   
+    width: 20%;
+    font-size: 1.125rem;
+    padding: 10px;
+    color: var(--dark);
+    background-color: #FFF;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow);
+    margin-left:40%;
+    margin-top: 30%;
+    
+}
+.chatroom button[type="submit"] {
+    display: block;
+    width: 10%;
+    font-size: 1.125rem;
+    padding: 10px;
+    color: #FFF;
+    font-weight: 100;
+    text-transform: uppercase;
+    background-color: var(--primary);
+    box-shadow: var(--personal-glow);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: 0.2s ease-out;
+    margin-top:-2.7%;
+    margin-left:61%;
+    
+}
+.chatroom button[type="submit"]:hover {
+    opacity: 0.75;
+}
 .create-todo input[type="submit"]:hover {
     opacity: 0.75;
 }
@@ -753,3 +867,4 @@ input:checked ~ .bubble::after {
     outline: 2px solid black;
 }
 
+/*Home Page*/
