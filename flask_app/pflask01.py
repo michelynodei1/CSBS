@@ -7,10 +7,14 @@ from flask import render_template,request
 from flask import redirect
 from flask import url_for
 from flask import request
+from flask import jsonify
 from models import User as User
 from models import Note as Note
 from flask import session
 import bcrypt
+from flask_sqlalchemy import SQLAlchemy
+
+from database import db as db_helper
 from models import Comment as Comment
 from database import db
 from flask import session
@@ -39,9 +43,7 @@ with app.app_context():
 def home():
     return render_template('home.html')
 
-@app.route('/overview')
-def overview():
-    return render_template('overview.html')
+
 
 @app.route('/myWork')
 def myWork():
@@ -72,6 +74,53 @@ def handle_join_room_event(data):
     app.logger.info("{} has joined the room {}".format(data['username'], data['room']))
     join_room(data['room'])
     socketio.emit('join_room_announcement', data)
+
+#Todo List Overview
+@app.route("/delete/<int:task_id>", methods=['POST'])
+def delete(task_id):
+    """ recieved post requests for entry delete """
+
+    try:
+        db_helper.remove_task_by_id(task_id)
+        result = {'success': True, 'response': 'Removed task'}
+    except:
+        result = {'success': False, 'response': 'Something went wrong'}
+
+    return jsonify(result)
+
+@app.route("/edit/<int:task_id>", methods=['POST'])
+def update(task_id):
+    """ recieved post requests for entry updates """
+
+    data = request.get_json()
+
+    try:
+        if "status" in data:
+            db_helper.update_status_entry(task_id, data["status"])
+            result = {'success': True, 'response': 'Status Updated'}
+        elif "description" in data:
+            db_helper.update_task_entry(task_id, data["description"])
+            result = {'success': True, 'response': 'Task Updated'}
+        else:
+            result = {'success': True, 'response': 'Nothing Updated'}
+    except:
+        result = {'success': False, 'response': 'Something went wrong'}
+
+    return jsonify(result)
+
+
+@app.route("/create", methods=['POST'])
+def create():
+    """ recieves post requests to add new task """
+    data = request.get_json()
+    db_helper.insert_new_task(data['description'])
+    result = {'success': True, 'response': 'Done'}
+    return jsonify(result)   
+
+@app.route('/overview')
+def overview():
+    # items = db_helper.fetch_todo()#
+    return render_template('overview.html')
 
 #Brought in from Flask#06
 @app.route('/notes')
