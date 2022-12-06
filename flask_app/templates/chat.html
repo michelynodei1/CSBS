@@ -38,7 +38,7 @@
                     <li><a href="{{ url_for('myWork') }}"><i class="bi bi-list-check"></i><span class="text">My Work</span></a></li>
                     <li><a href="{{ url_for('chat') }}"><i class="bi bi-chat"></i><span class="text">Chat</span></a></li>
                     <li><a href="#"><i class="bi bi-gear"></i><span class="text">Settings</span></a></li>
-               
+                    <li><a href="{{url_for('logout')}}"><i class="bi bi-box-arrow-left"></i><span class="text">Logout</span></a></li>
                 </ul>
                 
             </nav>
@@ -46,17 +46,11 @@
             
               
             <div class="account">
-                <div class="avatar">
-                    <img src="/images/avatar.jpg" alt="">
-                </div>
+                
                 <div class="name">
                     <h4>CSBS</h4>
-                    Adminstrator
+                    
                 </div>
-                <div class="logout">
-                    <a href="#"><i class="bi bi-box-arrow-left"></i></a>
-                </div>
-                
             </div>
         </div>
        

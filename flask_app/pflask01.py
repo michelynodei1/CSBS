@@ -35,6 +35,10 @@ with app.app_context():
 # get called. What it returns is what is shown as the web page
 @app.route('/')
 
+@app.route('/home')
+def home():
+    return render_template('home.html')
+
 @app.route('/overview')
 def overview():
     return render_template('overview.html')
@@ -179,7 +183,7 @@ def register():
         session['user'] = first_name
         session['user_id'] = new_user.id  # access id value from user model of this newly added user
         # show user dashboard view
-        return redirect(url_for('get_notes'))
+        return redirect(url_for('login'))
 
     # something went wrong - display register view
     return render_template('register.html', form=form)
@@ -197,7 +201,7 @@ def login():
             session['user'] = the_user.first_name
             session['user_id'] = the_user.id
             # render view
-            return redirect(url_for('get_notes'))
+            return redirect(url_for('overview'))
 
         # password check failed
         # set error message to alert user
@@ -213,7 +217,7 @@ def logout():
     if session.get('user'):
         session.clear()
 
-    return redirect(url_for('index'))
+    return redirect(url_for('home'))
 
 #Fix functionality to work with the add task functions 
 @app.route('/notes/<note_id>/comment', methods=['POST'])
