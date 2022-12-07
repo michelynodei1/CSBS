@@ -1,5 +1,6 @@
 # ///// IMPORTS /////
 import os  # os is used to get environment variables IP & PORT
+import bcrypt
 from flask import Flask  # Flask is the web app that we will customize
 from flask import render_template, request, redirect, url_for, jsonify, session
 from flask_sqlalchemy import SQLAlchemy
@@ -8,13 +9,16 @@ from database import db
 from models import User as User
 from models import Note as Note
 from models import Comment as Comment
+from models import Project as Project
+from models import Task as Task
 from forms import RegisterForm, LoginForm, CommentForm
-import bcrypt
 from flask_socketio import SocketIO, join_room
+
 
 # ///// APP CREATION /////
 app = Flask(__name__)  # create an app
 socketio = SocketIO(app)
+
 
 # ///// DATABASE CONFIG /////
 # Configure database connection
@@ -29,6 +33,7 @@ db.init_app(app)
 # Setup models
 with app.app_context():
     db.create_all()  # Run under the app context
+
 
 # ///// MOCK VARIABLES /////
 # User Info
@@ -72,7 +77,12 @@ def myWork():
 # - Projects List -
 @app.route('/projects')
 def projects_list():
-    return render_template('projects_list.html', projects=mock_projects)
+    if session.get('user'):
+        my_projects = db.session.query(Project).filter_by(user_id=session['user_id']).all()
+
+        return render_template('projects_list.html', projects=my_projects, user=session['user'])
+    else:
+        return redirect(url_for('login'))
 
 
 # - Add Project -
