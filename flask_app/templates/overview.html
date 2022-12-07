@@ -1,174 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Homepage">
-    <title>Overview</title>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Homepage">
+        <title>Overview</title>
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.css">
+        <!-- Styles -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.css">
 
-    <!--Navigation Top Bar-->
-    <ul class="topnav">
-        <li><a class="active" href="#home">Home</a></li>
-        <li><a href="#news">News</a></li>
-    </ul>
+        <!-- Navigation Top Bar -->
+        {# TEMPORARY NAV LINKS: Only here for easy navigation while testing -Rachel #}
+        <ul class="topnav">
+            <li><a class="active" href="{{ url_for('overview') }}">Overview</a></li>
+            <li><a href="{{ url_for('projects_list') }}">Projects</a></li>
+            <li><a href="{{ url_for('create_project') }}">Add Project</a></li>
+        </ul>
+    </head>
 
-</head>
-
-<body class="topNavBody">
-<!--Collapsable Sidebar-->
-<div class="container">
-    <div class="sidebar">
-        <div class="sidebartop">
-            <div class="logo">
-                <img src="/images/logo.png" alt="">
-            </div>
-            <div class="menu">
-                <i class="bi bi-list"></i>
-            </div>
-        </div>
-
-        <nav>
-            <ul>
-                <li><a href="{{ url_for('overview') }}"><i class="bi bi-compass"></i><span class="text">Overview</span></a>
-                </li>
-                <li><a href="#"><i class="bi bi-calendar"></i><span class="text">Calendar</span></a></li>
-                <li><a href="{{ url_for('myWork') }}"><i class="bi bi-list-check"></i><span class="text">My Work</span></a>
-                </li>
-                <li><a href="{{ url_for('chat') }}"><i class="bi bi-chat"></i><span class="text">Chat</span></a></li>
-                <li><a href="#"><i class="bi bi-gear"></i><span class="text">Settings</span></a></li>
-                <li><a href="{{ url_for('logout') }}"><i class="bi bi-box-arrow-left"></i><span
-                        class="text">Logout</span></a></li>
-            </ul>
-
-        </nav>
-
-
-        <div class="account">
-
-            <div class="name">
-                <h4>CSBS</h4>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-<main role="main" class="container extra-bottom">
-    <h1 class="mt-5">TODO List Demo App</h1>
-</main>
-
-
-<div class="container">
-
-    <!-- Button trigger modal -->
-    <div style="text-align: right;">
-        <button type="button" class="btn btn-outline-info btn-sm" data-bs-toggle="modal"
-                data-bs-target="#task-modal" data-source="New Task">Add Task
-        </button>
-    </div>
-
-
-    <div class="modal fade" id="task-modal" tabindex="-1" aria-labelledby="Label" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="Label">Add a task</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-
-                <div class="modal-body">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="task-form-display">Task</span>
-                        <input type="text" class="form-control" placeholder="Description of task"
-                               aria-label="task-name" aria-describedby="basic-addon1">
+    <body class="topNavBody">
+        <!-- Collapsable Sidebar -->
+        <div class="container">
+            <div class="sidebar">
+                <div class="sidebartop">
+                    <div class="logo">
+                        <img src="/images/logo.png" alt="">
+                    </div>
+                    <div class="menu">
+                        <i class="bi bi-list"></i>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button id="submit-task" type="button" class="btn btn-primary">Save changes</button>
+
+                <nav>
+                    <ul>
+                        <li><a href="{{ url_for('overview') }}"><i class="bi bi-compass"></i><span class="text">Overview</span></a></li>
+                        <li><a href="#"><i class="bi bi-calendar"></i><span class="text">Calendar</span></a></li>
+                        <li><a href="{{ url_for('myWork') }}"><i class="bi bi-list-check"></i><span class="text">My Work</span></a></li>
+                        <li><a href="{{ url_for('chat') }}"><i class="bi bi-chat"></i><span class="text">Chat</span></a></li>
+                        <li><a href="#"><i class="bi bi-gear"></i><span class="text">Settings</span></a></li>
+                        <li><a href="{{ url_for('logout') }}"><i class="bi bi-box-arrow-left"></i><span class="text">Logout</span></a></li>
+                    </ul>
+                </nav>
+
+
+                <div class="account">
+
+                    <div class="name">
+                        <h4>CSBS</h4>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-
-<!--To-Do Table-->
-<div class="container table-responsive">
-    <table class="table">
-        <thead>
-        <tr>
-            <th class="task-id">#</th>
-            <th class="task">Task Name</th>
-            <th class="status">Status</th>
-            <th class="update">Edit</th>
-            <th class="update">Remove</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        {% for item in items %}
-            <tr>
-                <td>{{ item.id }}</td>
-                <td>{{ item.task }}</td>
-
-                {% if item.status == "In Progress" %}
-                    <td>
-                        <button type="button" class="btn btn-outline-warning btn-sm state"
-                                data-source="{{ item.id }}">{{ item.status }}</button>
-                    </td>
-                {% endif %}
-                {% if item.status == "Todo" %}
-                    <td>
-                        <button type="button" class="btn btn-outline-secondary btn-sm state"
-                                data-source="{{ item.id }}">{{ item.status }}</button>
-                    </td>
-                {% endif %}
-                {% if item.status == "Complete" %}
-                    <td>
-                        <button type="button" class="btn btn-outline-success btn-sm state"
-                                data-source="{{ item.id }}">{{ item.status }}</button>
-                    </td>
-                {% endif %}
-
-                <td>
-                    <button type="button" class="btn btn-outline-info btn-sm" data-bs-toggle="modal"
-                            data-bs-target="#task-modal" data-source="{{ item.id }}" data-content="{{ item.task }}">
-                        <i class="fa fa-pen fa-1" aria-hidden="true"></i></button>
-                </td>
-
-                <td>
-                    <button class="btn btn-outline-secondary btn-sm remove" data-source="{{ item.id }}"
-                            type="button"><i class="fa fa-trash fa-1" aria-hidden="true"></i></button>
-                </td>
-            </tr>
-        {% endfor %}
-
-        </tbody>
-    </table>
-</div>
-
-<footer class="footer">
-    <div class="container">
-        <p class="text-muted"><small>App developed by CSBS</small></p>
-    </div>
-</footer>
-
-</body>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-        crossorigin="anonymous"></script>
-<script src="{{ url_for('static', filename='script/modal.js') }}"></script>
-<script src="{{ url_for('static', filename='init.js') }}"></script>
+        {# !!!!! CODE BELOW IS FOR TO-DO LIST OVERVIEW !!!!!
+            This will most likely not be used for the general overview page -Rachel #}
+
+{#        <main role="main" class="container extra-bottom">#}
+{#            <h1 class="mt-5">To-Do List Demo App</h1>#}
+{#        </main>#}
+{##}
+{##}
+{#        <div class="container">#}
+{##}
+{#            <!-- Button Trigger Modal -->#}
+{#            <div style="text-align: right;">#}
+{#                <button type="button" class="btn btn-outline-info btn-sm" data-bs-toggle="modal" data-bs-target="#task-modal" data-source="New Task">Add Task</button>#}
+{#            </div>#}
+{##}
+{##}
+{#            <div class="modal fade" id="task-modal" tabindex="-1" aria-labelledby="Label" aria-hidden="true">#}
+{#                <div class="modal-dialog">#}
+{#                    <div class="modal-content">#}
+{#                        <div class="modal-header">#}
+{#                            <h5 class="modal-title" id="Label">Add a task</h5>#}
+{#                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>#}
+{#                        </div>#}
+{##}
+{#                        <div class="modal-body">#}
+{#                            <div class="input-group mb-3">#}
+{#                                <span class="input-group-text" id="task-form-display">Task</span>#}
+{#                                <input type="text" class="form-control" placeholder="Description of task" aria-label="task-name" aria-describedby="basic-addon1">#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="modal-footer">#}
+{#                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>#}
+{#                            <button id="submit-task" type="button" class="btn btn-primary">Save changes</button>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{##}
+{#        <!-- To-Do Table -->#}
+{#        <div class="container table-responsive">#}
+{#            <table class="table">#}
+{#                <thead>#}
+{#                    <tr>#}
+{#                        <th class="task-id">#</th>#}
+{#                        <th class="task">Task Name</th>#}
+{#                        <th class="status">Status</th>#}
+{#                        <th class="update">Edit</th>#}
+{#                        <th class="update">Remove</th>#}
+{#                    </tr>#}
+{#                </thead>#}
+{##}
+{#                <tbody>#}
+{#                {% for item in items %}#}
+{#                    <tr>#}
+{#                        <td>{{ item.id }}</td>#}
+{#                        <td>{{ item.task }}</td>#}
+{##}
+{#                        {% if item.status == "In Progress" %}#}
+{#                            <td>#}
+{#                                <button type="button" class="btn btn-outline-warning btn-sm state" data-source="{{ item.id }}">{{ item.status }}</button>#}
+{#                            </td>#}
+{#                        {% endif %}#}
+{#                        {% if item.status == "Todo" %}#}
+{#                            <td>#}
+{#                                <button type="button" class="btn btn-outline-secondary btn-sm state" data-source="{{ item.id }}">{{ item.status }}</button>#}
+{#                            </td>#}
+{#                        {% endif %}#}
+{#                        {% if item.status == "Complete" %}#}
+{#                            <td>#}
+{#                                <button type="button" class="btn btn-outline-success btn-sm state" data-source="{{ item.id }}">{{ item.status }}</button>#}
+{#                            </td>#}
+{#                        {% endif %}#}
+{##}
+{#                        <td>#}
+{#                            <button type="button" class="btn btn-outline-info btn-sm" data-bs-toggle="modal" data-bs-target="#task-modal" data-source="{{ item.id }}" data-content="{{ item.task }}">#}
+{#                            <i class="fa fa-pen fa-1" aria-hidden="true"></i></button>#}
+{#                        </td>#}
+{##}
+{#                        <td>#}
+{#                            <button class="btn btn-outline-secondary btn-sm remove" data-source="{{ item.id }}" type="button"><i class="fa fa-trash fa-1" aria-hidden="true"></i></button>#}
+{#                        </td>#}
+{#                    </tr>#}
+{#                {% endfor %}#}
+{#                </tbody>#}
+{#            </table>#}
+{#        </div>#}
+
+        <footer class="footer">
+            <div class="container">
+                <p class="text-muted"><small>App developed by CSBS</small></p>
+            </div>
+        </footer>
+    </body>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+            crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='script/modal.js') }}"></script>
+    <script src="{{ url_for('static', filename='init.js') }}"></script>
 
 </html>

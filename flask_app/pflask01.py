@@ -184,7 +184,7 @@ def update(task_id):
 # - Create To-Do Task -
 @app.route("/create", methods=['POST'])
 def create():
-    """ recieves post requests to add new task """
+    """ receives post requests to add new task """
     data = request.get_json()
     db_helper.insert_new_task(data['description'])
     result = {'success': True, 'response': 'Done'}
