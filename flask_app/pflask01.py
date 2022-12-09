@@ -1,50 +1,41 @@
-# FLASK Tutorial 1 -- We show the bare bones code to get an app up and running
-
-# imports
-from  __future__  import print_function
-import os       
-import sys, json, flask, flask_socketio, httplib2, uuid
-  # os is used to get environment variables IP & PORT
-from flask import Flask   # Flask is the web app that we will customize
-from flask import render_template,request
-from flask import redirect
-from flask import url_for
-from flask import Response,request
-from flask import jsonify
+# ///// IMPORTS /////
+import os, sys, json, flask, flask_socketio, httplib2, uuid, bcrypt
+from flask import Flask, Response, render_template, request, redirect, url_for, jsonify, session
+from flask_sqlalchemy import SQLAlchemy
+from database import db
 from models import User as User
 from models import Note as Note
-from flask import session
-import bcrypt
-from flask import Flask  # Flask is the web app that we will customize
-from flask import render_template, request, redirect, url_for, jsonify, session
-from flask_sqlalchemy import SQLAlchemy
-
-from database import db 
 from models import Comment as Comment
 from models import Project as Project
 from models import Task as Task
 from forms import RegisterForm, LoginForm, CommentForm
 from flask_socketio import SocketIO, join_room
+from __future__ import print_function
+
 
 
 # ///// APP CREATION /////
-
-events = [
-    {
-       'title': 'Update Notes', 
-       'start': '2022-12-20',
-       'end': '2022-12-20',
-       'url': 'http://youtube.com',
-    },
-    {
-       'title': 'Update List', 
-       'start': '2022-12-08',
-       'end': '',
-       'url': 'http://127.0.0.1:5000/taskList',
-    },
-]
 app = Flask(__name__)  # create an app
 socketio = SocketIO(app)
+
+
+
+# ///// EVENTS /////
+events = [
+    {
+        'title': 'Update Notes',
+        'start': '2022-12-20',
+        'end': '2022-12-20',
+        'url': 'http://youtube.com',
+    },
+    {
+        'title': 'Update List',
+        'start': '2022-12-08',
+        'end': '',
+        'url': 'http://127.0.0.1:5000/taskList',
+    },
+]
+
 
 
 # ///// DATABASE CONFIG /////
@@ -62,7 +53,8 @@ with app.app_context():
     db.create_all()  # Run under the app context
 
 
-# ///// MOCK VARIABLES /////
+
+# ///// MOCK VARIABLES ///// (Using these for testing purposes -Rachel)
 # User Info
 mock_user = {'name': 'Team CSBS'}
 
@@ -77,6 +69,7 @@ mock_tasks = {1: {'title': 'First Task', 'text': 'This is the first task'},
               2: {'title': 'Second Task', 'text': 'This is the second task'},
               3: {'title': 'Third Task', 'text': 'This is the third task'}
               }
+
 
 
 # ///// ROUTES /////
@@ -104,6 +97,7 @@ def myWork():
 def aboutUs():
     return render_template('aboutUs.html')
 
+
 # ---------- Projects ----------
 # - Projects List -
 @app.route('/projects')
@@ -119,7 +113,6 @@ def projects_list():
 # - Add Project -
 @app.route('/projects/create-project', methods=['GET', 'POST'])
 def create_project():
-
     if request.method == 'POST':
         # get project title data
         title = request.form['title']
@@ -173,16 +166,33 @@ def handle_join_room_event(data):
     app.logger.info("{} has joined the room {}".format(data['username'], data['room']))
     join_room(data['room'])
     socketio.emit('join_room_announcement', data)
+# -----------------------------------------------
 
-#Calendar
-@app.route('/calendar')
-def calendar():
-    return render_template("calendar.html",events=events)
+
+# ---------- To-Do List ----------
+# - To-Do Overview -
+@app.route('/taskList', methods=['GET', 'POST'])
+def taskList():
+    if request.method == 'POST':
+        return redirect(url_for('myWork'))
+
+    return render_template('taskList.html')
+
+
+# - Create To-Do Task -
+@app.route("/create", methods=['POST'])
+def create():
+    """ receives post requests to add new task """
+    data = request.get_json()
+    db_helper.insert_new_task(data['description'])
+    result = {'success': True, 'response': 'Done'}
+    return jsonify(result)
+
 
 # - Delete To-Do Task -
 @app.route("/delete/<int:task_id>", methods=['POST'])
 def delete(task_id):
-    """ recieved post requests for entry delete """
+    """ received post requests for entry delete """
 
     try:
         db_helper.remove_task_by_id(task_id)
@@ -212,16 +222,6 @@ def update(task_id):
     except:
         result = {'success': False, 'response': 'Something went wrong'}
 
-    return jsonify(result)
-
-
-# - Create To-Do Task -
-@app.route("/create", methods=['POST'])
-def create():
-    """ receives post requests to add new task """
-    data = request.get_json()
-    db_helper.insert_new_task(data['description'])
-    result = {'success': True, 'response': 'Done'}
     return jsonify(result)
 # -----------------------------------------------
 
@@ -341,6 +341,7 @@ def new_comment(note_id):
 # -----------------------------------------------
 
 
+# ---------- User Account ----------
 # - User Registration -
 @app.route('/register', methods=['POST', 'GET'])
 def register():
@@ -401,26 +402,20 @@ def logout():
         session.clear()
 
     return redirect(url_for('home'))
+# -----------------------------------------------
+
+
+# - Calendar -
+@app.route('/calendar')
+def calendar():
+    return render_template("calendar.html", events=events)
 
 
 
-
-
-
-@app.route('/taskList', methods=['GET', 'POST'])
-def taskList():
-    if request.method == 'POST':
-        
-
-        return redirect(url_for('myWork'))
-        
-    return render_template('taskList.html')
-
-
-if __name__ =='__main__':
-    #socketio.run(app, debug=True)
-    
-    socketio.run(app,host=os.getenv('IP', '127.0.0.1'),port=int(os.getenv('PORT', 5000)),debug=True)
+# ///// HOST & PORT CONFIG /////
+if __name__ == '__main__':
+    # socketio.run(app, debug=True)
+    socketio.run(app, host=os.getenv('IP', '127.0.0.1'), port=int(os.getenv('PORT', 5000)), debug=True)
 
 # To see the web page in your web browser, go to the url,
 #   http://127.0.0.1:5000
