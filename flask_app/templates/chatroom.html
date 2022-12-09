@@ -12,10 +12,8 @@
         
          <!--Navigation Top Bar-->
          <ul class="topnav">
-            <li><a class="active" href="#home">Home</a></li>
+            <li> <img class="logo1" src="{{url_for('static', filename='csbs1.png')}}"  width="80" height="30"></li>
             <li><a href="#news">News</a></li>
-            <li><a href="{{url_for('login')}}">Sign In</a></li>
-            <li><a href="{{url_for('register')}}">Register</a></li>
         </ul>
     </head>
     <body class="topNavBody">
@@ -38,7 +36,7 @@
                     <li><a href="{{ url_for('myWork') }}"><i class="bi bi-list-check"></i><span class="text">My Work</span></a></li>
                     <li><a href="{{ url_for('chat') }}"><i class="bi bi-chat"></i><span class="text">Chat</span></a></li>
                     <li><a href="#"><i class="bi bi-gear"></i><span class="text">Settings</span></a></li>
-               
+                    <li><a href="{{url_for('logout')}}"><i class="bi bi-box-arrow-left"></i><span class="text">Logout</span></a></li>
                 </ul>
                 
             </nav>

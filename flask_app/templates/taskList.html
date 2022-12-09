@@ -80,7 +80,7 @@
           <a  href="#">Task</a>
           <a href="#">Calendar</a>
           <a class="active" href="#">To-Do List</a>
-          <a href="#">Notes</a>
+          <a href="{{ url_for('get_notes') }}">Notes</a>
         </div>
     </div>
     
@@ -90,8 +90,9 @@
         <!-- Greeting -->
         <section class="greeting">
 			<h2 class="title">
-				What's up, <input type="text" id="name" placeholder="Name here" />
+				What's up !!{% if user %}{{user}}{% endif %}
 			</h2>
+            <
 		</section>
         <!-- End of Greeting -->
 

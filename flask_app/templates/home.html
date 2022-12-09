@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>seek coding</title>
+    <title>CSBS|HOMEPAGE</title>
+    <link rel="icon" type="image/jpg" href="{{ url_for('static', filename='csbs2.jpg') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='homestyle.css') }}">
     
     <!---we had linked our css file----->
@@ -11,14 +12,13 @@
     <div class="full-page">
         <div class="navbar">
             <div>
-                <a>CSBS</a>
+                <a><img class="logo" src="{{url_for('static', filename='csbs1.png')}}" alt="csbs logo" width="150" height="70"></a>
             </div>
             <nav>
                 <ul id='MenuItems'>
                     <li><a href='#'>Home</a></li>
                     <li><a href='#'>About Us</a></li>
-                    <li><a href='#'>Services</a></li>
-                    <li><a href='#'>Contact</a></li>
+                    <li><a href="{{url_for('register')}}">Register</a></li>
                     <li><a href="{{url_for('login')}}">Login</a></li>
                     
                 </ul>

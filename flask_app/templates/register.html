@@ -18,9 +18,8 @@
                 </div>
                 <nav>
                     <ul id='MenuItems'>
-                        <li><a href='#'>Home</a></li>
-                        <li><a href='#'>About Us</a></li>
-                        {% if user %}<li><a href='#'>Services</a></li>
+                        <li><a href="{{url_for('home')}}">Home</a></li>
+                        {% if user %}<li><a href="{{url_for('aboutUs')}}">About Us</a></li>
                         {% else %}<li><a href="{{url_for('login')}}">Login</a></li>
                                   <li><a href="{{url_for('register')}}">Register</a></li>
                         {% endif %}<li><a href="{{url_for('logout')}}">Logout</a></li>

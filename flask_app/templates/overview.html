@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.css">
          <!--Navigation Top Bar-->
          <ul class="topnav">
-            <li><a class="active" href="#home">Home</a></li>
+            <li> <img class="logo1" src="{{url_for('static', filename='csbs1.png')}}"  width="80" height="30"></li>
             <li><a href="#news">News</a></li>
             
             
@@ -38,7 +38,7 @@
             <nav>
                 <ul>
                     <li><a href="{{ url_for('overview') }}"><i class="bi bi-compass"></i><span class="text">Overview</span></a></li>
-                    <li><a href="#"><i class="bi bi-calendar"></i><span class="text">Calendar</span></a></li>
+                    <li><a href="{{ url_for('calendar') }}"><i class="bi bi-calendar"></i><span class="text">Calendar</span></a></li>
                     <li><a href="{{ url_for('myWork') }}"><i class="bi bi-list-check"></i><span class="text">My Work</span></a></li>
                     <li><a href="{{ url_for('chat') }}"><i class="bi bi-chat"></i><span class="text">Chat</span></a></li>
                     <li><a href="#"><i class="bi bi-gear"></i><span class="text">Settings</span></a></li>

@@ -14,10 +14,8 @@
     </head>
 
     <ul class="topnav">
-        <li><a class="active" href="{{ url_for('overview') }}">Home</a></li>
+        <li> <img class="logo1" src="{{url_for('static', filename='csbs1.png')}}"  width="80" height="30"></li>
         <li><a href="#news">News</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#about">About</a></li>
     </ul>
     <body class="topNavBody">
                    <!--SiDe bar collapsable side bar-->
@@ -60,7 +58,28 @@
       
        
     </div>
+    <!--Nav Bar My work -->
+<div class="navbar">
 
+    <!-- Navbar logo -->
+    <div class="nav-header">
+
+        <div class="nav-logo">
+            <img src="https://media.istockphoto.com/photos/hot-air-balloons-flying-over-the-botan-canyon-in-turkey-picture-id1297349747?b=1&k=20&m=1297349747&s=170667a&w=0&h=oH31fJty_4xWl_JQ4OIQWZKP8C6ji9Mz7L4XmEnbqRU=" width="50px" alt="logo">
+            <h2 class="title">My Work</h2>
+        </div>
+
+    </div>
+
+
+    <!-- Navbar items -->
+    <div class="nav-links">
+        <a href="#">Task</a>
+        <a href="#">Calendar</a>
+        <a href="{{ url_for('taskList') }}">To-Do List</a>
+        <a href="{{ url_for('get_notes') }}">Notes</a>
+    </div>
+</div>
 
         
 

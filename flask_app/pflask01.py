@@ -1,12 +1,15 @@
 # FLASK Tutorial 1 -- We show the bare bones code to get an app up and running
 
 # imports
-import os                 # os is used to get environment variables IP & PORT
+from  __future__  import print_function
+import os       
+import sys, json, flask, flask_socketio, httplib2, uuid
+  # os is used to get environment variables IP & PORT
 from flask import Flask   # Flask is the web app that we will customize
 from flask import render_template,request
 from flask import redirect
 from flask import url_for
-from flask import request
+from flask import Response,request
 from flask import jsonify
 from models import User as User
 from models import Note as Note
@@ -14,12 +17,32 @@ from flask import session
 import bcrypt
 from flask_sqlalchemy import SQLAlchemy
 
-from database import db as db_helper
+from apiclient import discovery
+import datetime
+import pickle
+import os.path
+
+
 from models import Comment as Comment
 from database import db
 from flask import session
 from forms import RegisterForm, LoginForm, CommentForm
 from flask_socketio import SocketIO, join_room
+
+events = [
+    {
+       'title': 'Update Notes', 
+       'start': '2022-12-20',
+       'end': '2022-12-20',
+       'url': 'http://youtube.com',
+    },
+    {
+       'title': 'Update List', 
+       'start': '2022-12-08',
+       'end': '',
+       'url': 'http://127.0.0.1:5000/taskList',
+    },
+]
 app = Flask(__name__)     # create an app
 socketio = SocketIO(app)
 
@@ -43,11 +66,19 @@ with app.app_context():
 def home():
     return render_template('home.html')
 
+@app.route('/overview')
+def overview():
+    
+    return render_template('overview.html')
 
 
 @app.route('/myWork')
 def myWork():
     return render_template('myWork.html')
+
+@app.route('/aboutUs')
+def aboutUs():
+    return render_template('aboutUs.html')
 
 #chat
 @app.route('/chat')
@@ -75,52 +106,30 @@ def handle_join_room_event(data):
     join_room(data['room'])
     socketio.emit('join_room_announcement', data)
 
-#Todo List Overview
-@app.route("/delete/<int:task_id>", methods=['POST'])
-def delete(task_id):
-    """ recieved post requests for entry delete """
+#Calendar
+@app.route('/calendar')
+def calendar():
+    return render_template("calendar.html",events=events)
 
-    try:
-        db_helper.remove_task_by_id(task_id)
-        result = {'success': True, 'response': 'Removed task'}
-    except:
-        result = {'success': False, 'response': 'Something went wrong'}
-
-    return jsonify(result)
-
-@app.route("/edit/<int:task_id>", methods=['POST'])
-def update(task_id):
-    """ recieved post requests for entry updates """
-
-    data = request.get_json()
-
-    try:
-        if "status" in data:
-            db_helper.update_status_entry(task_id, data["status"])
-            result = {'success': True, 'response': 'Status Updated'}
-        elif "description" in data:
-            db_helper.update_task_entry(task_id, data["description"])
-            result = {'success': True, 'response': 'Task Updated'}
-        else:
-            result = {'success': True, 'response': 'Nothing Updated'}
-    except:
-        result = {'success': False, 'response': 'Something went wrong'}
-
-    return jsonify(result)
+@app.route('/add', methods=['GET','POST'])
+def add():
+    if request.method == "POST":
+        title = request.form['title']
+        start = request.form['start']
+        end = request.form['end']
+        url = request.form['url']
+        if end == '':
+            end=start
+        events.append({
+            'title':title,
+            'start':start,
+            'end':end,
+            'url':url
+        },
+        )
+    return render_template("add.html")
 
 
-@app.route("/create", methods=['POST'])
-def create():
-    """ recieves post requests to add new task """
-    data = request.get_json()
-    db_helper.insert_new_task(data['description'])
-    result = {'success': True, 'response': 'Done'}
-    return jsonify(result)   
-
-@app.route('/overview')
-def overview():
-    # items = db_helper.fetch_todo()#
-    return render_template('overview.html')
 
 #Brought in from Flask#06
 @app.route('/notes')
@@ -293,16 +302,16 @@ def new_comment(note_id):
 @app.route('/taskList', methods=['GET', 'POST'])
 def taskList():
     if request.method == 'POST':
+        
 
-
-        return redirect(url_for('index'))
+        return redirect(url_for('myWork'))
         
     return render_template('taskList.html')
 
 
 if __name__ =='__main__':
     #socketio.run(app, debug=True)
-
+    
     socketio.run(app,host=os.getenv('IP', '127.0.0.1'),port=int(os.getenv('PORT', 5000)),debug=True)
 
 # To see the web page in your web browser, go to the url,
