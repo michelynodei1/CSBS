@@ -204,7 +204,6 @@ function DisplayTodos() {
         })
 
     })
-
 }
 
 
@@ -223,6 +222,7 @@ function vopenCity(evt, cityName) {
 	document.getElementById(cityName).style.display = "block";
 	evt.currentTarget.className += " w3-red";
   }
+  //chat
   $(document).ready(function(){
     var socket = io.connect("http://localhost:5000");
     socket.on( 'connect', function() {

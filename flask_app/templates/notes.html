@@ -1,125 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="UNCC Notes App">
-        <title>CSBS Notes App - View your Notes</title>
-        <!-- styles -->
-        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
-        <!--Javascript for sidebar-->
-        <script src="{{url_for('static', filename='init.js')}}"></script>
-    </head>
 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="My Work">
+    <title>My Work</title>
+
+    <!-- styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+
+    <!--Navigation Top Bar-->
     <ul class="topnav">
-        <li><a class="active" href="{{ url_for('overview') }}">Overview</a></li>
+        <li> <img class="logo1" src="{{url_for('static', filename='csbs1.png')}}"  width="80" height="30"></li>
         <li><a href="#news">News</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#about">About</a></li>
     </ul>
+</head>
 
-    <body>
-        
+<body class="topNavBody">
 
-
-
-           <!--SiDe bar collapsable side bar-->
-    <div class="container">
-        <div class="sidebar">
-            <div class="sidebartop">
-                <div class="logo">
-                    <img src="/images/logo.png" alt="">
-                </div>
-                <div class="menu">
-                    <i class="bi bi-list"></i>
-                </div>
+<!--Sidebar - collapsable sidebar-->
+<div class="container">
+    <div class="sidebar">
+        <div class="sidebartop">
+            <div class="logo">
+                {# !!! This produces no image on webpage due to source !!! #}
+                <img src="/images/logo.png" alt="">
             </div>
-            <!--Project and Chat Tab-->
-            <div class="tab">
-                <button class="tablinks" onclick="openCity(event, 'Project')">Projects</button>
-                <button class="tablinks" onclick="openCity(event, 'Chat')">Chat</button>
-                
-              
-              <div id="Project" class="tabcontent">
-                <h3>General?</h3>
-                <p>ICons of the projects worked on and the name </p>
-              </div>
-              
-              <div id="Chat" class="tabcontent">
-                <h3>Chats</h3>
-                <p>icon of user and an + sign</p> 
-              </div>
-  
-  
-              <nav>
-                <ul>
-                    <li><a href="{{ url_for('overview') }}"><i class="bi bi-compass"></i><span class="text">Overview</span></a></li>
-                    <li><a href="#"><i class="bi bi-calendar"></i><span class="text">Calendar</span></a></li>
-                    <li><a href="{{ url_for('myWork') }}"><i class="bi bi-list-check"></i><span class="text">My Work</span></a></li>
-                    <li><a href="#"><i class="bi bi-people"></i><span class="text">Users</span></a></li>
-                    <li><a href="#"><i class="bi bi-gear"></i><span class="text">Settings</span></a></li>
-               
-                </ul>
-                
-            </nav>
-                
-            </nav>
-
-       
-        
-        <div class="account">
-            <div class="avatar">
-                <img src="/images/avatar.jpg" alt="">
-            </div>
-            <div class="name">
-                <h4>CSBS</h4>
-                Adminstrator
-            </div>
-            <div class="logout">
-                <a href="#"><i class="bi bi-box-arrow-left"></i></a>
-            </div>
-                
+            <div class="menu">
+                <i class="bi bi-list"></i>
             </div>
         </div>
-      
-       
-    </div>
+        
 
-        <main> 
-            <div class="center">
-                <nav class="greenishText">
-
-            <a class='greenishText' href="{{ url_for('overview') }}"> Overiew</a> ||
-            <a class="greenishText" href="{{ url_for('get_notes') }}"> My Notes</a> ||
-            <a class="greenishText" href="{{ url_for('new_note') }}">Add Note</a> ||
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('overview') }}"><i class="bi bi-compass"></i><span class="text">Overview</span></a></li>
+                <li><a href="#"><i class="bi bi-calendar"></i><span class="text">Calendar</span></a></li>
+                <li><a href="{{ url_for('myWork') }}"><i class="bi bi-list-check"></i><span class="text">My Work</span></a></li>
+                <li><a href="{{ url_for('chat') }}"><i class="bi bi-chat"></i><span class="text">Chat</span></a></li>
+                <li><a href="#"><i class="bi bi-gear"></i><span class="text">Settings</span></a></li>
+                <li><a href="{{url_for('logout')}}"><i class="bi bi-box-arrow-left"></i><span class="text">Logout</span></a></li>
+            </ul>
             
         </nav>
-        <h1>Welcome to the CSBS Notes Application!</h1>
-        <h1>Previous notes</h1>
 
-        <table>
-            <tr>
-                <th class="greenishTextblackTextBox">Title</th>
-                <th class="greenishTextblackTextBox">Date Created</th>
-                <th class="greenishTextblackTextBox"> Options</th>
-                <th class="greenishTextblackTextBox">Remove</th>
-            </tr>
-            {% for note in notes %}
-            <tr>
-                <td class="greenishTextblackTextBox"><a href="{{ url_for('get_note', note_id=note.id) }}">{{ note.title }}</a></td> 
-                <td class="blackTextBox">{{ note.date }}</td>
-                <td class="greenishTextblackTextBox"><a href="{{ url_for('update_note', note_id=note.id) }}">Edit/View</a></td>
-
-                <td class="greenishTextblackTextBox">
-                    <form action="{{ url_for('delete_note', note_id=note.id) }}" method="post">
-                        <input type ="submit" value="Delete">
-                    </form>
-                </td>
-            </tr>
-            {% endfor %}
-        </table>
+        
+          
+        <div class="account">
+            
+            <div class="name">
+                <h4>CSBS</h4>
+                
+            </div>
         </div>
-        </main>
-    </body>
+    </div>
+
+    </div>
+</div>
+<!--Nav Bar My work -->
+<div class="navbar">
+
+    <!-- Navbar logo -->
+    <div class="nav-header">
+
+        <div class="nav-logo">
+            <img src="https://media.istockphoto.com/photos/hot-air-balloons-flying-over-the-botan-canyon-in-turkey-picture-id1297349747?b=1&k=20&m=1297349747&s=170667a&w=0&h=oH31fJty_4xWl_JQ4OIQWZKP8C6ji9Mz7L4XmEnbqRU=" width="50px" alt="logo">
+            <h2 class="title">My Work</h2>
+        </div>
+
+    </div>
+
+
+    <!-- Navbar items -->
+    <div class="nav-links">
+        <a href="#">Task</a>
+        <a href="#">Calendar</a>
+        <a href="{{ url_for('taskList') }}">To-Do List</a>
+        <a href="{{ url_for('get_notes') }}">Notes</a>
+    </div>
+</div>
+    <nav>
+        <a href="{{ url_for('overview') }}"> Home</a> ||
+        <a href="{{ url_for('get_notes') }}"> My Notes</a> ||
+        <a href="{{ url_for('new_note') }}">Add Note</a> ||
+       
+    </nav>
+
+    <nav>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </nav>
+
+    <h1>Welcome {{user}} to the 49er Notes App!</h1>
+    <h1>Listing notes</h1>
+
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Date</th>
+        </tr>
+        {% for note in notes %}
+        <tr>
+            <td><a href="{{ url_for('get_note', note_id=note.id) }}">{{ note.title }}</a></td>
+            <td>{{ note.date }}</td>
+            <td><a href="{{ url_for('update_note', note_id=note.id) }}">Edit</a></td>
+
+            <td>
+                <form action="{{ url_for('delete_note', note_id=note.id) }}" method="post">
+                    <input type="submit" value="Delete">
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+<script src="{{ url_for('static', filename='init.js') }}"></script>
 </html>
