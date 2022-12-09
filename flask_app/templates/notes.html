@@ -1,61 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="UNCC Notes App">
-    <title>CSBS Notes App - View your Notes</title>
+    <meta name="description" content="My Work">
+    <title>My Work</title>
+
     <!-- styles -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
-    <!--Javascript for sidebar-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
 
-</head>
-
+    <!--Navigation Top Bar-->
     <ul class="topnav">
         <li> <img class="logo1" src="{{url_for('static', filename='csbs1.png')}}"  width="80" height="30"></li>
-            <li><a href="#news">News</a></li>
-        
+        <li><a href="#news">News</a></li>
     </ul>
+</head>
 
 <body class="topNavBody">
-<!--Collapsable Sidebar-->
+
+<!--Sidebar - collapsable sidebar-->
 <div class="container">
     <div class="sidebar">
         <div class="sidebartop">
             <div class="logo">
+                {# !!! This produces no image on webpage due to source !!! #}
                 <img src="/images/logo.png" alt="">
             </div>
             <div class="menu">
                 <i class="bi bi-list"></i>
             </div>
         </div>
-
+        
 
         <nav>
             <ul>
-                <li><a href="{{ url_for('overview') }}"><i class="bi bi-compass"></i><span class="text">Overview</span></a>
-                </li>
+                <li><a href="{{ url_for('overview') }}"><i class="bi bi-compass"></i><span class="text">Overview</span></a></li>
                 <li><a href="#"><i class="bi bi-calendar"></i><span class="text">Calendar</span></a></li>
-                <li><a href="{{ url_for('myWork') }}"><i class="bi bi-list-check"></i><span class="text">My Work</span></a>
-                </li>
+                <li><a href="{{ url_for('myWork') }}"><i class="bi bi-list-check"></i><span class="text">My Work</span></a></li>
                 <li><a href="{{ url_for('chat') }}"><i class="bi bi-chat"></i><span class="text">Chat</span></a></li>
                 <li><a href="#"><i class="bi bi-gear"></i><span class="text">Settings</span></a></li>
-                <li><a href="{{ url_for('logout') }}"><i class="bi bi-box-arrow-left"></i><span
-                        class="text">Logout</span></a></li>
+                <li><a href="{{url_for('logout')}}"><i class="bi bi-box-arrow-left"></i><span class="text">Logout</span></a></li>
             </ul>
-
+            
         </nav>
 
-
+        
+          
         <div class="account">
-
+            
             <div class="name">
                 <h4>CSBS</h4>
-
+                
             </div>
         </div>
-        <!--Nav Bar My work -->
+    </div>
+
+    </div>
+</div>
+<!--Nav Bar My work -->
 <div class="navbar">
 
     <!-- Navbar logo -->
@@ -77,43 +81,40 @@
         <a href="{{ url_for('get_notes') }}">Notes</a>
     </div>
 </div>
-        <main> 
-            <div class="center">
-                <nav class="greenishText">
+    <nav>
+        <a href="{{ url_for('overview') }}"> Home</a> ||
+        <a href="{{ url_for('get_notes') }}"> My Notes</a> ||
+        <a href="{{ url_for('new_note') }}">Add Note</a> ||
+       
+    </nav>
 
+    <nav>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </nav>
 
-            <a class="greenishText" href="{{ url_for('get_notes') }}"> My Notes</a> ||
-            <a class="greenishText" href="{{ url_for('new_note') }}">Add Note</a> ||
+    <h1>Welcome {{user}} to the 49er Notes App!</h1>
+    <h1>Listing notes</h1>
 
-        </nav>
-        <h1>Welcome to the CSBS Notes Application!</h1>
-        <h1>Previous notes</h1>
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Date</th>
+        </tr>
+        {% for note in notes %}
+        <tr>
+            <td><a href="{{ url_for('get_note', note_id=note.id) }}">{{ note.title }}</a></td>
+            <td>{{ note.date }}</td>
+            <td><a href="{{ url_for('update_note', note_id=note.id) }}">Edit</a></td>
 
-        <table>
-            <tr>
-                <th class="greenishTextblackTextBox">Title</th>
-                <th class="greenishTextblackTextBox">Date Created</th>
-                <th class="greenishTextblackTextBox"> Options</th>
-                <th class="greenishTextblackTextBox">Remove</th>
-            </tr>
-            {% for note in notes %}
-                <tr>
-                    <td class="greenishTextblackTextBox"><a
-                            href="{{ url_for('get_note', note_id=note.id) }}">{{ note.title }}</a></td>
-                    <td class="blackTextBox">{{ note.date }}</td>
-                    <td class="greenishTextblackTextBox"><a href="{{ url_for('update_note', note_id=note.id) }}">Edit/View</a>
-                    </td>
-
-                    <td class="greenishTextblackTextBox">
-                        <form action="{{ url_for('delete_note', note_id=note.id) }}" method="post">
-                            <input type="submit" value="Delete">
-                        </form>
-                    </td>
-                </tr>
-            {% endfor %}
-        </table>
-    </div>
-</main>
-<script src="{{ url_for('static', filename='init.js') }}"></script>
+            <td>
+                <form action="{{ url_for('delete_note', note_id=note.id) }}" method="post">
+                    <input type="submit" value="Delete">
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
 </body>
+
+<script src="{{ url_for('static', filename='init.js') }}"></script>
 </html>

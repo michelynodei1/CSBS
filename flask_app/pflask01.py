@@ -19,7 +19,7 @@ from flask import Flask  # Flask is the web app that we will customize
 from flask import render_template, request, redirect, url_for, jsonify, session
 from flask_sqlalchemy import SQLAlchemy
 
-from database import db as db_helper
+from database import db 
 from models import Comment as Comment
 from models import Project as Project
 from models import Task as Task
@@ -178,7 +178,7 @@ def handle_join_room_event(data):
 @app.route('/calendar')
 def calendar():
     return render_template("calendar.html",events=events)
-    
+
 # - Delete To-Do Task -
 @app.route("/delete/<int:task_id>", methods=['POST'])
 def delete(task_id):
@@ -402,23 +402,6 @@ def logout():
 
     return redirect(url_for('home'))
 
-#Fix functionality to work with the add task functions 
-@app.route('/notes/<note_id>/comment', methods=['POST'])
-def new_comment(note_id):
-    if session.get('user'):
-        comment_form = CommentForm()
-        # validate_on_submit only validates using POST
-        if comment_form.validate_on_submit():
-            # get comment data
-            comment_text = request.form['comment']
-            new_record = Comment(comment_text, int(note_id), session['user_id'])
-            db.session.add(new_record)
-            db.session.commit()
-
-        return redirect(url_for('get_note', note_id=note_id))
-
-    else:
-        return redirect(url_for('login'))
 
 
 
