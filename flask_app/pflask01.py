@@ -15,13 +15,14 @@ from models import Comment as Comment
 from database import db
 from flask import session
 from forms import RegisterForm, LoginForm, CommentForm
-from flask_socketio import SocketIO,send
+#flask_socketio import SocketIO,send
 app = Flask(__name__)     # create an app
-
+#pip install python-socketio
+#pip install Flask-SocketIO
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///flask_note_app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']= False
 app.config['SECRET_KEY'] = 'SE3155'
-socketio = SocketIO(app,cors_allowed_origins="*")
+#socketio = SocketIO(app,cors_allowed_origins="*")
 
 
 #  Bind SQLAlchemy db object to this Flask app
@@ -234,10 +235,10 @@ def chat():
     return render_template('chat.html')
 
 
-@socketio.on('my event')
-def handle_my_custom_event(json, methods=['GET', 'POST']):
-    print('received my event: ' + str(json))
-    socketio.emit('my response', json, callback=messageReceived)
+#@socketio.on('my event')
+#def handle_my_custom_event(json, methods=['GET', 'POST']):
+   # print('received my event: ' + str(json))
+    #socketio.emit('my response', json, callback=messageReceived)
 
 
 if __name__=="main":
