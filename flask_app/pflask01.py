@@ -15,19 +15,19 @@ from models import User as User
 from models import Note as Note
 from flask import session
 import bcrypt
+from flask import Flask  # Flask is the web app that we will customize
+from flask import render_template, request, redirect, url_for, jsonify, session
 from flask_sqlalchemy import SQLAlchemy
 
-from apiclient import discovery
-import datetime
-import pickle
-import os.path
-
-
+from database import db as db_helper
 from models import Comment as Comment
-from database import db
-from flask import session
+from models import Project as Project
+from models import Task as Task
 from forms import RegisterForm, LoginForm, CommentForm
 from flask_socketio import SocketIO, join_room
+
+
+# ///// APP CREATION /////
 
 events = [
     {
@@ -43,63 +43,131 @@ events = [
        'url': 'http://127.0.0.1:5000/taskList',
     },
 ]
-app = Flask(__name__)     # create an app
+app = Flask(__name__)  # create an app
 socketio = SocketIO(app)
 
+
+# ///// DATABASE CONFIG /////
+# Configure database connection
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///flask_note_app.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS']= False
+# Disables a feature that signals the application every time a change is about to be made in the database
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'SE3155'
 
-#  Bind SQLAlchemy db object to this Flask app
+#  Binds SQLAlchemy db object to this Flask app
 db.init_app(app)
 
 # Setup models
 with app.app_context():
-    db.create_all()   # run under the app context
+    db.create_all()  # Run under the app context
 
-# @app.route is a decorator. It gives the function "index" special powers.
-# In this case it makes it so anyone going to "your-url/" makes this function
-# get called. What it returns is what is shown as the web page
+
+# ///// MOCK VARIABLES /////
+# User Info
+mock_user = {'name': 'Team CSBS'}
+
+# Project List
+mock_projects = {1: {'title': 'First Project'},
+                 2: {'title': 'Second Project'},
+                 3: {'title': 'Third Project'}
+                 }
+
+# Project Tasks List
+mock_tasks = {1: {'title': 'First Task', 'text': 'This is the first task'},
+              2: {'title': 'Second Task', 'text': 'This is the second task'},
+              3: {'title': 'Third Task', 'text': 'This is the third task'}
+              }
+
+
+# ///// ROUTES /////
+# - Home -
 @app.route('/')
-
 @app.route('/home')
 def home():
     return render_template('home.html')
 
+
+# - Site Overview -
 @app.route('/overview')
 def overview():
-    
+    # items = db_helper.fetch_todo()#
     return render_template('overview.html')
 
 
+# - My Work -
 @app.route('/myWork')
 def myWork():
     return render_template('myWork.html')
+
 
 @app.route('/aboutUs')
 def aboutUs():
     return render_template('aboutUs.html')
 
-#chat
+# ---------- Projects ----------
+# - Projects List -
+@app.route('/projects')
+def projects_list():
+    if session.get('user'):
+        my_projects = db.session.query(Project).filter_by(user_id=session['user_id']).all()
+
+        return render_template('projects_list.html', projects=my_projects, user=session['user'])
+    else:
+        return redirect(url_for('login'))
+
+
+# - Add Project -
+@app.route('/projects/create-project', methods=['GET', 'POST'])
+def create_project():
+
+    if request.method == 'POST':
+        # get project title data
+        title = request.form['title']
+        # get the last ID used and increment by 1
+        m_p_id = len(mock_projects) + 1
+        # create new project
+        mock_projects[m_p_id] = {'title': title}
+        # ready to render response - redirect to projects list
+        return redirect(url_for('projects_list'))
+    else:
+        # GET request - show 'create project' form
+        return render_template('create_project.html')
+
+
+# - Specific Project Page -
+@app.route('/projects/<project_id>')
+def project_overview(mock_project_id):
+    return render_template('project_overview.html', project=mock_projects[int(mock_project_id)])
+# -----------------------------------------------
+
+
+# ---------- Chat ----------
 @app.route('/chat')
 def chat():
     return render_template("chat.html")
 
+
+# - Chatroom -
 @app.route('/chatroom')
 def chatroom():
     username = request.args.get('username')
     room = request.args.get('room')
 
     if username and room:
-        return render_template('chatroom.html',username=username,room=room)
+        return render_template('chatroom.html', username=username, room=room)
     else:
         return redirect(url_for('chat'))
+
+
+# - Send Message -
 @socketio.on('send_message')
 def handle_send_message_event(data):
-    app.logger.info("{} has sent message to the room {}:{}".format(data['username'],data['room'],data['message']))
+    app.logger.info("{} has sent message to the room {}:{}".format(data['username'], data['room'], data['message']))
 
     socketio.emit('receive_message', data, room=data['room'])
 
+
+# - Join Room -
 @socketio.on('join_room')
 def handle_join_room_event(data):
     app.logger.info("{} has joined the room {}".format(data['username'], data['room']))
@@ -110,31 +178,58 @@ def handle_join_room_event(data):
 @app.route('/calendar')
 def calendar():
     return render_template("calendar.html",events=events)
+    
+# - Delete To-Do Task -
+@app.route("/delete/<int:task_id>", methods=['POST'])
+def delete(task_id):
+    """ recieved post requests for entry delete """
 
-@app.route('/add', methods=['GET','POST'])
-def add():
-    if request.method == "POST":
-        title = request.form['title']
-        start = request.form['start']
-        end = request.form['end']
-        url = request.form['url']
-        if end == '':
-            end=start
-        events.append({
-            'title':title,
-            'start':start,
-            'end':end,
-            'url':url
-        },
-        )
-    return render_template("add.html")
+    try:
+        db_helper.remove_task_by_id(task_id)
+        result = {'success': True, 'response': 'Removed task'}
+    except:
+        result = {'success': False, 'response': 'Something went wrong'}
+
+    return jsonify(result)
 
 
+# - Edit To-Do Task -
+@app.route("/edit/<int:task_id>", methods=['POST'])
+def update(task_id):
+    """ received post requests for entry updates """
 
-#Brought in from Flask#06
+    data = request.get_json()
+
+    try:
+        if "status" in data:
+            db_helper.update_status_entry(task_id, data["status"])
+            result = {'success': True, 'response': 'Status Updated'}
+        elif "description" in data:
+            db_helper.update_task_entry(task_id, data["description"])
+            result = {'success': True, 'response': 'Task Updated'}
+        else:
+            result = {'success': True, 'response': 'Nothing Updated'}
+    except:
+        result = {'success': False, 'response': 'Something went wrong'}
+
+    return jsonify(result)
+
+
+# - Create To-Do Task -
+@app.route("/create", methods=['POST'])
+def create():
+    """ receives post requests to add new task """
+    data = request.get_json()
+    db_helper.insert_new_task(data['description'])
+    result = {'success': True, 'response': 'Done'}
+    return jsonify(result)
+# -----------------------------------------------
+
+
+# ---------- Notes ----------
+# - Notes Overview -
 @app.route('/notes')
 def get_notes():
-
     if session.get('user'):
         my_notes = db.session.query(Note).filter_by(user_id=session['user_id']).all()
 
@@ -142,52 +237,54 @@ def get_notes():
     else:
         return redirect(url_for('login'))
 
-#Brought in from Flask#06
+
+# - Specific Note Page -
 @app.route('/notes/<note_id>')
 def get_note(note_id):
- if session.get('user'):
-     
-     my_note = db.session.query(Note).filter_by(id=note_id)
+    if session.get('user'):
 
-     form = CommentForm()
+        my_note = db.session.query(Note).filter_by(id=note_id)
 
-     return render_template('note.html', note=my_note, user=session['user'], form=form)
- else:
-     return redirect(url_for('login'))
+        form = CommentForm()
+
+        return render_template('note.html', note=my_note, user=session['user'], form=form)
+    else:
+        return redirect(url_for('login'))
 
 
-#Brought in from Flask#06
+# - Add Note -
 @app.route('/notes/new', methods=['GET', 'POST'])
 def new_note():
+    if session.get('user'):
+        if request.method == 'POST':
+            title = request.form['title']
+            text = request.form['noteText']
 
-   if session.get('user'):
-    if request.method == 'POST':
-        title = request.form['title']
-        text = request.form['noteText']
+            from datetime import date
+            today = date.today()
+            # format date mm/dd/yyyy
+            today = today.strftime("%m-%d-%Y")
 
-        from datetime import date
-        today = date.today()
-        #format date mm/dd/yyyy
-        today = today.strftime("%m-%d-%Y")
+            new_record = Note(title, text, today, session['user_id'])
+            db.session.add(new_record)
+            db.session.commit()
 
-        new_record = Note(title, text, today, session['user_id'])
-        db.session.add(new_record)
-        db.session.commit()
-
-        return redirect(url_for('get_notes'))
+            return redirect(url_for('get_notes'))
+        else:
+            a_user = db.session.query(User).filter_by(email='xdarkoh@uncc.edu').one()
+            return render_template('new.html', user=session['user'])
     else:
-        a_user = db.session.query(User).filter_by(email='xdarkoh@uncc.edu').one()
-        return render_template('new.html', user=session['user'])
-   else:
-     return redirect(url_for('login'))
+        return redirect(url_for('login'))
 
+
+# - Edit Note -
 @app.route('/notes/edit/<note_id>', methods=['GET', 'POST'])
 def update_note(note_id):
-    #GET request - show new note form to edit note
-  if session.get('user'):
-    #Retrieve user from database
+    # GET request - show new note form to edit note
+    if session.get('user'):
+        # Retrieve user from database
 
-    if request.method == 'POST':
+        if request.method == 'POST':
             title = request.form['title']
 
             text = request.form['noteText']
@@ -201,26 +298,50 @@ def update_note(note_id):
             db.session.commit()
 
             return redirect(url_for('get_notes'))
+        else:
+
+            my_note = db.session.query(Note).filter_by(id=note_id).one()
+            # Removed user=session('user') in below render template
+            return render_template('new.html', note=my_note)
     else:
-
-        my_note = db.session.query(Note).filter_by(id=note_id).one()
-#Removed user=session('user') in below render template
-        return render_template('new.html', note=my_note)
-  else:
-    return redirect(url_for('login'))
+        return redirect(url_for('login'))
 
 
-@app.route ('/notes/delete/<note_id>', methods=['POST'])
+# - Delete Note -
+@app.route('/notes/delete/<note_id>', methods=['POST'])
 def delete_note(note_id):
     if session.get('user'):
-        my_note= db.session.query(Note).filter_by(id=note_id).one()
+        my_note = db.session.query(Note).filter_by(id=note_id).one()
         db.session.delete(my_note)
-        db.session.commit()    
+        db.session.commit()
 
         return redirect(url_for('get_notes'))
     else:
         return redirect(url_for('login'))
 
+
+# - Add Comment -
+# Fix functionality to work with the add task functions
+@app.route('/notes/<note_id>/comment', methods=['POST'])
+def new_comment(note_id):
+    if session.get('user'):
+        comment_form = CommentForm()
+        # validate_on_submit only validates using POST
+        if comment_form.validate_on_submit():
+            # get comment data
+            comment_text = request.form['comment']
+            new_record = Comment(comment_text, int(note_id), session['user_id'])
+            db.session.add(new_record)
+            db.session.commit()
+
+        return redirect(url_for('get_note', note_id=note_id))
+
+    else:
+        return redirect(url_for('login'))
+# -----------------------------------------------
+
+
+# - User Registration -
 @app.route('/register', methods=['POST', 'GET'])
 def register():
     form = RegisterForm()
@@ -246,6 +367,8 @@ def register():
     # something went wrong - display register view
     return render_template('register.html', form=form)
 
+
+# - User Login -
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     login_form = LoginForm()
@@ -269,6 +392,8 @@ def login():
         # form did not validate or GET request
         return render_template("login.html", form=login_form)
 
+
+# - User Logout -
 @app.route('/logout')
 def logout():
     # check if a user is saved in session
