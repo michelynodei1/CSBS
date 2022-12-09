@@ -8,11 +8,15 @@
         <title>Projects</title>
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.css">
 
-        <!--Navigation Top Bar-->
+        <!-- Navigation Top Bar -->
+        <!-- TEMPORARY NAV LINKS: Most links are for easy navigation while testing -Rachel -->
         <ul class="topnav">
+            <li><img class="logo1" src="{{url_for('static', filename='csbs1.png')}}"  width="110" height="30"></li>
             <li><a href="{{ url_for('overview') }}">Overview</a></li>
             <li><a class="active" href="{{ url_for('projects_list') }}">Projects</a></li>
             <li><a href="{{ url_for('create_project') }}">Add Project</a></li>
@@ -20,6 +24,7 @@
     </head>
 
     <body class="topNavBody">
+        <!-- Collapsable Sidebar -->
         <div class="container">
             <div class="sidebar">
                 <div class="sidebartop">
@@ -31,7 +36,6 @@
                     </div>
                 </div>
 
-
                 <nav>
                     <ul>
                         <li><a href="{{ url_for('overview') }}"><i class="bi bi-compass"></i><span class="text">Overview</span></a></li>
@@ -41,18 +45,24 @@
                         <li><a href="#"><i class="bi bi-gear"></i><span class="text">Settings</span></a></li>
                         <li><a href="{{ url_for('logout') }}"><i class="bi bi-box-arrow-left"></i><span class="text">Logout</span></a></li>
                     </ul>
-
                 </nav>
 
-
                 <div class="account">
-
                     <div class="name">
                         <h4>CSBS</h4>
                     </div>
                 </div>
             </div>
         </div>
+
+    <!-- !!! POTENTIALLY NOT USING FOOTER !!! -->
+    <!--
+        <footer class="footer">
+            <div class="container">
+                <p class="text-muted"><small>App developed by CSBS</small></p>
+            </div>
+        </footer>
+    -->
 
         <main>
             <div class="center">
@@ -64,22 +74,26 @@
                 <table>
                     <tr>
                         <th class="greenishTextblackTextBox">" Title "</th>
-{#                      <th class="greenishTextblackTextBox"> Tasks </th>#}
-{#                      <th class="greenishTextblackTextBox"> Options </th>#}
-{#                      <th class="greenishTextblackTextBox"> Delete </th>#}
+                    <!--
+                        <th class="greenishTextblackTextBox"> Tasks </th>
+                        <th class="greenishTextblackTextBox"> Options </th>
+                        <th class="greenishTextblackTextBox"> Delete </th>
+                    -->
                     </tr>
+
                     {% for note in notes %}
                         <tr>
                             <td class="greenishTextblackTextBox"><a href="{{ url_for('projects_list', project_id=project.id) }}">{{ project.title }}</a></td>
-                            {# Below will be changed to a link to the project's tasks #}
-{#                          <td class="blackTextBox">{{ note.date }}</td>#}
-                            {# Below will be edit_project #}
-{#                          <td class="greenishTextblackTextBox"><a href="{{ url_for('update_note', note_id=note.id) }}">Edit/View</a></td>#}
-                            {# Below will be delete_project #}
-{#                          <td class="greenishTextblackTextBox">#}
-{#                              <form action="{{ url_for('delete_note', note_id=note.id) }}" method="post">#}
-{#                                  <input type="submit" value="Delete">#}
-{#                              </form>#}
+                        <!-- **NOTE**: Below will be changed to a link to the project's tasks
+                            <td class="blackTextBox">{{ note.date }}</td>
+                             **NOTE**: Below will be edit_project
+                            <td class="greenishTextblackTextBox"><a href="{{ url_for('update_note', note_id=note.id) }}">Edit/View</a></td>
+                             **NOTE**: Below will be delete_project
+                            <td class="greenishTextblackTextBox">
+                                <form action="{{ url_for('delete_note', note_id=note.id) }}" method="post">
+                                    <input type="submit" value="Delete">
+                                </form>
+                        -->
                             </td>
                         </tr>
                     {% endfor %}
