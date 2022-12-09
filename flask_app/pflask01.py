@@ -1,4 +1,5 @@
 # ///// IMPORTS /////
+from __future__ import print_function
 import os, sys, json, flask, flask_socketio, httplib2, uuid, bcrypt
 from flask import Flask, Response, render_template, request, redirect, url_for, jsonify, session
 from flask_sqlalchemy import SQLAlchemy
@@ -10,7 +11,6 @@ from models import Project as Project
 from models import Task as Task
 from forms import RegisterForm, LoginForm, CommentForm
 from flask_socketio import SocketIO, join_room
-from __future__ import print_function
 
 
 
@@ -341,7 +341,7 @@ def new_comment(note_id):
 # -----------------------------------------------
 
 
-# ---------- User Account ----------
+# ---------- User - Account ----------
 # - User Registration -
 @app.route('/register', methods=['POST', 'GET'])
 def register():
