@@ -1047,4 +1047,48 @@ color:#04AA6D;
     outline: 2px solid black;
 }
 
+/*SearchBar Formatting  */
+#searchbar{
+    margin-left: 10%;
+    padding:15px;
+    border-radius: 15px;
+    outline: 2px solid black;
+  }
 
+  input[type=text] {
+    width: 30%;
+    -webkit-transition: width 0.15s ease-in-out;
+    transition: width 0.15s ease-in-out;
+ }
+
+ /* When the input field gets focus,
+      change its width to 100% */
+ input[type=text]:focus {
+   width: 70%;
+ }
+
+#list{
+  font-size:  1.5em;
+  margin-left: 90px;
+ }
+
+ .animals{ 
+    display: list-item; 
+    color:#04AA6D;   
+} 
+
+/*button to change color of search results to be visible after pressing search*/
+.showResults{
+background-color: #ccc;
+color: #000000;
+border-color: #000000;
+
+
+}
+.showResults:hover{
+box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.coverWall{
+    background-color: #ddd;
+}
