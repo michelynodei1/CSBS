@@ -19,7 +19,7 @@
     </ul>
     </head>
 
-    <body class="topNavBody">
+    <body class="topNavBody1">
     <!--Collapsable Sidebar-->
     <div class="container">
         <div class="sidebar">
@@ -85,43 +85,54 @@
 
 
     <main>
-        <div class="center">
+        <div class="notehome1">
+        <h1>Welcome to the CSBS Notes Application!</h1>
+    </div>
+
+        <div class="notehome">
        <nav>
         
-        <a class="greenishText" href="{{ url_for('get_notes') }}"> My Notes</a> ||
-        <a class="greenishText" href="{{ url_for('new_note') }}">Add Note</a> 
+        <a class="link1" href="{{ url_for('get_notes') }}"> My Notes</a>
+         
          
        </nav>
 
       
     
-        <h1>Welcome to the CSBS Notes Application!</h1>
+        
         {%if note%}
         <form action="{{ url_for('update_note', note_id=note.id) }}" method="post">
         {% else %}
             <form action="new" method ="post">
         {% endif %}
-           <p class="greenishText"><label>Title</label></p>
-           <p><textarea type="text" name="title" value="{% if note %}{{note.title}} {% endif %}">
-
-            </textarea>
-           <p class="greenishText"><label>Note </label></p>
+        <div class="center2">
+           <p class="noteTitle"><label>Title</label></p>
+          
+           <p><input type="text" name="title" value="{% if note %}{{note.title}}{% endif %}"/></p>
+            
+           
+           <p class="noteTitle"><label>Note </label></p>
            <p>
-                <textarea name="noteText"  rows="9" cols="-10" >
+                <textarea name="noteText"  rows="15" cols="70" >
                     {% if note %}
                         {{note.text}}
                     {% else %}
-                    Add your new note here....
+                        
                     {% endif %}
 
                 </textarea>
             </p>
             <br>
             <p>
+            </div>
                 {% if note %}
-                    <input class="greenishTextblackTextBox" type="submit" value="Update Note"/> 
-                {% else %}
-                    <input type="submit" value="Add Note"/>
+                <div class="link5">
+                    <input class="link5" type="submit" value="Update Note"/> 
+                </div>
+                    {% else %}
+                <div class="link5">
+                    <input  class="link5" type="submit" value="Add Note"/>
+                </div>
                 {% endif %}
             </p>
         </form>

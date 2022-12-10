@@ -179,51 +179,7 @@ def taskList():
     return render_template('taskList.html')
 
 
-# - Create To-Do Task -
-@app.route("/create", methods=['POST'])
-def create():
-    """ receives post requests to add new task """
-    data = request.get_json()
-    db_helper.insert_new_task(data['description'])
-    result = {'success': True, 'response': 'Done'}
-    return jsonify(result)
 
-
-# - Delete To-Do Task -
-@app.route("/delete/<int:task_id>", methods=['POST'])
-def delete(task_id):
-    """ received post requests for entry delete """
-
-    try:
-        db_helper.remove_task_by_id(task_id)
-        result = {'success': True, 'response': 'Removed task'}
-    except:
-        result = {'success': False, 'response': 'Something went wrong'}
-
-    return jsonify(result)
-
-
-# - Edit To-Do Task -
-@app.route("/edit/<int:task_id>", methods=['POST'])
-def update(task_id):
-    """ received post requests for entry updates """
-
-    data = request.get_json()
-
-    try:
-        if "status" in data:
-            db_helper.update_status_entry(task_id, data["status"])
-            result = {'success': True, 'response': 'Status Updated'}
-        elif "description" in data:
-            db_helper.update_task_entry(task_id, data["description"])
-            result = {'success': True, 'response': 'Task Updated'}
-        else:
-            result = {'success': True, 'response': 'Nothing Updated'}
-    except:
-        result = {'success': False, 'response': 'Something went wrong'}
-
-    return jsonify(result)
-# -----------------------------------------------
 
 
 # ---------- Notes ----------
@@ -243,8 +199,7 @@ def get_notes():
 def get_note(note_id):
     if session.get('user'):
 
-        my_note = db.session.query(Note).filter_by(id=note_id)
-
+        my_note= db.session.query(Note).filter_by(id=note_id,user_id=session['user_id']).one()
         form = CommentForm()
 
         return render_template('note.html', note=my_note, user=session['user'], form=form)
@@ -410,6 +365,7 @@ def logout():
 def calendar():
     return render_template("calendar.html", events=events)
 
+
 @app.route('/add', methods=['GET','POST'])
 def add():
     if request.method == "POST":
@@ -428,6 +384,9 @@ def add():
         )
     return render_template("add.html")
 
+@app.route('/calendars')
+def calendars():
+    return render_template("calendars.html")
 
 # ///// HOST & PORT CONFIG /////
 if __name__ == '__main__':

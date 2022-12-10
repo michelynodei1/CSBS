@@ -39,7 +39,7 @@
                 <nav>
                     <ul>
                         <li><a href="{{ url_for('overview') }}"><i class="bi bi-compass"></i><span class="text">Overview</span></a></li>
-                        <li><a href="#"><i class="bi bi-calendar"></i><span class="text">Calendar</span></a></li>
+                        <li><a href="{{ url_for('calendar') }}"><i class="bi bi-calendar"></i><span class="text">Calendar</span></a></li>
                         <li><a href="{{ url_for('myWork') }}"><i class="bi bi-list-check"></i><span class="text">My Work</span></a></li>
                         <li><a href="{{ url_for('chat') }}"><i class="bi bi-chat"></i><span class="text">Chat</span></a></li>
                         <li><a href="#"><i class="bi bi-gear"></i><span class="text">Settings</span></a></li>
@@ -63,7 +63,7 @@
 
             <!-- Search Bar -->
             <div>
-                <input id="searchbar" onkeyup="search_animal()" type="text" name="search" placeholder="Search">
+                <input id="searchbar"  onkeyup="search_animal()" type="text" name="search" placeholder="Search">
                 <button type="button" class="showResults" onclick="hideResults()" id="click">ShowResults</button>
 
                 <!--
