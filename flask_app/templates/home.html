@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,43 +20,36 @@
                     <li><a href='#'>About Us</a></li>
                     <li><a href="{{url_for('register')}}">Register</a></li>
                     <li><a href="{{url_for('login')}}">Login</a></li>
-                    
+
                 </ul>
             </nav>
         </div>
-        <nav>
-            <ul id='MenuItems'>
-                <li><a href='#'>Home</a></li>
-                <li><a href='#'>About Us</a></li>
-                <li><a href="{{ url_for('register') }}">Register</a></li>
-                <li><a href="{{ url_for('login') }}">Login</a></li>
+        <h1 class="welcome">Welcome {% if user %}{{user}}{% endif %}to the CSBS Notes App!</h1>
 
-            </ul>
-        </nav>
-    </div>
-    <h1 class="welcome">Welcome {% if user %}{{ user }}{% endif %}to the CSBS Notes App!</h1>
+        <h2 class="welcome1">Use this site to maintain and organize your notes.</h2>
+        <div id='login-form'class='login-page'>
+            <div class="form-box">
+                <div class='button-box'>
+                    <div id='btn'></div>
+                    <button type='button'onclick='login()'class='toggle-btn'>Log In</button>
+                    <button type='button'onclick='register()'class='toggle-btn'>Register</button>
+                </div>
+            <form  method="POST" action="/login" id='login' class='input-group-login'>
 
-    <h2 class="welcome1">Use this site to maintain and organize your notes.</h2>
-    <div id='login-form' class='login-page'>
-        <div class="form-box">
-            <div class='button-box'>
-                <div id='btn'></div>
-                <button type='button' onclick='login()' class='toggle-btn'>Log In</button>
-                <button type='button' onclick='register()' class='toggle-btn'>Register</button>
+		 </form>
+		 <form id='register' class='input-group-register'>
+		     <input type='text'class='input-field'placeholder='First Name' required>
+		     <input type='text'class='input-field'placeholder='Last Name ' required>
+		     <input type='email'class='input-field'placeholder='Email Id' required>
+		     <input type='password'class='input-field'placeholder='Enter Password' required>
+		     <input type='password'class='input-field'placeholder='Confirm Password'  required>
+		     <input type='checkbox'class='check-box'><span>I agree to the terms and                                                   conditions</span>
+                    <button type='submit'class='submit-btn'>Register</button>
+	         </form>
             </div>
-            <form method="POST" action="/login" id='login' class='input-group-login'>
-
-            </form>
-            <form id='register' class='input-group-register'>
-                <input type='text' class='input-field' placeholder='First Name' required>
-                <input type='text' class='input-field' placeholder='Last Name ' required>
-                <input type='email' class='input-field' placeholder='Email Id' required>
-                <input type='password' class='input-field' placeholder='Enter Password' required>
-                <input type='password' class='input-field' placeholder='Confirm Password' required>
-                <input type='checkbox' class='check-box'><span>I agree to the terms and                                                   conditions</span>
-                <button type='submit' class='submit-btn'>Register</button>
-            </form>
         </div>
     </div>
-</body>
-</html>
+
+
+    </body>
+    </html>

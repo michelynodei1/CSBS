@@ -24,7 +24,6 @@
     </head>
 
     <body class="topNavBody">
-    
         <!-- Collapsable Sidebar -->
         <div class="container">
             <div class="sidebar">
@@ -36,21 +35,24 @@
                         <i class="bi bi-list"></i>
                     </div>
                 </div>
-                <!--Project and Chat Tab-->
+
+                <!-- Project and Chat Tab -->
+                <!--
                 <div class="tab">
                     <button class="tablinks" onclick="openCity(event, 'Project')">Projects</button>
                     <button class="tablinks" onclick="openCity(event, 'Chat')">Chat</button>
                 </div>
                 
                 <div id="Project" class="tabcontent">
-                  <h3>General?</h3>
-                  <p>Icons of the projects worked on and the name </p>
-                  </div>
+                    <h3>General?</h3>
+                    <p>Icons of the projects worked on and the name </p>
+                </div>
 
                 <div id="Chat" class="tabcontent">
-                  <h3>Chats</h3>
-                  <p>icon of user and an + sign</p>
+                    <h3>Chats</h3>
+                    <p>icon of user and an + sign</p>
                 </div>
+                -->
 
                 <nav>
                     <ul>
@@ -59,23 +61,20 @@
                         <li><a href="{{ url_for('myWork') }}"><i class="bi bi-list-check"></i><span class="text">My Work</span></a></li>
                         <li><a href="{{ url_for('chat') }}"><i class="bi bi-chat"></i><span class="text">Chat</span></a></li>
                         <li><a href="#"><i class="bi bi-gear"></i><span class="text">Settings</span></a></li>
+                        <li><a href="{{ url_for('logout') }}"><i class="bi bi-box-arrow-left"></i><span class="text">Logout</span></a></li>
                     </ul>
                 </nav>
               
                 <div class="account">
-                  <div class="avatar">
-                    <img src="/images/avatar.jpg" alt="">
-                  </div>
-                  <div class="name">
-                    <h4>CSBS</h4>
-                    Adminstrator
-                  </div>
-                  <div class="logout">
-                    <a href="#"><i class="bi bi-box-arrow-left"></i></a>
-                  </div>
+                    <div class="avatar">
+                        <img src="/images/avatar.jpg" alt="">
+                    </div>
+                    <div class="name">
+                        <h4>CSBS</h4>
+                    </div>
                 </div>
-              </div>
             </div>
+        </div>
 
         <!-- Page Content -->
         <div class="main">
