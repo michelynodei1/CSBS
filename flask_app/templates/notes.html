@@ -13,108 +13,117 @@
 
     <!--Navigation Top Bar-->
     <ul class="topnav">
-        <li> <img class="logo1" src="{{url_for('static', filename='csbs1.png')}}"  width="80" height="30"></li>
+        <li> <img class="logo1" src="{{url_for('static', filename='csbs1.png')}}" width="80" height="30"></li>
         <li><a href="#news">News</a></li>
     </ul>
 </head>
 
-<body class="topNavBody">
+<body class="topNavBody1">
 
-<!--Sidebar - collapsable sidebar-->
-<div class="container">
-    <div class="sidebar">
-        <div class="sidebartop">
-            <div class="logo">
-                {# !!! This produces no image on webpage due to source !!! #}
-                <img src="/images/logo.png" alt="">
+    <!--Sidebar - collapsable sidebar-->
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebartop">
+                <div class="logo">
+                    {# !!! This produces no image on webpage due to source !!! #}
+                    <img src="/images/logo.png" alt="">
+                </div>
+                <div class="menu">
+                    <i class="bi bi-list"></i>
+                </div>
             </div>
-            <div class="menu">
-                <i class="bi bi-list"></i>
+
+
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('overview') }}"><i class="bi bi-compass"></i><span
+                                class="text">Overview</span></a></li>
+                    <li><a href="#"><i class="bi bi-calendar"></i><span class="text">Calendar</span></a></li>
+                    <li><a href="{{ url_for('myWork') }}"><i class="bi bi-list-check"></i><span class="text">My
+                                Work</span></a></li>
+                    <li><a href="{{ url_for('chat') }}"><i class="bi bi-chat"></i><span class="text">Chat</span></a>
+                    </li>
+                    <li><a href="#"><i class="bi bi-gear"></i><span class="text">Settings</span></a></li>
+                    <li><a href="{{url_for('logout')}}"><i class="bi bi-box-arrow-left"></i><span
+                                class="text">Logout</span></a></li>
+                </ul>
+
+            </nav>
+
+
+
+            <div class="account">
+
+                <div class="name">
+                    <h4>CSBS</h4>
+
+                </div>
             </div>
-        </div>
-        
-
-        <nav>
-            <ul>
-                <li><a href="{{ url_for('overview') }}"><i class="bi bi-compass"></i><span class="text">Overview</span></a></li>
-                <li><a href="#"><i class="bi bi-calendar"></i><span class="text">Calendar</span></a></li>
-                <li><a href="{{ url_for('myWork') }}"><i class="bi bi-list-check"></i><span class="text">My Work</span></a></li>
-                <li><a href="{{ url_for('chat') }}"><i class="bi bi-chat"></i><span class="text">Chat</span></a></li>
-                <li><a href="#"><i class="bi bi-gear"></i><span class="text">Settings</span></a></li>
-                <li><a href="{{url_for('logout')}}"><i class="bi bi-box-arrow-left"></i><span class="text">Logout</span></a></li>
-            </ul>
-            
-        </nav>
-
-        
-          
-        <div class="account">
-            
-            <div class="name">
-                <h4>CSBS</h4>
-                
-            </div>
-        </div>
-    </div>
-
-    </div>
-</div>
-<!--Nav Bar My work -->
-<div class="navbar">
-
-    <!-- Navbar logo -->
-    <div class="nav-header">
-
-        <div class="nav-logo">
-            <img src="https://media.istockphoto.com/photos/hot-air-balloons-flying-over-the-botan-canyon-in-turkey-picture-id1297349747?b=1&k=20&m=1297349747&s=170667a&w=0&h=oH31fJty_4xWl_JQ4OIQWZKP8C6ji9Mz7L4XmEnbqRU=" width="50px" alt="logo">
-            <h2 class="title">My Work</h2>
         </div>
 
     </div>
-
-
-    <!-- Navbar items -->
-    <div class="nav-links">
-        <a href="#">Task</a>
-        <a href="#">Calendar</a>
-        <a href="{{ url_for('taskList') }}">To-Do List</a>
-        <a href="{{ url_for('get_notes') }}">Notes</a>
     </div>
-</div>
-    <nav>
-        <a href="{{ url_for('overview') }}"> Home</a> ||
-        <a href="{{ url_for('get_notes') }}"> My Notes</a> ||
-        <a href="{{ url_for('new_note') }}">Add Note</a> ||
-       
-    </nav>
+    <!--Nav Bar My work -->
+    <div class="navbar">
 
-    <nav>
-        <a href="{{ url_for('logout') }}">Logout</a>
-    </nav>
+        <!-- Navbar logo -->
+        <div class="nav-header">
 
+            <div class="nav-logo">
+                <img src="https://media.istockphoto.com/photos/hot-air-balloons-flying-over-the-botan-canyon-in-turkey-picture-id1297349747?b=1&k=20&m=1297349747&s=170667a&w=0&h=oH31fJty_4xWl_JQ4OIQWZKP8C6ji9Mz7L4XmEnbqRU="
+                    width="50px" alt="logo">
+                <h2 class="title">My Work</h2>
+            </div>
+
+        </div>
+
+
+        <!-- Navbar items -->
+        <div class="nav-links">
+            <a href="#">Task</a>
+            <a href="#">Calendar</a>
+            <a href="{{ url_for('taskList') }}">To-Do List</a>
+            <a href="{{ url_for('get_notes') }}">Notes</a>
+        </div>
+    </div>
+    
+
+
+<div class="notehome">
     <h1>Welcome {{user}} to the 49er Notes App!</h1>
     <h1>Listing notes</h1>
+</div>
+    <div class="notehome">
+        <nav>
+            <a  class="link1 "href="{{ url_for('get_notes') }}"> My Notes</a> ||
+            <a  class="link1"href="{{ url_for('new_note') }}">Add Note</a> 
+    
+        </nav>
+        <table class="center1">
 
-    <table>
-        <tr>
-            <th>Title</th>
-            <th>Date</th>
-        </tr>
-        {% for note in notes %}
-        <tr>
-            <td><a href="{{ url_for('get_note', note_id=note.id) }}">{{ note.title }}</a></td>
-            <td>{{ note.date }}</td>
-            <td><a href="{{ url_for('update_note', note_id=note.id) }}">Edit</a></td>
+            <tr class="noteTitle">
+                <th>Title</th>
+                <th>Date</th>
+            </tr>
 
-            <td>
-                <form action="{{ url_for('delete_note', note_id=note.id) }}" method="post">
-                    <input type="submit" value="Delete">
-                </form>
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
+            {% for note in notes %}
+            <tr>
+                <td><a class="link" href="{{ url_for('get_note', note_id=note.id) }}">{{ note.title }}</a></td>
+                <td class="dates">{{ note.date }}</td>
+                <td>
+                    <a class="link2" href="{{ url_for('update_note', note_id=note.id) }}">Edit</a>
+                </td>
+                <td class="delete">
+                    <form action="{{ url_for('delete_note', note_id=note.id) }}" method="post">
+                        <input type="submit" value="Delete">
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
 </body>
 
 <script src="{{ url_for('static', filename='init.js') }}"></script>
+
 </html>

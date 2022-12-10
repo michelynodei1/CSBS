@@ -15,7 +15,7 @@ form {
 }
 
 .title {
-  font-size: 1.7rem;
+  font-size: 35px;
   font-weight: 300;
   border-bottom: 1px solid #dbe3ec;
   padding: 5px;
@@ -29,11 +29,12 @@ form {
 	margin:2% auto;
 	background:rgba(255, 255, 255, 0.658);
 	padding:10px;
-    overflow: hidden;
+  overflow: hidden;
+ 
 }
 
 label {
-  font-size: .9em;
+  font-size: 20px;
   color: green;
   margin-bottom: 3px;
   display: block;

@@ -10,7 +10,7 @@ from models import Project as Project
 from models import Task as Task
 from forms import RegisterForm, LoginForm, CommentForm
 from flask_socketio import SocketIO, join_room
-from __future__ import print_function
+
 
 
 
@@ -302,7 +302,7 @@ def update_note(note_id):
 
             my_note = db.session.query(Note).filter_by(id=note_id).one()
             # Removed user=session('user') in below render template
-            return render_template('new.html', note=my_note)
+            return render_template('new.html', note=my_note,user=session['user'])
     else:
         return redirect(url_for('login'))
 
@@ -410,6 +410,23 @@ def logout():
 def calendar():
     return render_template("calendar.html", events=events)
 
+@app.route('/add', methods=['GET','POST'])
+def add():
+    if request.method == "POST":
+        title = request.form['title']
+        start = request.form['start']
+        end = request.form['end']
+        url = request.form['url']
+        if end == '':
+            end=start
+        events.append({
+            'title':title,
+            'start':start,
+            'end':end,
+            'url':url
+        },
+        )
+    return render_template("add.html")
 
 
 # ///// HOST & PORT CONFIG /////
