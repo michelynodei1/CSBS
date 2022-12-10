@@ -1,37 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='forms.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='homestyle.css') }}">
-    
 
-     
+
+
 </head>
-    <body>
-        <div class="full-page">
-            <div class="navbar">
-                <div>
-                    <a>CSBS</a>
-                </div>
-                <nav>
-                    <ul id='MenuItems'>
-                        <li><a href="{{url_for('home')}}">Home</a></li>
-                        {% if user %}<li><a href="{{url_for('aboutUs')}}">About Us</a></li>
-                        {% else %}<li><a href="{{url_for('login')}}">Login</a></li>
-                                  <li><a href="{{url_for('register')}}">Register</a></li>
-                        {% endif %}<li><a href="{{url_for('logout')}}">Logout</a></li>
-                    </ul>
-                </nav>
-            </div>
-        
 
-        <h1 class="welcome1">Welcome {% if user %}{{user}}{% endif %}to the CSBS Notes App!</h1>
+<body>
+    <div class="full-page">
+        <div class="navbar">
+            <div>
+                <a>CSBS</a>
+            </div>
+            <nav>
+                <ul id='MenuItems'>
+                    <li><a href="{{url_for('home')}}">Home</a></li>
+                    <li><a href="{{url_for('aboutUs')}}">About Us</a></li>
+                    <li><a href="{{url_for('login')}}">Login</a></li>
+                    {% if user %} <li><a href="{{url_for('logout')}}">Logout</a></li>
+                    {% else %} <li><a href="{{url_for('register')}}">Register</a></li>
+                    {% endif %}<li><a href="{{url_for('logout')}}">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+
+
+        <h1 class="welcome4">Welcome {% if user %}{{user}}{% endif %}to the CSBS Notes App!</h1>
         <h3>{{ message }}</h3>
-        
-         <div class="formwrapper">
+
+        <div class="formwrapper">
             <h2 class="title">Register</h2>
             <form method="POST" action="/register">
                 <div class="form-field">{{ form.firstname.label }} {{ form.firstname }}
@@ -83,5 +86,7 @@
             </form>
 
         </div>
-    </body>
+    </div>
+</body>
+
 </html>
