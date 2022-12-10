@@ -12,10 +12,9 @@ h2.welcome {
     background: green;
 }
 
-/*Top Navigation Bar */
+/* /// TOP NAVIGATION BAR /// */
 .topnav {
     list-style-type: none;
-
     padding: 0;
     margin: 0;
     overflow: hidden;
@@ -35,10 +34,11 @@ li a {
 }
 
 li a:hover {
-    background-color: #111;
+    background-color: #504e4e;
+    color: white;
 }
 
-/*SIDE navigation Bar*/
+/* /// SIDE NAVIGATION BAR /// */
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
 .topNavBody {
@@ -237,13 +237,12 @@ li a:hover {
 
 .container .main {
     border: 3px solid green;
-
     position: relative;
     width: 100%;
     padding: 10px;
 }
 
-/*Collapsed Navigation Bar*/
+/* /// COLLAPSED NAVIGATION BAR /// */
 .short .sidebar {
     width: 5%;
     text-align: center;
@@ -772,6 +771,7 @@ td.notesdata{
    padding-bottom: 10px;
    font-family:Arial, Helvetica, sans-serif;
 }
+
 td{
     
     text-align: left;
@@ -1038,8 +1038,6 @@ color:#04AA6D;
 .centertext {
     margin: auto;
     width: 50%;
-
-
 }
 
 .blackTextBox {

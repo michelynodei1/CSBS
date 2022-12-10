@@ -1,4 +1,4 @@
-/* ADDED BY ME -Rachel */
+/*  ***Remember to put the dot (.) before the name and give unique name***
 *{
     padding: 0;
     margin: 0;
@@ -18,12 +18,10 @@ form {
     padding-top: 4%;
     padding-left: 10%;
 }
+*/
 
 
-
-/* COPIED FROM PROJECT'S MAIN.CSS */
-
-/* - Top Navigation Bar - */
+/*///////  TOP NAVIGATION BAR  ///////*/
 .topnav {
     list-style-type: none;
     margin: 0;
@@ -44,21 +42,25 @@ li a {
     text-decoration: none;
 }
 
-li a:hover {
-    background-color: #504e4e;
-}
-
-/* - Hover Effects - */
+/* -- Hover Effects -- */
 .navbar .nav-links a:hover {
     background-color: rgba(0, 0, 0, 0.3);
 }
 
-/* - Responsive Navbar Toggle Button - */
-.navbar #nav-check, .navbar .nav-btn {
-    display: none;
+li a:hover {
+    background-color: #504e4e;
+    color: white;
 }
 
 .active {
     background-color: #04AA6D;
     color: white;
+}
+/*//////////////////////////////////////*/
+
+
+
+/* - Responsive Navbar Toggle Button - */
+.navbar #nav-check, .navbar .nav-btn {
+    display: none;
 }

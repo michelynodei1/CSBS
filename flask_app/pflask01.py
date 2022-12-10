@@ -1,4 +1,5 @@
 # ///// IMPORTS /////
+from __future__ import print_function
 import os, sys, json, flask, flask_socketio, httplib2, uuid, bcrypt
 from flask import Flask, Response, render_template, request, redirect, url_for, jsonify, session
 from flask_sqlalchemy import SQLAlchemy
@@ -13,10 +14,25 @@ from flask_socketio import SocketIO, join_room
 
 
 
-
 # ///// APP CREATION /////
 app = Flask(__name__)  # create an app
 socketio = SocketIO(app)
+
+
+
+# ///// DATABASE CONFIG /////
+# Configure database connection
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///flask_note_app.db'
+# Disables a feature that signals the application every time a change is about to be made in the database
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SECRET_KEY'] = 'SE3155'
+
+#  Binds SQLAlchemy db object to this Flask app
+db.init_app(app)
+
+# Setup models
+with app.app_context():
+    db.create_all()  # Run under the app context
 
 
 
@@ -35,22 +51,6 @@ events = [
         'url': 'http://127.0.0.1:5000/taskList',
     },
 ]
-
-
-
-# ///// DATABASE CONFIG /////
-# Configure database connection
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///flask_note_app.db'
-# Disables a feature that signals the application every time a change is about to be made in the database
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = 'SE3155'
-
-#  Binds SQLAlchemy db object to this Flask app
-db.init_app(app)
-
-# Setup models
-with app.app_context():
-    db.create_all()  # Run under the app context
 
 
 
@@ -341,7 +341,7 @@ def new_comment(note_id):
 # -----------------------------------------------
 
 
-# ---------- User Account ----------
+# ---------- User - Account ----------
 # - User Registration -
 @app.route('/register', methods=['POST', 'GET'])
 def register():
