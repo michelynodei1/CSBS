@@ -36,24 +36,6 @@
                     </div>
                 </div>
 
-                <!-- Project and Chat Tab -->
-                <!--
-                <div class="tab">
-                    <button class="tablinks" onclick="openCity(event, 'Project')">Projects</button>
-                    <button class="tablinks" onclick="openCity(event, 'Chat')">Chat</button>
-                </div>
-                
-                <div id="Project" class="tabcontent">
-                    <h3>General?</h3>
-                    <p>Icons of the projects worked on and the name </p>
-                </div>
-
-                <div id="Chat" class="tabcontent">
-                    <h3>Chats</h3>
-                    <p>icon of user and an + sign</p>
-                </div>
-                -->
-
                 <nav>
                     <ul>
                         <li><a href="{{ url_for('overview') }}"><i class="bi bi-compass"></i><span class="text">Overview</span></a></li>
@@ -64,11 +46,8 @@
                         <li><a href="{{ url_for('logout') }}"><i class="bi bi-box-arrow-left"></i><span class="text">Logout</span></a></li>
                     </ul>
                 </nav>
-              
+
                 <div class="account">
-                    <div class="avatar">
-                        <img src="/images/avatar.jpg" alt="">
-                    </div>
                     <div class="name">
                         <h4>CSBS</h4>
                     </div>
@@ -78,30 +57,34 @@
 
         <!-- Page Content -->
         <div class="main">
-        
+
             <h1>OVERVIEW</h1>
             <br>
+
+            <!-- Search Bar -->
+            <div>
+                <input id="searchbar" onkeyup="search_animal()" type="text" name="search" placeholder="Search">
+                <button type="button" class="showResults" onclick="hideResults()" id="click">ShowResults</button>
+
+                <!--
+                <ol class="centerText">
+                    <a href="{{ url_for('get_notes') }}" class="animals"><b>Bring me to my notes</b></a>
+                    <a href="{{ url_for('get_notes') }}" class="animals"><b>Display my notes</b></a>
+                    <a href="{{ url_for('get_notes') }}" class="animals"><b>Show me my Calendar</b></a>
+                    <a href="{{ url_for('get_notes') }}" class="animals"><b>Find me what I need to do for the next couple weeks</b></a>
+                    <a href="{{ url_for('taskList') }}" class="animals"><b>Show me a List of My Tasks</b></a>
+                    <a href="{{ url_for('chat') }}" class="animals"><b>Bring me to the chatroom</b></a>
+                    <a href="{{ url_for('new_note') }}" class="animals"><b>Create a New Note</b></a>
+                    <a href="{{ url_for('myWork') }}" class="animals"><b>Show Me My Work</b></a>
+                    <a href="{{ url_for('get_notes') }}" class="animals"><b>Show Me My projects</b></a>
+                    <a href="{{ url_for('chat') }}" class="animals"><b>Send a Direct Message</b></a>
+                </ol>
+                -->
+            </div>
+
             <br>
-
-            <!--Search Bar Section-->
-            <!-- input tag -->
-            <input id="searchbar" onkeyup="search_animal()" type="text" name="search" placeholder="Searchbar..">
-
-            <button type="button" class="showResults" onclick="hideResults()" id="click">ShowResults</button>
-
-            <!-- ordered list -->
-            <ol class="centerText">
-              <a href="{{ url_for('get_notes') }}" class="animals"><b>Bring me to my notes</b></a>
-              <a href="{{ url_for('get_notes') }}" class="animals"><b>Display my notes</b></a>
-              <a href="{{ url_for('get_notes') }}" class="animals"><b>Show me my Calendar</b></a>
-              <a href="{{ url_for('get_notes') }}" class="animals"><b>Find me what I need to do for the next couple weeks</b></a>
-              <a href="{{ url_for('taskList') }}" class="animals"><b>Show me a List of My Tasks</b></a>
-              <a href="{{ url_for('chat') }}" class="animals"><b>Bring me to the chatroom</b></a>
-              <a href="{{ url_for('new_note') }}" class="animals"><b>Create a New Note</b></a>
-              <a href="{{ url_for('myWork') }}" class="animals"><b>Show Me My Work</b></a>
-              <a href="{{ url_for('get_notes') }}" class="animals"><b>Show Me My projects</b></a>
-              <a href="{{ url_for('chat') }}" class="animals"><b>Send a Direct Message</b></a>
-            </ol>
+            <br>
+            <br>
 
             <div>
                 <h3>
