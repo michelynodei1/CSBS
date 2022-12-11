@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="UNCC Notes App">
-    <title>UNCC Notes App - View your Note</title>
+    <title>CSBS|NOTE</title>
+    <link rel="icon" type="image/jpg" href="{{ url_for('static', filename='csbs2.jpg') }}">
     <!-- styles -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
@@ -39,7 +40,7 @@
                 <ul>
                     <li><a href="{{ url_for('overview') }}"><i class="bi bi-compass"></i><span
                                 class="text">Overview</span></a></li>
-                    <li><a href="#"><i class="bi bi-calendar"></i><span class="text">Calendar</span></a></li>
+                    <li><a href="{{ url_for('calendars') }}"><i class="bi bi-calendar"></i><span class="text">Calendar</span></a></li>
                     <li><a href="{{ url_for('myWork') }}"><i class="bi bi-list-check"></i><span class="text">My
                                 Work</span></a></li>
                     <li><a href="{{ url_for('chat') }}"><i class="bi bi-chat"></i><span class="text">Chat</span></a>
@@ -50,7 +51,6 @@
                 </ul>
 
             </nav>
-
 
 
             <div class="account">
@@ -82,7 +82,7 @@
         <!-- Navbar items -->
         <div class="nav-links">
             <a href="#">Task</a>
-            <a href="#">Calendar</a>
+            <a href="{{ url_for('calendar') }}">Calendar</a>
             <a href="{{ url_for('taskList') }}">To-Do List</a>
             <a href="{{ url_for('get_notes') }}">Notes</a>
         </div>

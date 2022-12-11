@@ -5,7 +5,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="Overview of All Projects/Tasks/To-Dos">
-        <title>Overview</title>
+        <title>CSBS|OVERVIEW</title>
+        <link rel="icon" type="image/jpg" href="{{ url_for('static', filename='csbs2.jpg') }}">
 
         <!-- Styles -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
@@ -39,7 +40,7 @@
                 <nav>
                     <ul>
                         <li><a href="{{ url_for('overview') }}"><i class="bi bi-compass"></i><span class="text">Overview</span></a></li>
-                        <li><a href="{{ url_for('calendar') }}"><i class="bi bi-calendar"></i><span class="text">Calendar</span></a></li>
+                        <li><a href="{{ url_for('calendars') }}"><i class="bi bi-calendar"></i><span class="text">Calendar</span></a></li>
                         <li><a href="{{ url_for('myWork') }}"><i class="bi bi-list-check"></i><span class="text">My Work</span></a></li>
                         <li><a href="{{ url_for('chat') }}"><i class="bi bi-chat"></i><span class="text">Chat</span></a></li>
                         <li><a href="#"><i class="bi bi-gear"></i><span class="text">Settings</span></a></li>
@@ -66,7 +67,7 @@
                 <input id="searchbar"  onkeyup="search_animal()" type="text" name="search" placeholder="Search">
                 <button type="button" class="showResults" onclick="hideResults()" id="click">ShowResults</button>
 
-                <!--
+               
                 <ol class="centerText">
                     <a href="{{ url_for('get_notes') }}" class="animals"><b>Bring me to my notes</b></a>
                     <a href="{{ url_for('get_notes') }}" class="animals"><b>Display my notes</b></a>
@@ -79,7 +80,7 @@
                     <a href="{{ url_for('get_notes') }}" class="animals"><b>Show Me My projects</b></a>
                     <a href="{{ url_for('chat') }}" class="animals"><b>Send a Direct Message</b></a>
                 </ol>
-                -->
+             
             </div>
 
             <br>

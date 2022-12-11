@@ -360,30 +360,14 @@ def logout():
 # -----------------------------------------------
 
 
-# - Calendar -
+# -Personal Calendar -
 @app.route('/calendar')
 def calendar():
-    return render_template("calendar.html", events=events)
+    return render_template("calendar.html")
 
 
-@app.route('/add', methods=['GET','POST'])
-def add():
-    if request.method == "POST":
-        title = request.form['title']
-        start = request.form['start']
-        end = request.form['end']
-        url = request.form['url']
-        if end == '':
-            end=start
-        events.append({
-            'title':title,
-            'start':start,
-            'end':end,
-            'url':url
-        },
-        )
-    return render_template("add.html")
 
+#Group Calendar
 @app.route('/calendars')
 def calendars():
     return render_template("calendars.html")

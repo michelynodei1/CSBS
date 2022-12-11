@@ -1,87 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+    <title>CSBS|CALENDAR</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+
     <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}" />
-    <title>Calendar with Events</title>
-  </head>
-  <body>
+   
+    <link rel="icon" type="image/jpg" href="{{ url_for('static', filename='csbs2.jpg') }}">
+    <!--Navigation Top Bar-->
+    <div class="topnav2">
+        <ul class="topnav">
+            <li> <img class="logo1" src="{{url_for('static', filename='csbs1.png')}}" width="80" height="30"></li>
+            <li><a class="active" href="#home">Home</a></li>
+        </ul>
+    </div>
+</head>
+
+<div class="topNavBody3">
+    <!--SiDe bar collapsable side bar-->
+
+
     <div class="container">
-      <div class="left">
-        <div class="calendar">
-          <div class="month">
-            <i class="fas fa-angle-left prev"></i>
-            <div class="date">december 2015</div>
-            <i class="fas fa-angle-right next"></i>
-          </div>
-          <div class="weekdays">
-            <div>Sun</div>
-            <div>Mon</div>
-            <div>Tue</div>
-            <div>Wed</div>
-            <div>Thu</div>
-            <div>Fri</div>
-            <div>Sat</div>
-          </div>
-          <div class="days"></div>
-          <div class="goto-today">
-            <div class="goto">
-              <input type="text" placeholder="mm/yyyy" class="date-input" />
-              <button class="goto-btn">Go</button>
+        <div class="sidebar">
+            <div class="sidebartop">
+                <div class="logo">
+                    <img src="/images/logo.png" alt="">
+                </div>
+                <div class="menu">
+                    <i class="bi bi-list"></i>
+                </div>
             </div>
-            <button class="today-btn">Today</button>
-          </div>
+
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('overview') }}"><i class="bi bi-compass"></i><span
+                                class="text">Overview</span></a></li>
+                    <li><a href="{{ url_for('calendars') }}"><i class="bi bi-calendar"></i><span class="text">Calendar</span></a></li>
+                    <li><a href="{{ url_for('myWork') }}"><i class="bi bi-list-check"></i><span class="text">My
+                                Work</span></a></li>
+                    <li><a href="{{ url_for('chat') }}"><i class="bi bi-chat"></i><span class="text">Chat</span></a>
+                    </li>
+                    <li><a href="#"><i class="bi bi-gear"></i><span class="text">Settings</span></a></li>
+                    <li><a href="{{url_for('logout')}}"><i class="bi bi-box-arrow-left"></i><span
+                                class="text">Logout</span></a></li>
+                </ul>
+
+            </nav>
+
+
+
+            <div class="account">
+
+                <div class="name">
+                    <h4>CSBS</h4>
+
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="right">
-        <div class="today-date">
-          <div class="event-day">wed</div>
-          <div class="event-date">12th december 2022</div>
+    </div>
+</div>
+
+
+
+    <div class="container">
+        <div class="left">
+            <div class="calendar">
+                <div class="month">
+                    <i class="fas fa-angle-left prev"></i>
+                    <div class="date">december 2015</div>
+                    <i class="fas fa-angle-right next"></i>
+                </div>
+                <div class="weekdays">
+                    <div>Sun</div>
+                    <div>Mon</div>
+                    <div>Tue</div>
+                    <div>Wed</div>
+                    <div>Thu</div>
+                    <div>Fri</div>
+                    <div>Sat</div>
+                </div>
+                <div class="days"></div>
+                <div class="goto-today">
+                    <div class="goto">
+                        <input type="text" placeholder="mm/yyyy" class="date-input" />
+                        <button class="goto-btn">Go</button>
+                    </div>
+                    <button class="today-btn">Today</button>
+                </div>
+            </div>
         </div>
-        <div class="events"></div>
-        <div class="add-event-wrapper">
-          <div class="add-event-header">
-            <div class="title">Add Event</div>
-            <i class="fas fa-times close"></i>
-          </div>
-          <div class="add-event-body">
-            <div class="add-event-input">
-              <input type="text" placeholder="Event Name" class="event-name" />
+        <div class="right">
+            <div class="today-date">
+                <div class="event-day">wed</div>
+                <div class="event-date">12th december 2022</div>
             </div>
-            <div class="add-event-input">
-              <input
-                type="text"
-                placeholder="Event Time From"
-                class="event-time-from"
-              />
+            <div class="events"></div>
+            <div class="add-event-wrapper">
+                <div class="add-event-header">
+                    <div class="title">Add Event</div>
+                    <i class="fas fa-times close"></i>
+                </div>
+                <div class="add-event-body">
+                    <div class="add-event-input">
+                        <input type="text" placeholder="Event Name" class="event-name" />
+                    </div>
+                    <div class="add-event-input">
+                        <input type="text" placeholder="Event Time From" class="event-time-from" />
+                    </div>
+                    <div class="add-event-input">
+                        <input type="text" placeholder="Event Time To" class="event-time-to" />
+                    </div>
+                </div>
+                <div class="add-event-footer">
+                    <button class="add-event-btn">Add Event</button>
+                </div>
             </div>
-            <div class="add-event-input">
-              <input
-                type="text"
-                placeholder="Event Time To"
-                class="event-time-to"
-              />
-            </div>
-          </div>
-          <div class="add-event-footer">
-            <button class="add-event-btn">Add Event</button>
-          </div>
         </div>
-      </div>
-      <button class="add-event">
-        <i class="fas fa-plus"></i>
-      </button>
+        <button class="add-event">
+            <i class="fas fa-plus"></i>
+        </button>
     </div>
 
-    <script src="{{url_for('static', filename='script.js')}}"></script>
-  </body>
+
+
+
+<script src="{{url_for('static', filename='script.js')}}"></script>
+<script src="{{url_for('static', filename='init.js')}}"></script>
+</body>
+
 </html>
