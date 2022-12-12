@@ -81,7 +81,7 @@
 
                     {% for project in projects %}
                         <tr>
-                            <td class="greenishTextblackTextBox">{{ project.title }}<a href="{{ url_for('project_overview', project_id=project.id) }}"></a></td>
+                            <td class="greenishTextblackTextBox"><a href="{{ url_for('project_overview', project_id=project.id) }}">{{ project.title }}</a></td>
                             <td class="greenishTextblackTextBox">{{ project.created }}</td>
                         </tr>
                     {% endfor %}

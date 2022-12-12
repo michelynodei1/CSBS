@@ -14,7 +14,6 @@ from flask_socketio import SocketIO, join_room
 
 
 
-
 # ///// APP CREATION /////
 app = Flask(__name__)  # create an app
 socketio = SocketIO(app)
@@ -101,6 +100,7 @@ def create_project():
             # get project title data
             title = request.form['title']
             # create date stamp
+            from datetime import date
             today = date.today()
             # format date mm/dd/yyy
             today = today.strftime("%m-%d-%Y")
@@ -121,8 +121,8 @@ def create_project():
 @app.route('/projects/<project_id>')
 def project_overview(project_id):
     if session.get('user'):
-        a_project = db.session.query(Project).filter_by(id=project_id, user=session['user']).one()
-        return render_template('project_overview.html', project=a_project, user=session['user'], form=form)
+        a_project = db.session.query(Project).filter_by(id=project_id).one()
+        return render_template('project_overview.html', project=a_project, user=session['user'])
     else:
         return redirect(url_for('login'))
 
