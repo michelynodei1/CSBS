@@ -1004,7 +1004,21 @@ input:checked~.bubble::after {
     color:rgb(171, 151, 4);
 
 }
+.notehome2 {
+    border: 3px solid rgb(171, 151, 4);
+    float: center;
+    width: 50%;
+    height: 100%;
+    overflow: auto;
+    margin-left: 400px;
+    margin-top: 200px;
+    padding: 50px;
+    font-size: 20px;
+    padding-top: 25px;
+    background-color: rgba(241, 241, 241, 0.858);
+    text-align: center;
 
+}
 
 .center2 input[type="text"]
 {
