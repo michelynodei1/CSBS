@@ -178,54 +178,6 @@ def taskList():
 
     return render_template('taskList.html')
 
-
-# - Create To-Do Task -
-@app.route("/create", methods=['POST'])
-def create():
-    """ receives post requests to add new task """
-    data = request.get_json()
-    db_helper.insert_new_task(data['description'])
-    result = {'success': True, 'response': 'Done'}
-    return jsonify(result)
-
-
-# - Delete To-Do Task -
-@app.route("/delete/<int:task_id>", methods=['POST'])
-def delete(task_id):
-    """ received post requests for entry delete """
-
-    try:
-        db_helper.remove_task_by_id(task_id)
-        result = {'success': True, 'response': 'Removed task'}
-    except:
-        result = {'success': False, 'response': 'Something went wrong'}
-
-    return jsonify(result)
-
-
-# - Edit To-Do Task -
-@app.route("/edit/<int:task_id>", methods=['POST'])
-def update(task_id):
-    """ received post requests for entry updates """
-
-    data = request.get_json()
-
-    try:
-        if "status" in data:
-            db_helper.update_status_entry(task_id, data["status"])
-            result = {'success': True, 'response': 'Status Updated'}
-        elif "description" in data:
-            db_helper.update_task_entry(task_id, data["description"])
-            result = {'success': True, 'response': 'Task Updated'}
-        else:
-            result = {'success': True, 'response': 'Nothing Updated'}
-    except:
-        result = {'success': False, 'response': 'Something went wrong'}
-
-    return jsonify(result)
-# -----------------------------------------------
-
-
 # ---------- Notes ----------
 # - Notes Overview -
 @app.route('/notes')
