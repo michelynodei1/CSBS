@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>CSBS|HOMEPAGE</title>
     <link rel="icon" type="image/jpg" href="{{ url_for('static', filename='csbs2.jpg') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='homestyle.css') }}">
-    
+
     <!---we had linked our css file----->
 </head>
+
 <body>
     <div class="full-page">
         <div class="navbar">
             <div>
-                <a><img class="logo" src="{{url_for('static', filename='csbs1.png')}}" alt="csbs logo" width="150" height="70"></a>
+                <a><img class="logo" src="{{url_for('static', filename='csbs1.png')}}" alt="csbs logo" width="150"
+                        height="70"></a>
             </div>
             <nav>
                 <ul id='MenuItems'>
@@ -20,14 +23,42 @@
                     <li><a href="{{url_for('aboutUs')}}">About Us</a></li>
                     <li><a href="{{url_for('register')}}">Register</a></li>
                     <li><a href="{{url_for('login')}}">Login</a></li>
-                    
+
                 </ul>
             </nav>
         </div>
-        
-    </div>
+        <div class="aboutdiv">
+
+            <h1 class="welcome2">ABOUT US</h1>
+            <div class="fade-in-image">
+                <img id="img1" src="{{url_for('static', filename='group.jpg')}}" width="500px">
+            </div>
+            <div class="about">
+               
+                <p>The CSBS is committed to being the recognized leader for competitive, innovative, and
+                    market-responsive
+                    computing and informatics education in the form of creating notes.
+                    Through this commitment, CSBS develops focused, trend-setting research excellence with national and
+                    international recognition,
+                    and is recognized as the industry leader for partnerships and project collaborations.</p>
+
+                <h3>Undergraduate Studies </h3>
+
+
+                <p>The College of Computing and Informatics (CCI) offers a B.S. and a B.A. in Computer Science (CS)
+                <p>Computer science students at CCI have the opportunity to engage in research,
+                    get involved in student organizations and collaborate on interdisciplinary teams
+                    in addition to learning about entrepreneurship and starting companies while
+                    competing in computing contests, networking with corporate recruiters and
+                    interning at top companies. Students graduate with the skills and knowledge
+                    to pursue rewarding careers or continue their studies in graduate school. as well as opportunities
+                    to earn a CS Minor or an undergraduate certificate in Game Design.In addition, the College offers an
+                    Honors program and an Early Entry program.</p>
+            </div>
+        </div>
     
-	
-    
-    </body>
-    </html>
+
+
+</body>
+
+</html>

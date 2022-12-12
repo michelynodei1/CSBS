@@ -9,7 +9,7 @@
     <!---we had linked our css file----->
 </head>
 <body>
-    <div class="full-page">
+    <div class="full-page1">
         <div class="navbar">
             <div>
                 <a><img class="logo" src="{{url_for('static', filename='csbs1.png')}}" alt="csbs logo" width="150" height="70"></a>
@@ -49,33 +49,7 @@
             </div>
         </div>
     </div>
-    <script>
-        var x=document.getElementById('login');
-		var y=document.getElementById('register');
-		var z=document.getElementById('btn');
-		function register()
-		{
-			x.style.left='-400px';
-			y.style.left='50px';
-			z.style.left='110px';
-		}
-		function login()
-		{
-			x.style.left='50px';
-			y.style.left='450px';
-			z.style.left='0px';
-		}
-	</script>
-	<script>
-        var modal = document.getElementById('login-form');
-        window.onclick = function(event) 
-        {
-            if (event.target == modal) 
-            {
-                modal.style.display = "none";
-            }
-        }
-    </script>
+    
     
     </body>
     </html>

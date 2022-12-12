@@ -247,4 +247,32 @@ $(document).ready(function() {
             })
 });
 
- 
+function search_animal() {
+    let input = document.getElementById('searchbar').value
+    input=input.toLowerCase();
+    let x = document.getElementsByClassName('animals');  
+
+    
+      
+    for (i = 0; i < x.length; i++) { 
+        if (!x[i].innerHTML.toLowerCase().includes(input)) {
+            x[i].style.display="none";
+        }
+        else {
+            x[i].style.display="list-item";                 
+        }
+    }
+}
+
+function changeTextColor() {
+    let button = document.getElementById("animals"); // access the button by id
+
+    let color = button.style.color;
+    
+    if (color == "white") { // if button color is white change it green otherwise change it to white.
+       document.getElementById("animals").style.color = 'green';
+    } 
+    else {
+        document.getElementById("animals").style.color = 'white';
+    }
+}

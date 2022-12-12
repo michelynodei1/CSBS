@@ -7,26 +7,51 @@
 
 .welcome
 {
+ font-size:50px ;
   color:white;
   text-align: center;
   margin-top: 15%;
 }
 .welcome1
 {
+	font-size:25px ;
   color:white;
   text-align: center;
 }
-
+.welcome3{
+	margin-top: 10%;
+	font-size:40px ;
+	text-align: center;
+	color:#04AA6D;
+}
+.welcome4
+{
+margin-top:10% ;
+font-size:40px ;
+  color:white;
+  text-align: center;
+}
 .full-page
 {
-    height: 100%;
+    
 	width: 100%;
 	background-image: linear-gradient(rgba(0, 0, 0, 0.304),rgba(0,0,0,0.9)),url(green\ background.jpg);
 	background-position: center;
 	background-size: cover;
 	position: absolute;
-    background-repeat: repeat;
-
+	background-attachment: fixed;
+    
+}
+.full-page1
+{
+    height:100%;
+	width: 100%;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.304),rgba(0,0,0,0.9)),url(green\ background.jpg);
+	background-position: center;
+	background-size: cover;
+	position: absolute;
+	background-attachment: fixed;
+    
 }
 .navbar
 {
@@ -90,6 +115,7 @@ a
 .form-box
 {
     width:380px;
+	
 	height:480px;
 	position:relative;
 	margin:2% auto;
@@ -191,4 +217,52 @@ span
 {
 	color:white;
 	font-size: 15;
+}
+/*Home Page*/
+/*about us Image*/
+.about
+{
+	font-family: Arial, Helvetica, sans-serif;
+	margin-top: 10%;
+	text-align: justify;
+	width:80%;
+	margin-left: 10%;
+	font-size:25px;
+	
+}
+.aboutdiv
+{  margin-top: 10%;
+	margin-left: 25%;
+	padding-top: 10%;
+	width:45%;
+	padding-bottom: 5%;
+	background: rgba(255, 255, 255, 0.767);
+	border: 4px #04AA6D solid;
+}
+
+p{
+	margin-top: 2em ;
+	margin-bottom: 2em ;
+	
+
+}
+.fade-in-image
+{
+	
+	margin-left: 16%;
+	
+}
+.welcome2
+{
+  color:#04AA6D;
+  text-align: center;
+  margin-top: -14%;
+  font-size: 40px;
+  margin-bottom: 10%;
+}
+
+#img1
+{
+	margin-top: 5%;
+	border: 4px  rgb(171, 151, 4) solid;
 }

@@ -10,7 +10,7 @@ from models import Project as Project
 from models import Task as Task
 from forms import RegisterForm, LoginForm, CommentForm
 from flask_socketio import SocketIO, join_room
-from __future__ import print_function
+
 
 
 
