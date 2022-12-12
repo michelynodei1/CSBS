@@ -60,14 +60,18 @@
             </div>
         </div>
 
-    <!-- !!! POTENTIALLY NOT USING FOOTER !!! -->
-    <!--
-        <footer class="footer">
-            <div class="container">
-                <p class="text-muted"><small>App developed by CSBS</small></p>
-            </div>
-        </footer>
-    -->
+        <div class="main">
+            <h1>Add Task</h1>
+
+            <form action="add-task" method="post">
+                <p><label>Title:</label><input type="text" name="title"/></p>
+                <br>
+                <p><label>Description:</label><input type="text" name="description"/></p>
+                <p><input type="submit" value="Add Task"><textarea name="description" rows="6" cols="0"></textarea></p>
+            </form>
+        </div>
+
+
     </body>
 
 

@@ -67,11 +67,12 @@
                 <h1>Projects</h1>
                 <br>
                 <br>
+                <p><a href="{{ url_for('create_project')}}">[Add Project]</a></p>
 
                 <table>
                     <tr>
-                        <th class="greenishTextblackTextBox">" Title "</th>
-                        <th class="greenishTextblackTextBox">" Date Created "</th>
+                        <th class="greenishTextblackTextBox">  Title  </th>
+                        <th class="greenishTextblackTextBox">  Date Created  </th>
                     <!--
                         <th class="greenishTextblackTextBox"> Tasks </th>
                         <th class="greenishTextblackTextBox"> Options </th>
@@ -81,7 +82,7 @@
 
                     {% for project in projects %}
                         <tr>
-                            <td class="greenishTextblackTextBox">{{ project.title }}<a href="{{ url_for('project_overview', project_id=project.id) }}"></a></td>
+                            <td class="greenishTextblackTextBox"><a href="{{ url_for('project_overview', project_id=project.id) }}">{{ project.title }}</a></td>
                             <td class="greenishTextblackTextBox">{{ project.created }}</td>
                         </tr>
                     {% endfor %}

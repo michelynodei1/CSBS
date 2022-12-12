@@ -63,12 +63,12 @@ class Project(db.Model):
     id = db.Column("id", db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
     title = db.Column("title", db.String(200), nullable=False)
-    date_created = db.Column("created", db.String(50), nullable=False)
+    created = db.Column("created", db.String(50), nullable=False)
     tasks = db.relationship("Task", backref="projects", cascade="all, delete", lazy=True)
 
-    def __init__(self, title, user_id):
+    def __init__(self, title, created, user_id):
         self.title = title
-        self.date_created = datetime.date.today()
+        self.created = created
         self.user_id = user_id
 
 
@@ -80,10 +80,10 @@ class Task(db.Model):
     project_id = db.Column(db.Integer, db.ForeignKey("projects.id"), nullable=False)
     title = db.Column("title", db.String(200), nullable=False)
     desc = db.Column("description", db.String(200), nullable=True)
-    date_created = db.Column("created", db.String(50), nullable=False)
+    created = db.Column("created", db.String(50), nullable=False)
 
-    def __init__(self, title, desc, proj_id):
+    def __init__(self, title, desc, created, proj_id):
         self.title = title
         self.description = desc
+        self.created = created
         self.project_id = proj_id
-        self.date_created = datetime.date.today()
