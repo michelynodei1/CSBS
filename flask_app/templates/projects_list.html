@@ -61,15 +61,6 @@
             </div>
         </div>
 
-    <!-- !!! POTENTIALLY NOT USING FOOTER !!! -->
-    <!--
-        <footer class="footer">
-            <div class="container">
-                <p class="text-muted"><small>App developed by CSBS</small></p>
-            </div>
-        </footer>
-    -->
-
         <main>
             <div class="center">
                 <br>
@@ -89,9 +80,7 @@
 
                     {% for project in projects %}
                         <tr>
-                            <td class="greenishTextblackTextBox">{{ project.title }}</td>
-{#                            BELOW IS TO LINK TO SPECIFIC PROJ#}
-{#                        <a href="{{ url_for('projects_list', project_id=project.id) }}">#}
+                            <td class="greenishTextblackTextBox">{{ project.title }}<a href="{{ url_for('project_overview', project_id=project.id) }}"></a></td>
                         </tr>
                     {% endfor %}
                 </table>

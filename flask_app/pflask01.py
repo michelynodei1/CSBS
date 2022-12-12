@@ -108,7 +108,7 @@ def create_project():
             return redirect(url_for('projects_list'))
         else:
             # GET request - show 'create project' form
-            return render_template('create_project.html', user=session['user'])
+            return render_template('project_create.html', user=session['user'])
     else:
         return redirect(url_for('login'))
 
@@ -117,11 +117,33 @@ def create_project():
 @app.route('/projects/<project_id>')
 def project_overview(project_id):
     if session.get('user'):
-        my_projects = db.session.query(Project).filter_by(id=project_id, user_id=session['user_id']).all()
-
-        return render_template('projects_list.html', projects=my_projects, user=session['user'])
+        a_project = db.session.query(Project).filter_by(id=project_id, user=session['user']).one()
+        return render_template('project_overview.html', project=a_project, user=session['user'], form=form)
     else:
         return redirect(url_for('login'))
+
+
+# - Create Task for Project
+@app.route('projects/<project_id>/add-task')
+def add_task(project_id):
+    if session.get('user'):
+        if request.method == 'POST':
+            # get task title data
+            title = request.form['title']
+            # get task description data
+            desc = request.form['description']
+
+            new_record = Task(title, description, )
+            db.session.add(new_record)
+            db.session.commit()
+            # ready to render response - redirect to projects list
+            return redirect(url_for('projects_list'))
+        else:
+            # GET request - show 'create project' form
+            return render_template('project_create.html', user=session['user'])
+    else:
+        return redirect(url_for('login'))
+
 # -----------------------------------------------
 
 
@@ -348,17 +370,21 @@ def logout():
 # -----------------------------------------------
 
 
-# -Personal Calendar -
+
+# ---------- Calendar ----------
+# - Personal Calendar -
 @app.route('/calendar')
 def calendar():
     return render_template("calendar.html")
 
 
-
-#Group Calendar
+# - Group Calendar -
 @app.route('/calendars')
 def calendars():
     return render_template("calendars.html")
+# -----------------------------------------------
+
+
 
 # ///// HOST & PORT CONFIG /////
 if __name__ == '__main__':

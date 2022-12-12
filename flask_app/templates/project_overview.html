@@ -62,16 +62,30 @@
         </div>
 
         <!-- Page Content -->
-        <h1>{{ project.title }}</h1>
+        <main>
+            <div class="center">
+                <br>
+                <h1>{{ project.title }}</h1>
+                <br>
+                <br>
+                <h2> Tasks </h2>
+                <br>
+                <br>
+                <table>
+                    <tr>
+                        <th class="greenishTextblackTextBox">" Title "</th>
+                        <th class="greenishTextblackTextBox">" Description "</th>
+                    </tr>
 
-    <!-- !!! POTENTIALLY NOT USING FOOTER !!! -->
-    <!--
-        <footer class="footer">
-            <div class="container">
-                <p class="text-muted"><small>App developed by CSBS</small></p>
+                    {% for task in tasks %}
+                        <tr>
+                            <td class="greenishTextblackTextBox">{{ task.title }}</td>
+                            <td class="greenishTextblackTextBox">{{ task.description }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
             </div>
-        </footer>
-    -->
+        </main>
     </body>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
