@@ -87,20 +87,11 @@
                     -->
                     </tr>
 
-                    {% for note in notes %}
+                    {% for project in projects %}
                         <tr>
-                            <td class="greenishTextblackTextBox"><a href="{{ url_for('projects_list', project_id=project.id) }}">{{ project.title }}</a></td>
-                        <!-- **NOTE**: Below will be changed to a link to the project's tasks
-                            <td class="blackTextBox">{{ note.date }}</td>
-                             **NOTE**: Below will be edit_project
-                            <td class="greenishTextblackTextBox"><a href="{{ url_for('update_note', note_id=note.id) }}">Edit/View</a></td>
-                             **NOTE**: Below will be delete_project
-                            <td class="greenishTextblackTextBox">
-                                <form action="{{ url_for('delete_note', note_id=note.id) }}" method="post">
-                                    <input type="submit" value="Delete">
-                                </form>
-                        -->
-                            </td>
+                            <td class="greenishTextblackTextBox">{{ project.title }}</td>
+{#                            BELOW IS TO LINK TO SPECIFIC PROJ#}
+{#                        <a href="{{ url_for('projects_list', project_id=project.id) }}">#}
                         </tr>
                     {% endfor %}
                 </table>

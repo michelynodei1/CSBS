@@ -113,24 +113,32 @@ def projects_list():
 # - Add Project -
 @app.route('/projects/create-project', methods=['GET', 'POST'])
 def create_project():
-    if request.method == 'POST':
-        # get project title data
-        title = request.form['title']
-        # get the last ID used and increment by 1
-        m_p_id = len(mock_projects) + 1
-        # create new project
-        mock_projects[m_p_id] = {'title': title}
-        # ready to render response - redirect to projects list
-        return redirect(url_for('projects_list'))
+    if session.get('user'):
+        if request.method == 'POST':
+            # get project title data
+            title = request.form['title']
+
+            new_record = Project(title, session['user_id'])
+            db.session.add(new_record)
+            db.session.commit()
+            # ready to render response - redirect to projects list
+            return redirect(url_for('projects_list'))
+        else:
+            # GET request - show 'create project' form
+            return render_template('create_project.html', user=session['user'])
     else:
-        # GET request - show 'create project' form
-        return render_template('create_project.html')
+        return redirect(url_for('login'))
 
 
 # - Specific Project Page -
 @app.route('/projects/<project_id>')
-def project_overview(mock_project_id):
-    return render_template('project_overview.html', project=mock_projects[int(mock_project_id)])
+def project_overview(project_id):
+    if session.get('user'):
+        my_projects = db.session.query(Project).filter_by(id=project_id, user_id=session['user_id']).all()
+
+        return render_template('projects_list.html', projects=my_projects, user=session['user'])
+    else:
+        return redirect(url_for('login'))
 # -----------------------------------------------
 
 
@@ -177,9 +185,6 @@ def taskList():
         return redirect(url_for('myWork'))
 
     return render_template('taskList.html')
-
-
-
 
 
 # ---------- Notes ----------
