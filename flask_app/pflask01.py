@@ -1,6 +1,6 @@
 # ///// IMPORTS /////
 from __future__ import print_function
-import os, sys, json, flask, flask_socketio, httplib2, uuid, bcrypt
+import os, sys, json, flask, flask_socketio, httplib2, uuid, bcrypt, sqlite3
 from flask import Flask, Response, render_template, request, redirect, url_for, jsonify, session
 from flask_sqlalchemy import SQLAlchemy
 from database import db
@@ -121,14 +121,18 @@ def create_project():
 @app.route('/projects/<project_id>')
 def project_overview(project_id):
     if session.get('user'):
-        a_project = db.session.query(Project).filter_by(id=project_id).one()
-        return render_template('project_overview.html', project=a_project, user=session['user'])
+        p_id = project_id
+        a_project = db.session.query(Project).filter_by(id=p_id).one()
+        conn = sqlite3.connect('instance/flask_note_app.db')
+        c = conn.cursor()
+        c.execute(f'SELECT * FROM tasks WHERE project_id = {p_id}')
+        return render_template('project_overview.html', project=a_project, rows=c.fetchall(), user=session['user'])
     else:
         return redirect(url_for('login'))
 
 
 # - Create Task for Project
-@app.route('/projects/<project_id>/add-task')
+@app.route('/projects/<project_id>/add-task', methods=['GET', 'POST'])
 def add_task(project_id):
     if session.get('user'):
         if request.method == 'POST':
@@ -136,15 +140,20 @@ def add_task(project_id):
             title = request.form['title']
             # get task description data
             desc = request.form['description']
+            # create date stamp
+            from datetime import date
+            today = date.today()
+            # format date mm/dd/yyy
+            today = today.strftime("%m-%d-%Y")
 
-            new_record = Task(title, description, )
+            new_record = Task(title, desc, today, project_id)
             db.session.add(new_record)
             db.session.commit()
             # ready to render response - redirect to projects list
-            return redirect(url_for('projects_list'))
+            return redirect(url_for('project_overview', project_id=project_id))
         else:
             # GET request - show 'create project' form
-            return render_template('project_create.html', user=session['user'])
+            return render_template('project_task_add.html', user=session['user'])
     else:
         return redirect(url_for('login'))
 

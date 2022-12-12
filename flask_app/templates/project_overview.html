@@ -67,6 +67,8 @@
                 <br>
                 <h1>{{ project.title }}</h1>
                 <br>
+                <p><a href="{{ url_for('add_task', project_id=project.id) }}">[Add Task]</a></p>
+                <br>
                 <br>
                 <h2> Tasks </h2>
                 <br>
@@ -78,11 +80,11 @@
                         <th class="greenishTextblackTextBox">" Date Created "</th>
                     </tr>
 
-                    {% for task in tasks %}
+                    {% for row in rows %}
                         <tr>
-                            <td class="greenishTextblackTextBox">{{ task.title }}</td>
-                            <td class="greenishTextblackTextBox">{{ task.description }}</td>
-                            <td class="greenishTextblackTextBox">{{ task.created }}</td>
+                            <td class="greenishTextblackTextBox">{{row[2]}}</td>
+                            <td class="greenishTextblackTextBox">{{row[3]}}</td>
+                            <td class="greenishTextblackTextBox">{{row[4]}}</td>
                         </tr>
                     {% endfor %}
                 </table>
