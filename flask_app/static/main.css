@@ -52,6 +52,7 @@ li a:hover {
 /* /// SIDE NAVIGATION BAR /// */
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
+
 .topNavBody {
     color: #333;
     padding: 0;
@@ -93,6 +94,42 @@ li a:hover {
     font-size: 15px;
     padding-top: 15%;
 
+}
+
+.topNavBody1 {
+    background-image: linear-gradient(rgba(201, 200, 200, 0.304),rgba(133, 133, 133, 0.9)),url(grayBackground.jpg);
+    height: auto;
+     padding: 0;
+    margin: 0;
+    position: absolute;
+    width: 100%;
+    overflow: visible;
+    
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: "Open Sans", sans-serif;
+    font-size: 15px;
+    overflow:visible; 
+   
+}
+
+.topNavBody1 {
+    background-image: linear-gradient(rgba(201, 200, 200, 0.304),rgba(133, 133, 133, 0.9)),url(grayBackground.jpg);
+    height: auto;
+     padding: 0;
+    margin: 0;
+    position: absolute;
+    width: 100%;
+    overflow: visible;
+    
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: "Open Sans", sans-serif;
+    font-size: 15px;
+    overflow:visible; 
+   
 }
 
 .container {
@@ -160,11 +197,13 @@ li a:hover {
 }
 
 .container .sidebar button {
+.container .sidebar button {
     cursor: pointer;
     width: auto;
     background-color: transparent;
     border: 0;
     color: #fff;
+    position: fixed;
     position: fixed;
     font-size: 1.25rem;
     left: 1.5rem;
@@ -172,6 +211,7 @@ li a:hover {
     transform: translate(-50%, -50%);
 }
 
+.container .sidebar input {
 .container .sidebar input {
     background-color: #404040;
     border: 0px;
@@ -181,9 +221,11 @@ li a:hover {
 }
 
 .container .sidebar input::-moz-placeholder {
+.container .sidebar input::-moz-placeholder {
     padding-left: 1.5rem;
 }
 
+.container .sidebar input:-ms-input-placeholder {
 .container .sidebar input:-ms-input-placeholder {
     padding-left: 1.5rem;
 }
@@ -1240,6 +1282,7 @@ textarea {
 
 .mychat {
     padding-bottom: 50px;
+    color:#04AA6D;
     color: #04AA6D;
 }
 .mychat1 {
@@ -1249,6 +1292,7 @@ textarea {
     color: #04AA6D;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
 /*chat room style*/
 .chatroom {
     padding: 20px;

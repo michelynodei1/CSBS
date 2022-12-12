@@ -14,6 +14,7 @@ from flask_socketio import SocketIO, join_room
 
 
 
+
 # ///// APP CREATION /////
 app = Flask(__name__)  # create an app
 socketio = SocketIO(app)
