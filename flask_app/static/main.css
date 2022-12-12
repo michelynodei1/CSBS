@@ -12,14 +12,24 @@ h2.welcome {
     background: green;
 }
 
-/*Top Navigation Bar */
+/* /// TOP NAVIGATION BAR /// */
 .topnav {
     list-style-type: none;
-
     padding: 0;
     margin: 0;
     overflow: hidden;
     background-color: rgb(71, 70, 70);
+}
+.topnav2 {
+    list-style-type: none;
+    position:fixed;
+    z-index: 100;
+  
+  
+    overflow: hidden;
+    background-color: rgb(71, 70, 70);
+    width: 100%;
+    margin-bottom: 70.5%;
 }
 
 li {
@@ -35,11 +45,13 @@ li a {
 }
 
 li a:hover {
-    background-color: #111;
+    background-color: #504e4e;
+    color: white;
 }
 
-/*SIDE navigation Bar*/
+/* /// SIDE NAVIGATION BAR /// */
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
 
 .topNavBody {
     color: #333;
@@ -50,6 +62,56 @@ li a:hover {
     overflow: auto;
     font-family: "Open Sans", sans-serif;
     font-size: 15px;
+    
+}
+
+.topNavBody1 {
+    background-image: linear-gradient(rgba(201, 200, 200, 0.304), rgba(133, 133, 133, 0.9)), url(grayBackground.jpg);
+    height: auto;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    width: 100%;
+    overflow: visible;
+
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: "Open Sans", sans-serif;
+    font-size: 15px;
+    overflow: visible;
+
+}
+.topNavBody3 {
+    
+    color: #333;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    min-height: 100vh;
+    overflow: auto;
+    font-family: "Open Sans", sans-serif;
+    font-size: 15px;
+    padding-top: 15%;
+
+}
+
+.topNavBody1 {
+    background-image: linear-gradient(rgba(201, 200, 200, 0.304),rgba(133, 133, 133, 0.9)),url(grayBackground.jpg);
+    height: auto;
+     padding: 0;
+    margin: 0;
+    position: absolute;
+    width: 100%;
+    overflow: visible;
+    
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: "Open Sans", sans-serif;
+    font-size: 15px;
+    overflow:visible; 
+   
 }
 
 .topNavBody1 {
@@ -79,7 +141,7 @@ li a:hover {
     background-color: #333;
     color: #fff;
     width: 10%;
-    height: 94.2%;
+    height: 93.0%;
     padding: 0 1rem;
     position: fixed;
     top: 10;
@@ -135,11 +197,13 @@ li a:hover {
 }
 
 .container .sidebar button {
+.container .sidebar button {
     cursor: pointer;
     width: auto;
     background-color: transparent;
     border: 0;
     color: #fff;
+    position: fixed;
     position: fixed;
     font-size: 1.25rem;
     left: 1.5rem;
@@ -147,6 +211,7 @@ li a:hover {
     transform: translate(-50%, -50%);
 }
 
+.container .sidebar input {
 .container .sidebar input {
     background-color: #404040;
     border: 0px;
@@ -156,9 +221,11 @@ li a:hover {
 }
 
 .container .sidebar input::-moz-placeholder {
+.container .sidebar input::-moz-placeholder {
     padding-left: 1.5rem;
 }
 
+.container .sidebar input:-ms-input-placeholder {
 .container .sidebar input:-ms-input-placeholder {
     padding-left: 1.5rem;
 }
@@ -237,13 +304,12 @@ li a:hover {
 
 .container .main {
     border: 3px solid green;
-
     position: relative;
     width: 100%;
     padding: 10px;
 }
 
-/*Collapsed Navigation Bar*/
+/* /// COLLAPSED NAVIGATION BAR /// */
 .short .sidebar {
     width: 5%;
     text-align: center;
@@ -396,8 +462,9 @@ body {
     border-bottom: solid 1px #000000;
 
 }
-.nav-logo
-{
+
+
+.nav-logo {
     margin-left: 10%;
 }
 
@@ -428,7 +495,7 @@ body {
     padding: 10px 12px;
     text-decoration: none;
     font-weight: 550;
-    color:  green;
+    color: green;
 }
 
 /* Hover effects */
@@ -508,7 +575,7 @@ body {
         margin: 20px;
         font-size: 18px;
         font-weight: bold;
-        color: rgb(9, 14, 90);
+        color: white;
     }
 
     /* Responsive dropdown code */
@@ -531,7 +598,156 @@ body {
 
 
 }
+/*navbar1 for personal calendar*/
+.navbar1 {
+    height: 50px;
+    width: 90%;
+    padding: 10px 40px;
+    background-color: #dddd;
+    border-bottom: solid 1px #000000;
+    margin-bottom: 64%;
+    position: fixed;
+    margin-left: 10%;
+    z-index: 100;
+}
 
+
+
+
+.nav-logo {
+    margin-left: 10%;
+}
+
+.navbar1 .nav-header {
+    display: inline;
+}
+
+.navbar1 .nav-header .nav-logo {
+    display: inline-block;
+    margin-top: -7px;
+}
+
+.navbar1 .nav-links {
+    display: inline;
+    float: right;
+    font-size: 18px;
+}
+
+.navbar1 .nav-links {
+    display: inline-block;
+    padding: 5px 15px;
+    margin-left: 20px;
+    font-size: 17px;
+    color: rgb(9, 14, 90);
+}
+
+.navbar1 .nav-links a {
+    padding: 10px 12px;
+    text-decoration: none;
+    font-weight: 550;
+    color: green;
+}
+
+/* Hover effects */
+.navbar1 .nav-links a:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* responsive navbar toggle button */
+.navbar1 #nav-check,
+.navbar1 .nav-btn {
+    display: none;
+}
+
+.active {
+    background-color: #04AA6D;
+    color: white;
+}
+
+@media (max-width: 100px) {
+    .navbar1 .nav-btn {
+        display: inline-block;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+    }
+
+
+    .navbar1 .nav-btn label {
+        display: inline-block;
+        width: 80px;
+        height: 70px;
+        padding: 25px;
+    }
+
+    .navbar1 .nav-btn label span {
+        display: block;
+        height: 10px;
+        width: 25px;
+        border-top: 3px solid #eee;
+    }
+
+    .navbar1 .nav-btn label:hover,
+    .navbar1 {
+        background-color: rgb(9, 14, 90);
+        transition: all 0.5s ease;
+    }
+
+    .navbar1 .nav-links {
+        position: absolute;
+        display: block;
+        text-align: center;
+        width: 50%;
+        background-color: rgb(9, 14, 90);
+        transition: all 0.3s ease-in;
+        overflow-y: hidden;
+        top: 70px;
+        right: 0px;
+    }
+
+    .navbar1 .nav-links a {
+        display: block;
+    }
+
+    /* when nav toggle button not checked */
+    .navbar1 .nav-links {
+        height: 0px;
+    }
+
+    /* when nav toggle button is checked */
+    .navbar1 .nav-links {
+        height: calc(100vh - 70px);
+        overflow-y: auto;
+    }
+
+    .navbar1 .nav-links {
+        padding: 10px 40px;
+        margin: 20px;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+    }
+
+    /* Responsive dropdown code */
+    .navbar1 .nav-links .navbar {
+        float: none;
+        width: 100%;
+    }
+
+    .navbar1 .nav-links .navbar {
+        position: relative;
+        background-color: rgb(220, 220, 250);
+        top: 0px;
+        left: 0px;
+    }
+
+    /* Text color */
+    .navbar1 .nav-links .drop-content a {
+        color: rgb(9, 14, 90);
+    }
+
+
+}
 .title {
     float: right;
 }
@@ -599,10 +815,11 @@ h4 {
     font-weight: 700;
     margin-bottom: 0.5rem;
 }
-.topic
-{
-    font-size:30px ;
+
+.topic {
+    font-size: 30px;
 }
+
 .greeting .title {
     display: flex;
 }
@@ -731,13 +948,79 @@ input:checked~.bubble::after {
     padding-top: 25px;
     background-color: rgba(221, 221, 221, 0.858);
 }
+/*Add HTML*/
+.chathome1 {
+    border: 3px solid green;
+    float: left;
+   color: #04AA6D;
+    width: 40%;
+    height: auto;
+    margin-left: 400px;
+
+    padding: 20px;
+    text-align: left;
+    font-size: 20px;
+    padding-top: 25px;
+    background-color: rgba(221, 221, 221, 0.858);
+}
+
+
+.chathome1  input[type="text"] {
+    display: block;
+    width: 90%;
+    float:left;
+    font-size: 1.125rem;
+    padding: 10px 24px;
+    color: var(--dark);
+    background-color: #FFF;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow);
+   
+    margin-top: 20px;
+    margin-bottom: 1.5rem;
+}
+.chathome1  input[type="url"] {
+    display: block;
+    width: 90%;
+    float:left;
+    font-size: 1.125rem;
+    padding: 8px 24px;
+    color: var(--dark);
+    background-color: #FFF;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow);
+    
+    margin-top: 20px;
+    margin-bottom: 1.5rem;
+}
+
+.chathome1 button[type="submit"] {
+    display: block;
+    width: 40%;
+    font-size: 1.125rem;
+    padding: 8px 24px;
+    color: #FFF;
+    font-weight: 700;
+    text-transform: uppercase;
+    background-color: var(--primary);
+    box-shadow: var(--personal-glow);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: 0.2s ease-out;
+    margin-top: 10px;
+    margin-left: 30%;
+}
+
+.chathome1 button[type="submit"]:hover {
+    opacity: 0.75;
+}
 
 /*Note Page*/
 .notehome {
     border: 3px solid rgb(171, 151, 4);
     float: center;
     width: 50%;
-    height:100%;
+    height: 100%;
     overflow: auto;
     margin-left: 400px;
     margin-top: 100px;
@@ -745,51 +1028,162 @@ input:checked~.bubble::after {
     font-size: 20px;
     padding-top: 25px;
     background-color: rgba(241, 241, 241, 0.858);
+
+}
+
+.notehome1 {
+    
+    float: center;
+    width: 90%;
+    height: 100%;
+    overflow: auto;
+    margin-left:100px;
+    margin-top: 100px;
+    padding: 50px;
+    text-align: center;
+    padding-top: 25px;
+    font-size:25px ;
+    color:rgb(171, 151, 4);
+
+}
+
+
+.center2 input[type="text"]
+{
+    box-sizing: border-box;
+    border: 2px solid green;
+    border-radius: 4px;
+    font-size: 16px; 
+    padding: 10px 5px;
+    background-color: #FFF;
+    margin-bottom: 10%;
+
     
 }
-.center1{
-    margin-left:5%;
+
+.center1 {
+    margin-left: 5%;
     width: 15%;
-    
+
 }
 
+.center2 {
+   margin-top:10% ;
+    margin-left: 5%;
+    width: 15%;
 
+}
+
+.noteTitle
+{
+    font-size: 30px;
+    color: green;
+
+}
 tr.noteTitle {
     text-align: center;
     font-size: 30px;
     border: 4px solid rgb(20, 19, 15);
-    color:green;
-   
-    
+    color: green;
+
+
 }
 
 
-td.notesdata{
-   border-top: 4px solid rgb(171, 151, 4);
-   font-size: 20px;
-   
-   border-spacing: 2px;
-   padding-bottom: 10px;
-   font-family:Arial, Helvetica, sans-serif;
+td.notesdata {
+    border-top: 4px solid rgb(171, 151, 4);
+    font-size: 20px;
+
+    border-spacing: 2px;
+    padding-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
 }
-td{
-    
+
+td {
+
     text-align: left;
-    width:100%;
-    border-bottom:2px solid rgb(171, 151, 4);
+    width: 100%;
+    border-bottom: 2px solid rgb(171, 151, 4);
     padding: 20px;
-    
+
 }
-th{
-    padding: 40px;  
-    
-    border-bottom:4px solid rgb(171, 151, 4);
+
+th {
+    padding: 40px;
+
+    border-bottom: 4px solid rgb(171, 151, 4);
+
+}
+
+.link {
+    color: #04AA6D;
+}
+
+.link1 {
+    color: white;
+    background-color: #04AA6D;
+    text-align: center;
+    padding: 11px 15px;
+    display: inline-block;
+    border-radius: 0.5rem;
+}
+
+.link1:hover {
+    opacity: 0.50;
+}
+
+.link2 {
+    color: white;
+    background-color: #04AA6D;
+    text-align: center;
+    width: 100%;
+    padding: 5px 11px;
+    display: inline-block;
+    border-radius: 0.5rem;
+    font-size: 20px;
+    margin-top: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.link3 {
+    color: white;
+    background-color: #04AA6D;
+    text-align: center;
+    padding: 7px 10px;
+    display: inline-block;
+    border-radius: 0.5rem;
+   
+}
+
+.link4 {
+    color: white;
+    background-color: #04AA6D;
+    text-align: center;
+    padding: 7px 10px;
+    display: inline-block;
+    border-radius: 0.5rem;
+    margin-left:61%;
+   margin-top: 5%;
+}
+.link5 {
+    color: white;
+    background-color: #04AA6D;
+    text-align: center;
+    padding: 7px 10px;
+    display: inline-block;
+    border-radius: 0.5rem;
+    font-size: 15px;
     
 }
 
-.link{
-color:#04AA6D;
+
+
+
+.link2:hover {
+    opacity: 0.50;
 }
+
 
 .delete input[type="submit"] {
     display: block;
@@ -805,12 +1199,24 @@ color:#04AA6D;
     transition: 0.2s ease-out;
     margin-top: 10px;
     margin-left: 35%;
-    
-    
+
+
 }
+textarea {
+    
+   
+    box-sizing: border-box;
+    border: 2px solid green;
+    border-radius: 4px;
+    
+    font-size: 16px;
+   
+  }
+
 .delete input[type="submit"]:hover {
     opacity: 0.50;
 }
+
 .edit input[type="submit"] {
     display: block;
     width: 100%;
@@ -819,15 +1225,16 @@ color:#04AA6D;
     color: #FFF;
     font-weight: 700;
     text-transform: uppercase;
-    background-color:#04AA6D;
+    background-color: #04AA6D;
     border-radius: 0.5rem;
     cursor: pointer;
     transition: 0.2s ease-out;
     margin-top: 10px;
     margin-left: 35%;
-    
-    
+
+
 }
+
 .edit input[type="submit"]:hover {
     opacity: 0.50;
 }
@@ -875,7 +1282,15 @@ color:#04AA6D;
 
 .mychat {
     padding-bottom: 50px;
+    color:#04AA6D;
     color: #04AA6D;
+}
+.mychat1 {
+    
+    padding-top: 10px;
+    padding-bottom: 50px;
+    color: #04AA6D;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 /*chat room style*/
@@ -990,6 +1405,14 @@ color:#04AA6D;
     color: var(--grey);
 }
 
+
+/*Calendar*/
+.container1 {
+    margin-top: 10%;
+    margin-left: 20%;
+    width: 70%
+}
+
 .center {
     margin: auto;
     width: 75%;
@@ -1008,8 +1431,6 @@ color:#04AA6D;
 .centertext {
     margin: auto;
     width: 50%;
-
-
 }
 
 .blackTextBox {
@@ -1017,34 +1438,51 @@ color:#04AA6D;
     outline: 2px solid black;
 }
 
-
 /*SearchBar Formatting  */
-#searchbar{
+#searchbar {
     margin-left: 10%;
-    padding:15px;
+    padding: 15px;
     border-radius: 15px;
     outline: 2px solid black;
-  }
+}
 
-  input[type=text] {
+#searchbar input[type=text] {
     width: 30%;
     -webkit-transition: width 0.15s ease-in-out;
     transition: width 0.15s ease-in-out;
- }
+}
 
- /* When the input field gets focus,
+/* When the input field gets focus,
       change its width to 100% */
- input[type=text]:focus {
-   width: 70%;
- }
+#searchbar input[type=text]:focus {
+    width: 70%;
+}
 
-#list{
-  font-size:  1.5em;
-  margin-left: 90px;
- }
+#list {
+    font-size: 1.5em;
+    margin-left: 90px;
+}
 
- .animals{ 
-    display: list-item; 
-    color:#04AA6D;   
-} 
+.animals {
+    display: list-item;
+    color: #04AA6D;
+}
+
+/*button to change color of search results to be visible after pressing search*/
+.showResults {
+    background-color: #ccc;
+    color: #000000;
+    border-color: #000000;
+
+
+}
+
+.showResults:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.coverWall {
+    background-color: #ddd;
+}
+
 

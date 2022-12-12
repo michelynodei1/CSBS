@@ -206,6 +206,8 @@ function DisplayTodos() {
     })
 }
 
+
+
 // Overview Javascript on tabs 
 function vopenCity(evt, cityName) {
 	var i, x, tablinks;
@@ -235,17 +237,12 @@ function vopenCity(evt, cityName) {
     });
 })
   
-/*Overview Javascript */
 
 
 
-  /* jQuery call to the accordion() method.*/
-$(document).ready(function() {
-    $("#accordion").accordion(
-            {
-            
-            })
-});
+
+ 
+
 
 function search_animal() {
     let input = document.getElementById('searchbar').value
@@ -275,4 +272,17 @@ function changeTextColor() {
     else {
         document.getElementById("animals").style.color = 'white';
     }
+    
+
 }
+
+function hideResults() {
+    var x = document.getElementsByClassName("animals");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+
+ 

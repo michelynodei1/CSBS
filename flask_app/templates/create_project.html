@@ -5,20 +5,62 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="Create New Project">
-        <title>Add Project</title>
-
+        <title>CSBS|ADD PROJECT</title>
+        <link rel="icon" type="image/jpg" href="{{ url_for('static', filename='csbs2.jpg') }}">
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ url_for('static', filename='test.css') }}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.css">
 
-        <!--Navigation Top Bar-->
+        <!-- Top Navigation Bar -->
+        <!-- TEMPORARY NAV LINKS: Most links are for easy navigation while testing -Rachel -->
         <ul class="topnav">
-            <li><a href="{{ url_for('overview') }}">Home</a></li>
+            <li><img class="logo1" src="{{url_for('static', filename='csbs1.png')}}"  width="110" height="30"></li>
+            <li><a href="{{ url_for('overview') }}">Overview</a></li>
             <li><a href="{{ url_for('projects_list') }}">Projects</a></li>
             <li><a class="active" href="{{ url_for('create_project') }}">Add Project</a></li>
         </ul>
     </head>
 
-    <body>
+    <body class="topNavBody">
+        <!-- Collapsable Sidebar -->
+        <div class="container">
+            <div class="sidebar">
+                <div class="sidebartop">
+                    <div class="logo">
+                        <img src="/images/logo.png" alt="">
+                    </div>
+                    <div class="menu">
+                        <i class="bi bi-list"></i>
+                    </div>
+                </div>
+
+                <nav>
+                    <ul>
+                        <li><a href="{{ url_for('overview') }}"><i class="bi bi-compass"></i><span
+                                    class="text">Overview</span></a></li>
+                        <li><a href="{{ url_for('calendars') }}"><i class="bi bi-calendar"></i><span class="text">Calendar</span></a></li>
+                        <li><a href="{{ url_for('myWork') }}"><i class="bi bi-list-check"></i><span class="text">My
+                                    Work</span></a></li>
+                        <li><a href="{{ url_for('chat') }}"><i class="bi bi-chat"></i><span class="text">Chat</span></a>
+                        </li>
+                        <li><a href="#"><i class="bi bi-gear"></i><span class="text">Settings</span></a></li>
+                        <li><a href="{{url_for('logout')}}"><i class="bi bi-box-arrow-left"></i><span
+                                    class="text">Logout</span></a></li>
+                    </ul>
+    
+                </nav>
+
+                <div class="account">
+                    <div class="name">
+                        <h4>CSBS</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Content -->
         <h1>Create Project</h1>
 
         <form action="create-project" method="post">
@@ -26,6 +68,23 @@
             <br>
             <p><input type="submit" value="Add Project"></p>
         </form>
+
+    <!-- !!! POTENTIALLY NOT USING FOOTER !!! -->
+    <!--
+        <footer class="footer">
+            <div class="container">
+                <p class="text-muted"><small>App developed by CSBS</small></p>
+            </div>
+        </footer>
+    -->
     </body>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+            crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='script/modal.js') }}"></script>
+    <script src="{{ url_for('static', filename='init.js') }}"></script>
 
 </html>

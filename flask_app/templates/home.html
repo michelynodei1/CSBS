@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,14 +6,13 @@
     <title>CSBS|HOMEPAGE</title>
     <link rel="icon" type="image/jpg" href="{{ url_for('static', filename='csbs2.jpg') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='homestyle.css') }}">
-    
-    <!---we had linked our css file----->
+
 </head>
 <body>
     <div class="full-page1">
         <div class="navbar">
             <div>
-                <a><img class="logo" src="{{url_for('static', filename='csbs1.png')}}" alt="csbs logo" width="150" height="70"></a>
+                <a><img class="logo" src="{{url_for('static', filename='csbs1.png')}}" alt="csbs logo" width="170" height="50"></a>
             </div>
             <nav>
                 <ul id='MenuItems'>
@@ -20,7 +20,7 @@
                     <li><a href='#'>About Us</a></li>
                     <li><a href="{{url_for('register')}}">Register</a></li>
                     <li><a href="{{url_for('login')}}">Login</a></li>
-                    
+
                 </ul>
             </nav>
         </div>
@@ -35,7 +35,7 @@
                     <button type='button'onclick='register()'class='toggle-btn'>Register</button>
                 </div>
             <form  method="POST" action="/login" id='login' class='input-group-login'>
-            
+
 		 </form>
 		 <form id='register' class='input-group-register'>
 		     <input type='text'class='input-field'placeholder='First Name' required>
@@ -49,7 +49,7 @@
             </div>
         </div>
     </div>
-    
-    
+
+
     </body>
     </html>

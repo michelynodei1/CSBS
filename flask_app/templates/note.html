@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="UNCC Notes App">
-        <title>UNCC Notes App - View your Note</title>
-        <!-- styles -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
-        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
 
-        <!--Javascript for sidebar-->
-        <script src="{{url_for('static', filename='init.js')}}"></script>
-    </head>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="UNCC Notes App">
+    <title>CSBS|NOTE</title>
+    <link rel="icon" type="image/jpg" href="{{ url_for('static', filename='csbs2.jpg') }}">
+    <!-- styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <!--Javascript for sidebar-->
+    <script src="{{url_for('static', filename='init.js')}}"></script>
+</head>
 
-    <ul class="topnav">
-        <li> <img class="logo1" src="{{url_for('static', filename='csbs1.png')}}"  width="80" height="30"></li>
-        <li><a href="#news">News</a></li>
-    </ul>
+<ul class="topnav">
+    <li> <img class="logo1" src="{{url_for('static', filename='csbs1.png')}}" width="80" height="30"></li>
+    <li><a href="#news">News</a></li>
+</ul>
 
-    <body class="topNavBody">
+<body class="topNavBody1">
     <!--Collapsable Sidebar-->
     <div class="container">
         <div class="sidebar">
@@ -30,106 +32,115 @@
                     <i class="bi bi-list"></i>
                 </div>
             </div>
-            
-            
-  
-  
-              <nav>
+
+
+
+
+            <nav>
                 <ul>
-                    <li><a href="{{ url_for('overview') }}"><i class="bi bi-compass"></i><span class="text">Overview</span></a></li>
-                    <li><a href="#"><i class="bi bi-calendar"></i><span class="text">Calendar</span></a></li>
-                    <li><a href="{{ url_for('myWork') }}"><i class="bi bi-list-check"></i><span class="text">My Work</span></a></li>
-                    <li><a href="{{ url_for('chat') }}"><i class="bi bi-chat"></i><span class="text">Chat</span></a></li>
+                    <li><a href="{{ url_for('overview') }}"><i class="bi bi-compass"></i><span
+                                class="text">Overview</span></a></li>
+                    <li><a href="{{ url_for('calendars') }}"><i class="bi bi-calendar"></i><span class="text">Calendar</span></a></li>
+                    <li><a href="{{ url_for('myWork') }}"><i class="bi bi-list-check"></i><span class="text">My
+                                Work</span></a></li>
+                    <li><a href="{{ url_for('chat') }}"><i class="bi bi-chat"></i><span class="text">Chat</span></a>
+                    </li>
                     <li><a href="#"><i class="bi bi-gear"></i><span class="text">Settings</span></a></li>
-                    <li><a href="{{url_for('logout')}}"><i class="bi bi-box-arrow-left"></i><span class="text">Logout</span></a></li>
+                    <li><a href="{{url_for('logout')}}"><i class="bi bi-box-arrow-left"></i><span
+                                class="text">Logout</span></a></li>
                 </ul>
-                
+
             </nav>
 
-            
-              
+
             <div class="account">
-                
+
                 <div class="name">
                     <h4>CSBS</h4>
-                    
+
                 </div>
             </div>
         </div>
-      
-       
+
+
     </div>
     <!--Nav Bar My work -->
-<div class="navbar">
+    <div class="navbar">
 
-    <!-- Navbar logo -->
-    <div class="nav-header">
+        <!-- Navbar logo -->
+        <div class="nav-header">
 
-        <div class="nav-logo">
-            <img src="https://media.istockphoto.com/photos/hot-air-balloons-flying-over-the-botan-canyon-in-turkey-picture-id1297349747?b=1&k=20&m=1297349747&s=170667a&w=0&h=oH31fJty_4xWl_JQ4OIQWZKP8C6ji9Mz7L4XmEnbqRU=" width="50px" alt="logo">
-            <h2 class="title">My Work</h2>
-        </div>
-
-    </div>
-
-
-    <!-- Navbar items -->
-    <div class="nav-links">
-        <a href="#">Task</a>
-        <a href="#">Calendar</a>
-        <a href="{{ url_for('taskList') }}">To-Do List</a>
-        <a href="{{ url_for('get_notes') }}">Notes</a>
-    </div>
-</div>
-
-        
-
-
-        <main>
-            <div class="center">
-            <nav>
-            
-            <a href="{{ url_for('get_notes') }}"> My Notes</a> ||
-            <a href="{{ url_for('new_note') }}">Add Note</a> 
-            
-        </nav>
-        <h1 class="centerText">Welcome to the CSBS Notes Application!</h1>
-        <h1 class="centerText">Add a Comment</h1>
-
-        <table>
-            <tr>
-                <th class="centerText">Title</th>
-                <th class="centerText">Text</th>
-                <th class="centerText">Date</th>
-            </tr>
-            <tr>
-                <td>{{ note.title }}</td>
-                <td>{{ note.text }}</td>
-                <td>{{ note.date }}</td>
-            </tr>
-        </table>
- {% if note.comments %}
-    {% if note.comments|length > 0 %}
-        <h2>Comments</h2>
-        <ul>
-        {% for comment in note.comments %}
-            <li>{{ comment.content }}</li>
-        {% endfor %}
-        </ul>
-        {% endif %}
-    {% endif %}
-    <form action="{{ url_for('new_comment', note_id=note.id) }}" method="post">
-        <div class="formwrapper">
-         <br>
-         
-         <br>
-            <div class="form-field">
-                 {{ form.comment.label }} <br/> {{ form.comment }}
-        </div>
-    {{ form.submit }}
-  </div>
-</form>
+            <div class="nav-logo">
+                <img src="https://media.istockphoto.com/photos/hot-air-balloons-flying-over-the-botan-canyon-in-turkey-picture-id1297349747?b=1&k=20&m=1297349747&s=170667a&w=0&h=oH31fJty_4xWl_JQ4OIQWZKP8C6ji9Mz7L4XmEnbqRU="
+                    width="50px" alt="logo">
+                <h2 class="title">My Work</h2>
             </div>
+
+        </div>
+
+
+        <!-- Navbar items -->
+        <div class="nav-links">
+            <a href="#">Task</a>
+            <a href="{{ url_for('calendar') }}">Calendar</a>
+            <a href="{{ url_for('taskList') }}">To-Do List</a>
+            <a href="{{ url_for('get_notes') }}">Notes</a>
+        </div>
+    </div>
+
+
+
+
+    <main>
+        <div class="notehome1">
+            <h1>Welcome {{user}} to the 49er Notes App!</h1>
+            
+        </div>
+        <div class="notehome">
+            <nav>
+
+                <a class="link1" href="{{ url_for('get_notes') }}"> My Notes</a> ||
+                <a  class="link1"href="{{ url_for('new_note') }}">Add Note</a>
+
+            </nav>
+            
+
+            <table class="center1">
+                <tr>
+                    <th class="centerText">Title</th>
+                    <th class="centerText">Text</th>
+                    <th class="centerText">Date</th>
+                </tr>
+                <tr>
+                    <td>{{ note.title }}</td>
+                    <td>{{ note.text }}</td>
+                    <td>{{ note.date }}</td>
+                </tr>
+            </table>
+            {% if note.comments %}
+                {% if note.comments|length > 0 %}
+                    <h2>Comments</h2>
+                    <ul>
+                    {% for comment in note.comments %}
+                        <li>{{ comment.content }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endif %}
+            <form action="{{ url_for('new_comment', note_id=note.id) }}" method="post">
+                <br>
+                <div class="formwrapper">
+                    <h2 class="mychat1">Add a comment</h2>
+                    <div class="form-field">
+                        {{ form.comment.label }} <br /> {{ form.comment }}
+                    </div>
+                    <div class="link5">
+                    {{ form.submit }}
+                    </div>
+                </div>
+            </form>
+        </div>
     </main>
-    </body>
+</body>
+
 </html>

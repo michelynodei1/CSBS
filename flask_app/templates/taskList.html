@@ -4,7 +4,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="UNCC Notes App">
-        <title>UNCC Notes App</title>
+        <title>CSBS|TASKLIST</title>
+        <link rel="icon" type="image/jpg" href="{{ url_for('static', filename='csbs2.jpg') }}">
+        
         <!-- styles -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
         <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
@@ -13,11 +15,9 @@
 	    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,700;0,900;1,400&family=Montserrat:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
          
         <!--Navigation Top Bar-->
-         <ul class="topnav">
-            <li><a class="active" href="{{ url_for('overview') }}">Overview</a></li>
+        <ul class="topnav">
+            <li> <img class="logo1" src="{{url_for('static', filename='csbs1.png')}}"  width="80" height="30"></li>
             <li><a href="#news">News</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#about">About</a></li>
         </ul>
     </head>
     <body class="topNavBody">   
@@ -37,16 +37,19 @@
 
             <nav>
                 <ul>
-                    <li><a href="{{ url_for('overview') }}"><i class="bi bi-compass"></i><span class="text">Overview</span></a></li>
-                    <li><a href="#"><i class="bi bi-calendar"></i><span class="text">Calendar</span></a></li>
-                    <li><a href="{{ url_for('myWork') }}"><i class="bi bi-list-check"></i><span class="text">My Work</span></a></li>
-                    <li><a href="{{ url_for('chat') }}"><i class="bi bi-chat"></i><span class="text">Chat</span></a></li>
+                    <li><a href="{{ url_for('overview') }}"><i class="bi bi-compass"></i><span
+                                class="text">Overview</span></a></li>
+                    <li><a href="{{ url_for('calendars') }}"><i class="bi bi-calendar"></i><span class="text">Calendar</span></a></li>
+                    <li><a href="{{ url_for('myWork') }}"><i class="bi bi-list-check"></i><span class="text">My
+                                Work</span></a></li>
+                    <li><a href="{{ url_for('chat') }}"><i class="bi bi-chat"></i><span class="text">Chat</span></a>
+                    </li>
                     <li><a href="#"><i class="bi bi-gear"></i><span class="text">Settings</span></a></li>
-                    <li><a href="{{url_for('logout')}}"><i class="bi bi-box-arrow-left"></i><span class="text">Logout</span></a></li>
+                    <li><a href="{{url_for('logout')}}"><i class="bi bi-box-arrow-left"></i><span
+                                class="text">Logout</span></a></li>
                 </ul>
-                
-            </nav>
 
+            </nav>
             
               
             <div class="account">
@@ -77,10 +80,10 @@
      
         <!-- Navbar items -->
         <div class="nav-links">
-          <a  href="#">Task</a>
-          <a href="#">Calendar</a>
-          <a class="active" href="#">To-Do List</a>
-          <a href="{{ url_for('get_notes') }}">Notes</a>
+            <a href="#">Task</a>
+            <a href="{{ url_for('calendar') }}">Calendar</a>
+            <a href="{{ url_for('taskList') }}">To-Do List</a>
+            <a href="{{ url_for('get_notes') }}">Notes</a>
         </div>
     </div>
     

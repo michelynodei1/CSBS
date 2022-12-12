@@ -26,6 +26,7 @@ class User(db.Model):
     registered_on = db.Column(db.DateTime, nullable=False)
     notes = db.relationship("Note", backref="user", lazy=True)
     comments = db.relationship("Comment", backref="user", lazy=True)
+    projects = db.relationship("Project", backref="user", cascade="all, delete", lazy=True)
 
     def __init__(self, first_name, last_name, email, password):
         self.first_name = first_name

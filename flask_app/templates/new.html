@@ -4,10 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="UNCC Notes App">
-        <title>UNCC Notes App - New Note</title>
+        <title>CSBS|NEW NOTE</title>
+        <link rel="icon" type="image/jpg" href="{{ url_for('static', filename='csbs2.jpg') }}">
         <!-- styles -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
         <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
         <!--Javascript for sidebar-->
         <script src="{{url_for('static', filename='init.js')}}"></script>
     
@@ -18,7 +20,7 @@
     </ul>
     </head>
 
-    <body class="topNavBody">
+    <body class="topNavBody1">
     <!--Collapsable Sidebar-->
     <div class="container">
         <div class="sidebar">
@@ -33,18 +35,21 @@
             
   
   
-              <nav>
+            <nav>
                 <ul>
-                    <li><a href="{{ url_for('overview') }}"><i class="bi bi-compass"></i><span class="text">Overview</span></a></li>
-                    <li><a href="#"><i class="bi bi-calendar"></i><span class="text">Calendar</span></a></li>
-                    <li><a href="{{ url_for('myWork') }}"><i class="bi bi-list-check"></i><span class="text">My Work</span></a></li>
-                    <li><a href="{{ url_for('chat') }}"><i class="bi bi-chat"></i><span class="text">Chat</span></a></li>
+                    <li><a href="{{ url_for('overview') }}"><i class="bi bi-compass"></i><span
+                                class="text">Overview</span></a></li>
+                    <li><a href="{{ url_for('calendars') }}"><i class="bi bi-calendar"></i><span class="text">Calendar</span></a></li>
+                    <li><a href="{{ url_for('myWork') }}"><i class="bi bi-list-check"></i><span class="text">My
+                                Work</span></a></li>
+                    <li><a href="{{ url_for('chat') }}"><i class="bi bi-chat"></i><span class="text">Chat</span></a>
+                    </li>
                     <li><a href="#"><i class="bi bi-gear"></i><span class="text">Settings</span></a></li>
-                    <li><a href="{{url_for('logout')}}"><i class="bi bi-box-arrow-left"></i><span class="text">Logout</span></a></li>
+                    <li><a href="{{url_for('logout')}}"><i class="bi bi-box-arrow-left"></i><span
+                                class="text">Logout</span></a></li>
                 </ul>
-                
-            </nav>
 
+            </nav>
             
               
             <div class="account">
@@ -75,7 +80,7 @@
     <!-- Navbar items -->
     <div class="nav-links">
         <a href="#">Task</a>
-        <a href="#">Calendar</a>
+        <a href="{{ url_for('calendar') }}">Calendar</a>
         <a href="{{ url_for('taskList') }}">To-Do List</a>
         <a href="{{ url_for('get_notes') }}">Notes</a>
     </div>
@@ -84,43 +89,54 @@
 
 
     <main>
-        <div class="center">
+        <div class="notehome1">
+        <h1>Welcome to the CSBS Notes Application!</h1>
+    </div>
+
+        <div class="notehome">
        <nav>
         
-        <a class="greenishText" href="{{ url_for('get_notes') }}"> My Notes</a> ||
-        <a class="greenishText" href="{{ url_for('new_note') }}">Add Note</a> 
+        <a class="link1" href="{{ url_for('get_notes') }}"> My Notes</a>
+         
          
        </nav>
 
       
     
-        <h1>Welcome to the CSBS Notes Application!</h1>
+        
         {%if note%}
         <form action="{{ url_for('update_note', note_id=note.id) }}" method="post">
         {% else %}
             <form action="new" method ="post">
         {% endif %}
-           <p class="greenishText"><label>Title</label></p>
-           <p><textarea type="text" name="title" value="{% if note %}{{note.title}} {% endif %}">
-
-            </textarea>
-           <p class="greenishText"><label>Note </label></p>
+        <div class="center2">
+           <p class="noteTitle"><label>Title</label></p>
+          
+           <p><input type="text" name="title" value="{% if note %}{{note.title}}{% endif %}"/></p>
+            
+           
+           <p class="noteTitle"><label>Note </label></p>
            <p>
-                <textarea name="noteText"  rows="9" cols="-10" >
+                <textarea name="noteText"  rows="15" cols="70" >
                     {% if note %}
                         {{note.text}}
                     {% else %}
-                    Add your new note here....
+                        
                     {% endif %}
 
                 </textarea>
             </p>
             <br>
             <p>
+            </div>
                 {% if note %}
-                    <input class="greenishTextblackTextBox" type="submit" value="Update Note"/> 
-                {% else %}
-                    <input type="submit" value="Add Note"/>
+                <div class="link5">
+                    <input class="link5" type="submit" value="Update Note"/> 
+                </div>
+                    {% else %}
+                <div class="link5">
+                    <input  class="link5" type="submit" value="Add Note"/>
+                </div>
                 {% endif %}
             </p>
         </form>

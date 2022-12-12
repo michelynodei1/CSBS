@@ -1,4 +1,5 @@
 # ///// IMPORTS /////
+from __future__ import print_function
 import os, sys, json, flask, flask_socketio, httplib2, uuid, bcrypt
 from flask import Flask, Response, render_template, request, redirect, url_for, jsonify, session
 from flask_sqlalchemy import SQLAlchemy
@@ -20,6 +21,22 @@ socketio = SocketIO(app)
 
 
 
+# ///// DATABASE CONFIG /////
+# Configure database connection
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///flask_note_app.db'
+# Disables a feature that signals the application every time a change is about to be made in the database
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SECRET_KEY'] = 'SE3155'
+
+#  Binds SQLAlchemy db object to this Flask app
+db.init_app(app)
+
+# Setup models
+with app.app_context():
+    db.create_all()  # Run under the app context
+
+
+
 # ///// EVENTS /////
 events = [
     {
@@ -35,22 +52,6 @@ events = [
         'url': 'http://127.0.0.1:5000/taskList',
     },
 ]
-
-
-
-# ///// DATABASE CONFIG /////
-# Configure database connection
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///flask_note_app.db'
-# Disables a feature that signals the application every time a change is about to be made in the database
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = 'SE3155'
-
-#  Binds SQLAlchemy db object to this Flask app
-db.init_app(app)
-
-# Setup models
-with app.app_context():
-    db.create_all()  # Run under the app context
 
 
 
@@ -178,6 +179,10 @@ def taskList():
 
     return render_template('taskList.html')
 
+
+
+
+
 # ---------- Notes ----------
 # - Notes Overview -
 @app.route('/notes')
@@ -195,8 +200,7 @@ def get_notes():
 def get_note(note_id):
     if session.get('user'):
 
-        my_note = db.session.query(Note).filter_by(id=note_id)
-
+        my_note= db.session.query(Note).filter_by(id=note_id,user_id=session['user_id']).one()
         form = CommentForm()
 
         return render_template('note.html', note=my_note, user=session['user'], form=form)
@@ -254,7 +258,7 @@ def update_note(note_id):
 
             my_note = db.session.query(Note).filter_by(id=note_id).one()
             # Removed user=session('user') in below render template
-            return render_template('new.html', note=my_note)
+            return render_template('new.html', note=my_note,user=session['user'])
     else:
         return redirect(url_for('login'))
 
@@ -293,7 +297,7 @@ def new_comment(note_id):
 # -----------------------------------------------
 
 
-# ---------- User Account ----------
+# ---------- User - Account ----------
 # - User Registration -
 @app.route('/register', methods=['POST', 'GET'])
 def register():
@@ -357,12 +361,17 @@ def logout():
 # -----------------------------------------------
 
 
-# - Calendar -
+# -Personal Calendar -
 @app.route('/calendar')
 def calendar():
-    return render_template("calendar.html", events=events)
+    return render_template("calendar.html")
 
 
+
+#Group Calendar
+@app.route('/calendars')
+def calendars():
+    return render_template("calendars.html")
 
 # ///// HOST & PORT CONFIG /////
 if __name__ == '__main__':

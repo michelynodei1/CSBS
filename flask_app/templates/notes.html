@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="My Work">
-    <title>My Work</title>
+    <title>CSBS|VIEW NOTES</title>
+    <link rel="icon" type="image/jpg" href="{{ url_for('static', filename='csbs2.jpg') }}">
 
     <!-- styles -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
@@ -38,7 +39,7 @@
                 <ul>
                     <li><a href="{{ url_for('overview') }}"><i class="bi bi-compass"></i><span
                                 class="text">Overview</span></a></li>
-                    <li><a href="#"><i class="bi bi-calendar"></i><span class="text">Calendar</span></a></li>
+                    <li><a href="{{ url_for('calendars') }}"><i class="bi bi-calendar"></i><span class="text">Calendar</span></a></li>
                     <li><a href="{{ url_for('myWork') }}"><i class="bi bi-list-check"></i><span class="text">My
                                 Work</span></a></li>
                     <li><a href="{{ url_for('chat') }}"><i class="bi bi-chat"></i><span class="text">Chat</span></a>
@@ -81,7 +82,7 @@
         <!-- Navbar items -->
         <div class="nav-links">
             <a href="#">Task</a>
-            <a href="#">Calendar</a>
+            <a href="{{ url_for('calendar') }}">Calendar</a>
             <a href="{{ url_for('taskList') }}">To-Do List</a>
             <a href="{{ url_for('get_notes') }}">Notes</a>
         </div>
@@ -89,21 +90,17 @@
     
 
 
-
+<div class="notehome1">
     <h1>Welcome {{user}} to the 49er Notes App!</h1>
-    <h1>Listing notes</h1>
+    
+</div>
     <div class="notehome">
         <nav>
-            <form action="{{ url_for('get_notes') }}" method="post">
-                <input type="submit" value="My Notes">
-            </form>
-            <form action="{{ url_for('new_note') }}" method="post">
-                <input type="submit" value="Add Notes">
-            </form>
-            <a href="{{ url_for('get_notes') }}"> My Notes</a> ||
-            <a href="{{ url_for('new_note') }}">Add Note</a> ||
+            
+            <a  class="link1" href="{{ url_for('new_note') }}">Add Note</a> 
     
         </nav>
+        <h1 class="mychat1">Listing Notes</h1>
         <table class="center1">
 
             <tr class="noteTitle">
@@ -115,10 +112,8 @@
             <tr>
                 <td><a class="link" href="{{ url_for('get_note', note_id=note.id) }}">{{ note.title }}</a></td>
                 <td class="dates">{{ note.date }}</td>
-                <td class="edit">
-                    <a href="{{ url_for('update_note', note_id=note.id) }}">Edit/View
-                        
-                    </a>
+                <td>
+                    <a class="link2" href="{{ url_for('update_note', note_id=note.id) }}">Edit</a>
                 </td>
                 <td class="delete">
                     <form action="{{ url_for('delete_note', note_id=note.id) }}" method="post">
