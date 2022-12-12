@@ -55,24 +55,6 @@ events = [
 
 
 
-# ///// MOCK VARIABLES ///// (Using these for testing purposes -Rachel)
-# User Info
-mock_user = {'name': 'Team CSBS'}
-
-# Project List
-mock_projects = {1: {'title': 'First Project'},
-                 2: {'title': 'Second Project'},
-                 3: {'title': 'Third Project'}
-                 }
-
-# Project Tasks List
-mock_tasks = {1: {'title': 'First Task', 'text': 'This is the first task'},
-              2: {'title': 'Second Task', 'text': 'This is the second task'},
-              3: {'title': 'Third Task', 'text': 'This is the third task'}
-              }
-
-
-
 # ///// ROUTES /////
 # - Home -
 @app.route('/')
