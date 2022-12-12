@@ -75,12 +75,14 @@
                     <tr>
                         <th class="greenishTextblackTextBox">" Title "</th>
                         <th class="greenishTextblackTextBox">" Description "</th>
+                        <th class="greenishTextblackTextBox">" Date Created "</th>
                     </tr>
 
                     {% for task in tasks %}
                         <tr>
                             <td class="greenishTextblackTextBox">{{ task.title }}</td>
                             <td class="greenishTextblackTextBox">{{ task.description }}</td>
+                            <td class="greenishTextblackTextBox">{{ task.created }}</td>
                         </tr>
                     {% endfor %}
                 </table>

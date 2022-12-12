@@ -124,7 +124,7 @@ def project_overview(project_id):
 
 
 # - Create Task for Project
-@app.route('projects/<project_id>/add-task')
+@app.route('/projects/<project_id>/add-task')
 def add_task(project_id):
     if session.get('user'):
         if request.method == 'POST':
