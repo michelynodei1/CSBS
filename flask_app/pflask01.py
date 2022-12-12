@@ -100,8 +100,12 @@ def create_project():
         if request.method == 'POST':
             # get project title data
             title = request.form['title']
+            # create date stamp
+            today = date.today()
+            # format date mm/dd/yyy
+            today = today.strftime("%m-%d-%Y")
 
-            new_record = Project(title, session['user_id'])
+            new_record = Project(title, today, session['user_id'])
             db.session.add(new_record)
             db.session.commit()
             # ready to render response - redirect to projects list
