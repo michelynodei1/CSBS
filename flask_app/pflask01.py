@@ -225,7 +225,7 @@ def update_task(project_id, task_id):
         return redirect(url_for('login'))
 
 
-# - Delete Task -
+# - Delete Project Task -
 @app.route('/projects/<project_id>/<task_id>/delete', methods=['POST'])
 def delete_task(project_id, task_id):
     if session.get('user'):
