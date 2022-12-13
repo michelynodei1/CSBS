@@ -9,9 +9,11 @@
         <link rel="icon" type="image/jpg" href="{{ url_for('static', filename='csbs2.jpg') }}">
         
         <!-- Styles -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
         <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.css">
 
         <!-- Top Navigation Bar -->
@@ -67,7 +69,12 @@
                 <h1>Projects</h1>
                 <br>
                 <br>
-                <p><a href="{{ url_for('create_project')}}">[Add Project]</a></p>
+{#                <p><button class="grey-button" href="{{ url_for('projects_list') }}">Create Project</button></p>#}
+                <p>
+                    <form action="{{ url_for('create_project') }}">
+                        <button class="grey-button" type="submit">Create Project</button>
+                    </form>
+                </p>
 
                 <table>
                     <tr>
@@ -85,6 +92,11 @@
                             <td class="greenishTextblackTextBox"><a href="{{ url_for('project_overview', project_id=project.id) }}">{{ project.title }}</a></td>
                             <td class="greenishTextblackTextBox">{{ project.created }}</td>
                             <td><a href="{{ url_for('update_project', project_id=project.id) }}">Edit</a></td>
+                            <td>
+                                <form action="{{ url_for('delete_project', project_id=project.id) }}" method="post">
+                                <input type="submit" value="Delete">
+                            </form>
+                            </td>
                         </tr>
                     {% endfor %}
                 </table>

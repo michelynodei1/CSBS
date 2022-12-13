@@ -151,6 +151,17 @@ def update_project(project_id):
         return render_template('project_create.html', project=a_project, user=session['user'])
 
 
+# - Delete Project -
+@app.route('/projects/delete/<project_id>', methods=['POST'])
+def delete_project(project_id):
+    # retrieve project from database
+    a_project = db.session.query(Project).filter_by(id=project_id).one()
+    db.session.delete(a_project)
+    db.session.commit()
+
+    return redirect(url_for('projects_list'))
+
+
 # - Create Task for Project
 @app.route('/projects/<project_id>/add-task', methods=['GET', 'POST'])
 def add_task(project_id):
