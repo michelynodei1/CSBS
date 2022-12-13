@@ -1,0 +1,48 @@
+/*  ***Remember to put the dot (.) before the name and give unique name***
+*{
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    padding-top: 3%;
+    padding-left: 10%;
+}
+
+table {
+    padding-top: 4%;
+    padding-left: 10%;
+}
+
+form {
+    padding-top: 4%;
+    padding-left: 10%;
+}
+*/
+
+.page {
+    padding-top: 2%;
+    padding-left: 12%;
+}
+
+.input-box {
+    border: 1px solid #000000;
+    width: 150px;
+    height: 25px;
+}
+
+.grey-button {
+    background-color: rgba(51, 51, 51, 0.05);
+    border-radius: 8px;
+    border-width: 0;
+    color: #333333;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 10px 12px;
+    text-align: center;
+    vertical-align: baseline;
+}

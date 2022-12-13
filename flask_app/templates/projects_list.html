@@ -9,9 +9,11 @@
         <link rel="icon" type="image/jpg" href="{{ url_for('static', filename='csbs2.jpg') }}">
         
         <!-- Styles -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
         <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.css">
 
         <!-- Top Navigation Bar -->
@@ -61,34 +63,40 @@
             </div>
         </div>
 
-        <main>
-            <div class="center">
-                <br>
-                <h1>Projects</h1>
-                <br>
-                <br>
-                <p><a href="{{ url_for('create_project')}}">[Add Project]</a></p>
+        <!-- Page Content -->
+        <div class="page">
+            <br>
+            <h1>Projects</h1>
+            <p>
+                <form action="{{ url_for('create_project') }}">
+                    <button class="grey-button" type="submit">Create Project</button>
+                </form>
+            </p>
 
-                <table>
+            <table>
+                <tr>
+                    <th class="greenishTextblackTextBox">  Title  </th>
+                    <th class="greenishTextblackTextBox">  Date Created  </th>
+                </tr>
+
+                {% for project in projects %}
                     <tr>
-                        <th class="greenishTextblackTextBox">  Title  </th>
-                        <th class="greenishTextblackTextBox">  Date Created  </th>
-                    <!--
-                        <th class="greenishTextblackTextBox"> Tasks </th>
-                        <th class="greenishTextblackTextBox"> Options </th>
-                        <th class="greenishTextblackTextBox"> Delete </th>
-                    -->
+                        <td class="greenishTextblackTextBox"><a href="{{ url_for('project_overview', project_id=project.id) }}">{{ project.title }}</a></td>
+                        <td class="greenishTextblackTextBox">{{ project.created }}</td>
+                        <td>
+                            <form action="{{ url_for('update_project', project_id=project.id) }}">
+                                <button class="grey-button" type="submit">Edit</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="{{ url_for('delete_project', project_id=project.id) }}" method="post">
+                                <button class="grey-button" type="submit">Delete</button>
+                            </form>
+                        </td>
                     </tr>
-
-                    {% for project in projects %}
-                        <tr>
-                            <td class="greenishTextblackTextBox"><a href="{{ url_for('project_overview', project_id=project.id) }}">{{ project.title }}</a></td>
-                            <td class="greenishTextblackTextBox">{{ project.created }}</td>
-                        </tr>
-                    {% endfor %}
-                </table>
-            </div>
-        </main>
+                {% endfor %}
+            </table>
+        </div>
     </body>
 
 </html>

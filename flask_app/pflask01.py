@@ -13,11 +13,9 @@ from forms import RegisterForm, LoginForm, CommentForm
 from flask_socketio import SocketIO, join_room
 
 
-
 # ///// APP CREATION /////
 app = Flask(__name__)  # create an app
 socketio = SocketIO(app)
-
 
 
 # ///// DATABASE CONFIG /////
@@ -35,7 +33,6 @@ with app.app_context():
     db.create_all()  # Run under the app context
 
 
-
 # ///// EVENTS /////
 events = [
     {
@@ -51,7 +48,6 @@ events = [
         'url': 'http://127.0.0.1:5000/taskList',
     },
 ]
-
 
 
 # ///// ROUTES /////
@@ -123,10 +119,50 @@ def project_overview(project_id):
     if session.get('user'):
         p_id = project_id
         a_project = db.session.query(Project).filter_by(id=p_id).one()
-        conn = sqlite3.connect('instance/flask_note_app.db')
-        c = conn.cursor()
-        c.execute(f'SELECT * FROM tasks WHERE project_id = {p_id}')
-        return render_template('project_overview.html', project=a_project, rows=c.fetchall(), user=session['user'])
+        project_tasks = db.session.query(Task).filter_by(project_id=p_id).all()
+
+        return render_template('project_overview.html', project=a_project, tasks=project_tasks, user=session['user'])
+    else:
+        return redirect(url_for('login'))
+
+
+# - Edit Project -
+@app.route('/projects/<project_id>/edit', methods=['GET', 'POST'])
+def update_project(project_id):
+    if session.get('user'):
+        # check method used for request
+        if request.method == 'POST':
+            # get title data
+            title = request.form['title']
+            a_project = db.session.query(Project).filter_by(id=project_id).one()
+            # update project data
+            a_project.title = title
+            # update project in DB
+            db.session.add(a_project)
+            db.session.commit()
+
+            return redirect(url_for('projects_list'))
+        else:
+            # GET request - show create project form to edit project
+
+            # retrieve project from database
+            a_project = db.session.query(Project).filter_by(id=project_id).one()
+
+            return render_template('project_create.html', project=a_project, user=session['user'])
+    else:
+        return redirect(url_for('login'))
+
+
+# - Delete Project -
+@app.route('/projects/<project_id>/delete', methods=['POST'])
+def delete_project(project_id):
+    if session.get('user'):
+        # retrieve project from database
+        a_project = db.session.query(Project).filter_by(id=project_id).one()
+        db.session.delete(a_project)
+        db.session.commit()
+
+        return redirect(url_for('projects_list'))
     else:
         return redirect(url_for('login'))
 
@@ -152,8 +188,53 @@ def add_task(project_id):
             # ready to render response - redirect to projects list
             return redirect(url_for('project_overview', project_id=project_id))
         else:
-            # GET request - show 'create project' form
+            # GET request - show 'add task' form
             return render_template('project_task_add.html', user=session['user'])
+    else:
+        return redirect(url_for('login'))
+
+
+# - Edit Project Task -
+@app.route('/projects/<project_id>/<task_id>/edit', methods=['GET', 'POST'])
+def update_task(project_id, task_id):
+    if session.get('user'):
+        # check method used for request
+        if request.method == 'POST':
+            # get title data
+            title = request.form['title']
+            # get description data
+            description = request.form['description']
+            a_task = db.session.query(Task).filter_by(id=task_id).one()
+            # update task data
+            a_task.title = title
+            # update task description
+            a_task.description = description
+            # update task in DB
+            db.session.add(a_task)
+            db.session.commit()
+
+            return redirect(url_for('project_overview', project_id=project_id))
+        else:
+            # GET request - show create project form to edit project
+
+            # retrieve task from database
+            a_task = db.session.query(Task).filter_by(id=task_id).one()
+
+            return render_template('project_task_add.html', task=a_task, user=session['user'])
+    else:
+        return redirect(url_for('login'))
+
+
+# - Delete Task -
+@app.route('/projects/<project_id>/<task_id>/delete', methods=['POST'])
+def delete_task(project_id, task_id):
+    if session.get('user'):
+        # retrieve task from database
+        a_task = db.session.query(Task).filter_by(id=task_id).one()
+        db.session.delete(a_task)
+        db.session.commit()
+
+        return redirect(url_for('project_overview', project_id=project_id))
     else:
         return redirect(url_for('login'))
 
@@ -192,6 +273,7 @@ def handle_join_room_event(data):
     app.logger.info("{} has joined the room {}".format(data['username'], data['room']))
     join_room(data['room'])
     socketio.emit('join_room_announcement', data)
+
 # -----------------------------------------------
 
 
@@ -222,7 +304,7 @@ def get_notes():
 def get_note(note_id):
     if session.get('user'):
 
-        my_note= db.session.query(Note).filter_by(id=note_id,user_id=session['user_id']).one()
+        my_note = db.session.query(Note).filter_by(id=note_id, user_id=session['user_id']).one()
         form = CommentForm()
 
         return render_template('note.html', note=my_note, user=session['user'], form=form)
@@ -280,7 +362,7 @@ def update_note(note_id):
 
             my_note = db.session.query(Note).filter_by(id=note_id).one()
             # Removed user=session('user') in below render template
-            return render_template('new.html', note=my_note,user=session['user'])
+            return render_template('new.html', note=my_note, user=session['user'])
     else:
         return redirect(url_for('login'))
 
@@ -316,6 +398,7 @@ def new_comment(note_id):
 
     else:
         return redirect(url_for('login'))
+
 # -----------------------------------------------
 
 
@@ -380,8 +463,8 @@ def logout():
         session.clear()
 
     return redirect(url_for('home'))
-# -----------------------------------------------
 
+# -----------------------------------------------
 
 
 # ---------- Calendar ----------
@@ -395,8 +478,8 @@ def calendar():
 @app.route('/calendars')
 def calendars():
     return render_template("calendars.html")
-# -----------------------------------------------
 
+# -----------------------------------------------
 
 
 # ///// HOST & PORT CONFIG /////
