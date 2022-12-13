@@ -13,11 +13,9 @@ from forms import RegisterForm, LoginForm, CommentForm
 from flask_socketio import SocketIO, join_room
 
 
-
 # ///// APP CREATION /////
 app = Flask(__name__)  # create an app
 socketio = SocketIO(app)
-
 
 
 # ///// DATABASE CONFIG /////
@@ -35,7 +33,6 @@ with app.app_context():
     db.create_all()  # Run under the app context
 
 
-
 # ///// EVENTS /////
 events = [
     {
@@ -51,7 +48,6 @@ events = [
         'url': 'http://127.0.0.1:5000/taskList',
     },
 ]
-
 
 
 # ///// ROUTES /////
@@ -131,6 +127,30 @@ def project_overview(project_id):
         return redirect(url_for('login'))
 
 
+# - Edit Project -
+@app.route('/projects/edit/<project_id>', methods=['GET', 'POST'])
+def update_project(project_id):
+    # check method used for request
+    if request.method == 'POST':
+        # get title data
+        title = request.form['title']
+        a_project = db.session.query(Project).filter_by(id=project_id).one()
+        # update project data
+        a_project.title = title
+        # update project in DB
+        db.session.add(a_project)
+        db.session.commit()
+
+        return redirect(url_for('projects_list'))
+    else:
+        # GET request - show create project form to edit project
+
+        # retrieve project from database
+        a_project = db.session.query(Project).filter_by(id=project_id).one()
+
+        return render_template('project_create.html', project=a_project, user=session['user'])
+
+
 # - Create Task for Project
 @app.route('/projects/<project_id>/add-task', methods=['GET', 'POST'])
 def add_task(project_id):
@@ -192,6 +212,7 @@ def handle_join_room_event(data):
     app.logger.info("{} has joined the room {}".format(data['username'], data['room']))
     join_room(data['room'])
     socketio.emit('join_room_announcement', data)
+
 # -----------------------------------------------
 
 
@@ -222,7 +243,7 @@ def get_notes():
 def get_note(note_id):
     if session.get('user'):
 
-        my_note= db.session.query(Note).filter_by(id=note_id,user_id=session['user_id']).one()
+        my_note = db.session.query(Note).filter_by(id=note_id, user_id=session['user_id']).one()
         form = CommentForm()
 
         return render_template('note.html', note=my_note, user=session['user'], form=form)
@@ -280,7 +301,7 @@ def update_note(note_id):
 
             my_note = db.session.query(Note).filter_by(id=note_id).one()
             # Removed user=session('user') in below render template
-            return render_template('new.html', note=my_note,user=session['user'])
+            return render_template('new.html', note=my_note, user=session['user'])
     else:
         return redirect(url_for('login'))
 
@@ -316,6 +337,7 @@ def new_comment(note_id):
 
     else:
         return redirect(url_for('login'))
+
 # -----------------------------------------------
 
 
@@ -380,8 +402,8 @@ def logout():
         session.clear()
 
     return redirect(url_for('home'))
-# -----------------------------------------------
 
+# -----------------------------------------------
 
 
 # ---------- Calendar ----------
@@ -395,8 +417,8 @@ def calendar():
 @app.route('/calendars')
 def calendars():
     return render_template("calendars.html")
-# -----------------------------------------------
 
+# -----------------------------------------------
 
 
 # ///// HOST & PORT CONFIG /////

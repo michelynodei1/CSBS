@@ -61,7 +61,7 @@
             </div>
         </div>
 
-        <main>
+        <div>
             <div class="center">
                 <br>
                 <h1>Projects</h1>
@@ -84,11 +84,12 @@
                         <tr>
                             <td class="greenishTextblackTextBox"><a href="{{ url_for('project_overview', project_id=project.id) }}">{{ project.title }}</a></td>
                             <td class="greenishTextblackTextBox">{{ project.created }}</td>
+                            <td><a href="{{ url_for('update_project', project_id=project.id) }}">Edit</a></td>
                         </tr>
                     {% endfor %}
                 </table>
             </div>
-        </main>
+        </div>
     </body>
 
 </html>
