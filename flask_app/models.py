@@ -79,7 +79,7 @@ class Task(db.Model):
     id = db.Column("id", db.Integer, primary_key=True)
     project_id = db.Column(db.Integer, db.ForeignKey("projects.id"), nullable=False)
     title = db.Column("title", db.String(200), nullable=False)
-    desc = db.Column("description", db.String(200), nullable=True)
+    description = db.Column("description", db.String(200), nullable=False)
     created = db.Column("created", db.String(50), nullable=False)
 
     def __init__(self, title, desc, created, proj_id):

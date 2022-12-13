@@ -63,44 +63,39 @@
             </div>
         </div>
 
-        <div>
-            <div class="center">
-                <br>
-                <h1>Projects</h1>
-                <br>
-                <br>
-{#                <p><button class="grey-button" href="{{ url_for('projects_list') }}">Create Project</button></p>#}
-                <p>
-                    <form action="{{ url_for('create_project') }}">
-                        <button class="grey-button" type="submit">Create Project</button>
-                    </form>
-                </p>
+        <!-- Page Content -->
+        <div class="page">
+            <br>
+            <h1>Projects</h1>
+            <p>
+                <form action="{{ url_for('create_project') }}">
+                    <button class="grey-button" type="submit">Create Project</button>
+                </form>
+            </p>
 
-                <table>
+            <table>
+                <tr>
+                    <th class="greenishTextblackTextBox">  Title  </th>
+                    <th class="greenishTextblackTextBox">  Date Created  </th>
+                </tr>
+
+                {% for project in projects %}
                     <tr>
-                        <th class="greenishTextblackTextBox">  Title  </th>
-                        <th class="greenishTextblackTextBox">  Date Created  </th>
-                    <!--
-                        <th class="greenishTextblackTextBox"> Tasks </th>
-                        <th class="greenishTextblackTextBox"> Options </th>
-                        <th class="greenishTextblackTextBox"> Delete </th>
-                    -->
-                    </tr>
-
-                    {% for project in projects %}
-                        <tr>
-                            <td class="greenishTextblackTextBox"><a href="{{ url_for('project_overview', project_id=project.id) }}">{{ project.title }}</a></td>
-                            <td class="greenishTextblackTextBox">{{ project.created }}</td>
-                            <td><a href="{{ url_for('update_project', project_id=project.id) }}">Edit</a></td>
-                            <td>
-                                <form action="{{ url_for('delete_project', project_id=project.id) }}" method="post">
-                                <input type="submit" value="Delete">
+                        <td class="greenishTextblackTextBox"><a href="{{ url_for('project_overview', project_id=project.id) }}">{{ project.title }}</a></td>
+                        <td class="greenishTextblackTextBox">{{ project.created }}</td>
+                        <td>
+                            <form action="{{ url_for('update_project', project_id=project.id) }}">
+                                <button class="grey-button" type="submit">Edit</button>
                             </form>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </table>
-            </div>
+                        </td>
+                        <td>
+                            <form action="{{ url_for('delete_project', project_id=project.id) }}" method="post">
+                                <button class="grey-button" type="submit">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
         </div>
     </body>
 
