@@ -1,28 +1,7 @@
-/*  ***Remember to put the dot (.) before the name and give unique name***
-*{
-    padding: 0;
-    margin: 0;
-}
-
-h1 {
-    padding-top: 3%;
-    padding-left: 10%;
-}
-
-table {
-    padding-top: 4%;
-    padding-left: 10%;
-}
-
-form {
-    padding-top: 4%;
-    padding-left: 10%;
-}
-*/
-
 .page {
     padding-top: 2%;
     padding-left: 12%;
+    padding-right: 5%;
 }
 
 .input-box {
@@ -45,4 +24,38 @@ form {
     padding: 10px 12px;
     text-align: center;
     vertical-align: baseline;
+}
+
+.page-title {
+    padding-top: 2%;
+    padding-left: 12%;
+}
+
+.page-content {
+    padding-top: 2%;
+    padding-left: 12%;
+    padding-right: 5%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+/*.comment {*/
+/*    padding: 10px;*/
+/*    margin: 10px;*/
+/*    background-color: #fff;*/
+/*}*/
+
+.project {
+    flex: 20%;
+    padding: 10px;
+    margin: 5px;
+    background-color: #f3f3f3;
+    inline-size: 100%;
+}
+
+.ptitle .plink {
+    color: #00a36f;
+    text-decoration: none;
 }

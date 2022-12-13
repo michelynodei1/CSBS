@@ -84,57 +84,23 @@
     </div>
 
     <!-- Page Content -->
-    <div class="page">
+    <div class="page-title"><h1><strong>OVERVIEW</strong></h1></div>
+    <div class="page-title"><h2><strong>Projects</strong></h2></div>
+    <div class="page-content">
+        {% for project in projects %}
+            <div class="project">
+                <b>
+                    <p class="ptitle">
+                        <a class="plink" href="{{ url_for('project_overview', project_id=project.id) }}">
+                            {{ project.title }}
+                        </a>
+                    </p>
+                </b>
 
-        <h1><strong>OVERVIEW</strong></h1>
-        <br>
-        <br>
-
-        <div>
-            <h3>
-                <a href="{{ url_for('projects_list') }}"><strong>--Projects--</strong></a>
-            </h3>
-
-            <div>
-                <p>
-                    <a href="{{ url_for('create_project')}}">[Add Project]</a>
-                </p>
-                <br>
-                <p>List of Projects Here:<br>
-                    Project 1<br>
-                    Project 2<br>
-                    Project 3<br>
-                </p>
             </div>
-            <br>
-            <br>
-            <!-- PLANNING FOR THE TASKS FOR EACH PROJECT TO BE SHOWN WITH THE PROJECT -Rachel -->
-            {# <h3>#}
-                {# <strong>--Tasks--</strong>#}
-                {# </h3>#}
-            {##}
-            {# <div>#}
-                {# <p>[__] Add Task Button</p>#}
-                {# <br>#}
-                {# <p>List of Tasks Here:<br>#}
-                    {# Task 1<br>#}
-                    {# Task 2<br>#}
-                    {# Task 3<br>#}
-                    {# </p>#}
-                {# </div>#}
-            {# <br>#}
-            {# <br>#}
-        </div>
+        {% endfor %}
     </div>
 
-    <!-- !!! POTENTIALLY NOT USING FOOTER !!! -->
-    <!--
-        <footer class="footer">
-            <div class="container">
-                <p class="text-muted"><small>App developed by CSBS</small></p>
-            </div>
-        </footer>
-    -->
 </body>
 
 

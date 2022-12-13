@@ -61,8 +61,12 @@ def home():
 # - Site Overview -
 @app.route('/overview')
 def overview():
-    # items = db_helper.fetch_todo()#
-    return render_template('overview.html')
+    if session.get('user'):
+        my_projects = db.session.query(Project).filter_by(user_id=session['user_id']).all()
+
+        return render_template('overview.html', projects=my_projects, user=session['user'])
+    else:
+        return redirect(url_for('login'))
 
 
 # - My Work -
