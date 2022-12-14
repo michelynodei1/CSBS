@@ -472,6 +472,21 @@ def calendars():
 # -----------------------------------------------
 
 
+
+# - Settings -
+@app.route('/settings')
+def settings():
+    return render_template("settings.html")
+
+
+# - Progress -
+@app.route('/progress')
+def progress():
+    return render_template("progressbar.html")
+
+
+
+
 # ///// HOST & PORT CONFIG /////
 if __name__ == '__main__':
     # socketio.run(app, debug=True)

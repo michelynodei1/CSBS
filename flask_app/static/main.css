@@ -1540,7 +1540,7 @@ td.red-button {
     text-align: center;
     vertical-align: baseline;
 }
-p.grey-button {
+.grey-button1 {
     background-color: #04AA6D;
     border-radius: 8px;
     border-width: 0;
@@ -1550,9 +1550,9 @@ p.grey-button {
     font-weight: 500;
     line-height: 20px;
     list-style: none;
-    margin: 0;
+    margin:0 ;
     padding: 10px 12px;
-    text-align: center;
+    text-align:left;
     vertical-align: baseline;
 }
 .red-button {

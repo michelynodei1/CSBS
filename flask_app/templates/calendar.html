@@ -52,7 +52,7 @@
                                 Work</span></a></li>
                     <li><a href="{{ url_for('chat') }}"><i class="bi bi-chat"></i><span class="text">Chat</span></a>
                     </li>
-                    <li><a href="#"><i class="bi bi-gear"></i><span class="text">Settings</span></a></li>
+                    <li><a href="{{ url_for('settings') }}"><i class="bi bi-gear"></i><span class="text">Settings</span></a></li>
                     <li><a href="{{url_for('logout')}}"><i class="bi bi-box-arrow-left"></i><span
                                 class="text">Logout</span></a></li>
                 </ul>
@@ -89,8 +89,8 @@
 
     <!-- Navbar items -->
     <div class="nav-links">
-        <a href="#">Task</a>
-        <a href="#">Calendar</a>
+        <a href="{{ url_for('progress') }}">Progress</a>
+        <a href="{{ url_for('calendars') }}">Calendar</a>
         <a href="{{ url_for('taskList') }}">To-Do List</a>
         <a href="{{ url_for('get_notes') }}">Notes</a>
     </div>

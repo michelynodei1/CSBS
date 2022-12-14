@@ -80,7 +80,7 @@
      
         <!-- Navbar items -->
         <div class="nav-links">
-            <a href="#">Task</a>
+            <a href="{{ url_for('progress') }}">Progress</a>
             <a href="{{ url_for('calendar') }}">Calendar</a>
             <a href="{{ url_for('taskList') }}">To-Do List</a>
             <a href="{{ url_for('get_notes') }}">Notes</a>
@@ -115,12 +115,12 @@
 					<label>
 						<input type="radio" name="category" id="category1" value="business" /> 
 						<span class="bubble business"></span>
-						<div>Business</div>
+						<div class="bi bi-building">Business</div>
 					</label>
 					<label>
 						<input type="radio" name="category" id="category2" value="personal" />
 						<span class="bubble personal"></span>
-						<div>Personal</div>
+						<div class="bi bi-person-circle">Personal</div>
 					</label>
 				</div>
                 <input type="submit" value="Add todo" />
@@ -130,7 +130,7 @@
 
         <!-- Todo List -->
 		<section class="todo-list">
-			<h3>TODO LIST</h3>
+			<h3 class="bi bi-list-check">TODO LIST</h3>
 			<div class="list" id="todo-list"></div>
 		</section>
 		
