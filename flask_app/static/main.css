@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
 body {
     padding: 30px 30px;
     overflow: scroll;
@@ -20,12 +22,13 @@ h2.welcome {
     overflow: hidden;
     background-color: rgb(71, 70, 70);
 }
+
 .topnav2 {
     list-style-type: none;
-    position:fixed;
+    position: fixed;
     z-index: 100;
-  
-  
+
+
     overflow: hidden;
     background-color: rgb(71, 70, 70);
     width: 100%;
@@ -50,8 +53,6 @@ li a:hover {
 }
 
 /* /// SIDE NAVIGATION BAR /// */
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
-
 .topNavBody {
     color: #333;
     padding: 0;
@@ -78,20 +79,19 @@ li a:hover {
     background-attachment: fixed;
     font-family: "Open Sans", sans-serif;
     font-size: 15px;
-    overflow: visible;
 
 }
+
 .topNavBody3 {
 
     color: #333;
-    padding: 0;
     margin: 0;
     position: relative;
     min-height: 100vh;
     overflow: auto;
     font-family: "Open Sans", sans-serif;
     font-size: 15px;
-    padding-top: 15%;
+    padding: 15% 0 0;
 
 }
 
@@ -107,7 +107,7 @@ li a:hover {
     height: 93.0%;
     padding: 0 1rem;
     position: fixed;
-    top: 10;
+    /*top: 10;*/
     bottom: 0;
     left: 0;
     transition: width 0.1s ease-in-out;
@@ -174,7 +174,7 @@ li a:hover {
 
 .container .sidebar input {
     background-color: #404040;
-    border: 0px;
+    border: 0;
     padding: 1rem;
     border-radius: 0.5rem;
     width: calc(100% + 2rem);
@@ -323,7 +323,7 @@ li a:hover {
 
 .main {
     border: 3px solid green;
-    float: center;
+    /*float: center;*/
     position: fixed;
     width: 50%;
     height: 200px;
@@ -359,7 +359,7 @@ li a:hover {
     overflow: hidden;
     border-radius: 7px;
     border: none;
-    background-color: none;
+    /*background-color: none;*/
 }
 
 /* Style the buttons inside the tab */
@@ -407,7 +407,6 @@ button {
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-image: url(background-img.jpg);
     background-size: cover;
     background-attachment: fixed;
 }
@@ -476,8 +475,8 @@ body {
     .navbar .nav-btn {
         display: inline-block;
         position: absolute;
-        top: 0px;
-        right: 0px;
+        top: 0;
+        right: 0;
     }
 
 
@@ -510,7 +509,7 @@ body {
         transition: all 0.3s ease-in;
         overflow-y: hidden;
         top: 70px;
-        right: 0px;
+        right: 0;
     }
 
     .navbar .nav-links a {
@@ -519,7 +518,7 @@ body {
 
     /* when nav toggle button not checked */
     .navbar .nav-links {
-        height: 0px;
+        height: 0;
     }
 
     /* when nav toggle button is checked */
@@ -545,8 +544,8 @@ body {
     .navbar .nav-links .navbar {
         position: relative;
         background-color: rgb(220, 220, 250);
-        top: 0px;
-        left: 0px;
+        top: 0;
+        left: 0;
     }
 
     /* Text color */
@@ -556,6 +555,7 @@ body {
 
 
 }
+
 /*navbar1 for personal calendar*/
 .navbar1 {
     height: 50px;
@@ -568,8 +568,6 @@ body {
     margin-left: 10%;
     z-index: 100;
 }
-
-
 
 
 .nav-logo {
@@ -626,8 +624,8 @@ body {
     .navbar1 .nav-btn {
         display: inline-block;
         position: absolute;
-        top: 0px;
-        right: 0px;
+        top: 0;
+        right: 0;
     }
 
 
@@ -660,7 +658,7 @@ body {
         transition: all 0.3s ease-in;
         overflow-y: hidden;
         top: 70px;
-        right: 0px;
+        right: 0;
     }
 
     .navbar1 .nav-links a {
@@ -669,7 +667,7 @@ body {
 
     /* when nav toggle button not checked */
     .navbar1 .nav-links {
-        height: 0px;
+        height: 0;
     }
 
     /* when nav toggle button is checked */
@@ -695,8 +693,8 @@ body {
     .navbar1 .nav-links .navbar {
         position: relative;
         background-color: rgb(220, 220, 250);
-        top: 0px;
-        left: 0px;
+        top: 0;
+        left: 0;
     }
 
     /* Text color */
@@ -706,6 +704,7 @@ body {
 
 
 }
+
 .title {
     float: right;
 }
@@ -784,7 +783,7 @@ h4 {
 
 .greeting .title input {
     margin-left: 0.5rem;
-    flex: 1 1 0%;
+    flex: 1 1 0;
     min-width: 0;
 }
 
@@ -851,8 +850,8 @@ input[type="checkbox"] {
     content: '';
     display: block;
     opacity: 0;
-    width: 0px;
-    height: 0px;
+    width: 0;
+    height: 0;
     background-color: var(--business);
     box-shadow: var(--business-glow);
     border-radius: 999px;
@@ -864,7 +863,7 @@ input[type="checkbox"] {
     box-shadow: var(--personal-glow);
 }
 
-input:checked~.bubble::after {
+input:checked ~ .bubble::after {
     width: 10px;
     height: 10px;
     opacity: 1;
@@ -894,39 +893,38 @@ input:checked~.bubble::after {
 /*The Chat App Style*/
 .chathome {
     border: 3px solid green;
-    float: center;
+    /*float: center;*/
     position: fixed;
     width: 40%;
     height: 500px;
     margin-left: 400px;
     margin-top: 100px;
-    padding: 20px;
     text-align: center;
     font-size: 20px;
-    padding-top: 25px;
+    padding: 25px 20px 20px;
     background-color: rgba(221, 221, 221, 0.858);
 }
+
 /*Add HTML*/
 .chathome1 {
     border: 3px solid green;
     float: left;
-   color: #04AA6D;
+    color: #04AA6D;
     width: 40%;
     height: auto;
     margin-left: 400px;
 
-    padding: 20px;
     text-align: left;
     font-size: 20px;
-    padding-top: 25px;
+    padding: 25px 20px 20px;
     background-color: rgba(221, 221, 221, 0.858);
 }
 
 
-.chathome1  input[type="text"] {
+.chathome1 input[type="text"] {
     display: block;
     width: 90%;
-    float:left;
+    float: left;
     font-size: 1.125rem;
     padding: 10px 24px;
     color: var(--dark);
@@ -937,10 +935,11 @@ input:checked~.bubble::after {
     margin-top: 20px;
     margin-bottom: 1.5rem;
 }
-.chathome1  input[type="url"] {
+
+.chathome1 input[type="url"] {
     display: block;
     width: 90%;
-    float:left;
+    float: left;
     font-size: 1.125rem;
     padding: 8px 24px;
     color: var(--dark);
@@ -976,37 +975,35 @@ input:checked~.bubble::after {
 /*Note Page*/
 .notehome {
     border: 3px solid rgb(171, 151, 4);
-    float: center;
+    /*float: center;*/
     width: 50%;
     height: 100%;
     overflow: auto;
     margin-left: 400px;
     margin-top: 100px;
-    padding: 50px;
     font-size: 20px;
-    padding-top: 25px;
+    padding: 25px 50px 50px;
     background-color: rgba(241, 241, 241, 0.858);
 
 }
 
 .notehome1 {
-
-    float: center;
+    /*float: center;*/
     width: 90%;
     height: 100%;
     overflow: auto;
-    margin-left:100px;
+    margin-left: 100px;
     margin-top: 100px;
-    padding: 50px;
     text-align: center;
-    padding-top: 25px;
-    font-size:25px ;
-    color:rgb(171, 151, 4);
+    padding: 25px 50px 50px;
+    font-size: 25px;
+    color: rgb(171, 151, 4);
 
 }
+
 .notehome2 {
     border: 3px solid rgb(171, 151, 4);
-    float: center;
+    /*float: center;*/
     width: 50%;
     height: 100%;
     overflow: auto;
@@ -1022,7 +1019,7 @@ input:checked~.bubble::after {
 
 .notehome3 {
     border: 3px solid rgb(171, 151, 4);
-    float: center;
+    /*float: center;*/
     width: 75%;
     height: 100%;
     overflow: auto;
@@ -1063,8 +1060,7 @@ font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans 
 
 }
 
-.center3 input[type="text"]
-{
+.center3 input[type="text"] {
     box-sizing: border-box;
     border: 2px solid green;
     border-radius: 4px;
@@ -1083,25 +1079,25 @@ font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans 
 }
 
 .center2 {
-   margin-top:10% ;
+    margin-top: 10%;
     margin-left: 5%;
     width: 15%;
 
 }
 
 .center3 {
-    margin-top:5% ;
-     margin-left: 30%;
-     width: 15%;
- 
- }
+    margin-top: 5%;
+    margin-left: 30%;
+    width: 15%;
 
-.noteTitle
-{
+}
+
+.noteTitle {
     font-size: 30px;
     color: green;
 
 }
+
 tr.noteTitle {
     text-align: center;
     font-size: 30px;
@@ -1109,11 +1105,12 @@ tr.noteTitle {
 
 
 }
+
 tr.noteTitle2 {
-    
+
     font-size: 30px;
     color: green;
-    
+
 
 }
 
@@ -1191,9 +1188,10 @@ th {
     padding: 7px 10px;
     display: inline-block;
     border-radius: 0.5rem;
-    margin-left:61%;
-   margin-top: 5%;
+    margin-left: 61%;
+    margin-top: 5%;
 }
+
 .link5 {
     color: white;
     background-color: #04AA6D;
@@ -1204,8 +1202,6 @@ th {
     font-size: 15px;
 
 }
-
-
 
 
 .link2:hover {
@@ -1230,6 +1226,7 @@ th {
 
 
 }
+
 textarea {
 
 
@@ -1239,7 +1236,7 @@ textarea {
 
     font-size: 16px;
 
-  }
+}
 
 .delete input[type="submit"]:hover {
     opacity: 0.50;
@@ -1312,6 +1309,7 @@ textarea {
     padding-bottom: 50px;
     color: #04AA6D;
 }
+
 .mychat1 {
 
     padding-top: 10px;
@@ -1319,6 +1317,7 @@ textarea {
     color: #04AA6D;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
 /*chat room style*/
 .chatroom {
     padding: 20px;
@@ -1391,7 +1390,7 @@ textarea {
 }
 
 .todo-item .todo-content {
-    flex: 1 1 0%;
+    flex: 1 1 0;
 }
 
 .todo-item .todo-content input {
@@ -1467,7 +1466,7 @@ textarea {
 /*SearchBar Formatting  */
 #searchbar {
     margin-left: 10%;
-    padding: 15px;
+    padding: 10px;
     border-radius: 15px;
     outline: 2px solid black;
 }
@@ -1510,23 +1509,9 @@ textarea {
 .coverWall {
     background-color: #ddd;
 }
-/*Overview*/
-td.red-button {
-    background-color: #04AA6D(239, 9, 9, 0.884);
-    border-radius: 8px;
-    border-width: 0;
-    color: #333333;
-    display: inline-block;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 20px;
-    list-style: none;
-    margin: 0;
-    padding: 10px 12px;
-    text-align: center;
-    vertical-align: baseline;
-}
 
+
+/* ///// OVERVIEW CSS /////*/
 .project {
     flex: 20%;
     padding: 10px;
@@ -1555,6 +1540,7 @@ td.red-button {
     text-align: center;
     vertical-align: baseline;
 }
+
 .grey-button1 {
     background-color: #04AA6D;
     border-radius: 8px;
@@ -1565,13 +1551,14 @@ td.red-button {
     font-weight: 500;
     line-height: 20px;
     list-style: none;
-    margin:0 ;
+    margin: 0;
     padding: 10px 12px;
-    text-align:left;
+    text-align: left;
     vertical-align: baseline;
 }
+
 .red-button {
-    background-color:red;
+    background-color: red;
     border-radius: 8px;
     border-width: 0;
     color: #ffffff;
@@ -1585,8 +1572,6 @@ td.red-button {
     text-align: center;
     vertical-align: baseline;
 }
-
-
 
 .page-title {
     padding-top: 2%;
