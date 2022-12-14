@@ -1,102 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="List of Projects">
-        <title>CSBS|PROJECTS</title>
-        <link rel="icon" type="image/jpg" href="{{ url_for('static', filename='csbs2.jpg') }}">
-        
-        <!-- Styles -->
-        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="List of Projects">
+    <title>CSBS|PROJECTS</title>
+    <link rel="icon" type="image/jpg" href="{{ url_for('static', filename='csbs2.jpg') }}">
 
-        <!-- Top Navigation Bar -->
-        <!-- TEMPORARY NAV LINKS: Most links are for easy navigation while testing -Rachel -->
-        <ul class="topnav">
-            <li><img class="logo1" src="{{url_for('static', filename='csbs1.png')}}"  width="110" height="30"></li>
-            <li><a href="{{ url_for('overview') }}">Overview</a></li>
-            <li><a class="active" href="{{ url_for('projects_list') }}">Projects</a></li>
-            <li><a href="{{ url_for('create_project') }}">Add Project</a></li>
-        </ul>
-    </head>
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.css">
 
-    <body class="topNavBody">
-        <!-- Collapsable Sidebar -->
-        <div class="container">
-            <div class="sidebar">
-                <div class="sidebartop">
-                    <div class="logo">
-                        <img src="/images/logo.png" alt="">
-                    </div>
-                    <div class="menu">
-                        <i class="bi bi-list"></i>
-                    </div>
+    <!-- Top Navigation Bar -->
+    <!-- TEMPORARY NAV LINKS: Most links are for easy navigation while testing -Rachel -->
+    <ul class="topnav">
+        <li><img class="logo1" src="{{url_for('static', filename='csbs1.png')}}" width="110" height="30"></li>
+        <li><a href="{{ url_for('overview') }}">Overview</a></li>
+        <li><a class="active" href="{{ url_for('projects_list') }}">Projects</a></li>
+        <li><a href="{{ url_for('create_project') }}">Create Project</a></li>
+    </ul>
+</head>
+
+<body class="topNavBody">
+    <!-- Collapsable Sidebar -->
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebartop">
+                <div class="logo">
+                    <img src="/images/logo.png" alt="">
                 </div>
+                <div class="menu">
+                    <i class="bi bi-list"></i>
+                </div>
+            </div>
 
-                <nav>
-                    <ul>
-                        <li><a href="{{ url_for('overview') }}"><i class="bi bi-compass"></i><span
-                                    class="text">Overview</span></a></li>
-                        <li><a href="{{ url_for('calendars') }}"><i class="bi bi-calendar"></i><span class="text">Calendar</span></a></li>
-                        <li><a href="{{ url_for('myWork') }}"><i class="bi bi-list-check"></i><span class="text">My
-                                    Work</span></a></li>
-                        <li><a href="{{ url_for('chat') }}"><i class="bi bi-chat"></i><span class="text">Chat</span></a>
-                        </li>
-                        <li><a href="#"><i class="bi bi-gear"></i><span class="text">Settings</span></a></li>
-                        <li><a href="{{url_for('logout')}}"><i class="bi bi-box-arrow-left"></i><span
-                                    class="text">Logout</span></a></li>
-                    </ul>
-    
-                </nav>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('overview') }}"><i class="bi bi-compass"></i><span
+                                class="text">Overview</span></a></li>
+                    <li><a href="{{ url_for('calendars') }}"><i class="bi bi-calendar"></i><span
+                                class="text">Calendar</span></a></li>
+                    <li><a href="{{ url_for('myWork') }}"><i class="bi bi-list-check"></i><span class="text">My
+                                Work</span></a></li>
+                    <li><a href="{{ url_for('chat') }}"><i class="bi bi-chat"></i><span class="text">Chat</span></a>
+                    </li>
+                    <li><a href="#"><i class="bi bi-gear"></i><span class="text">Settings</span></a></li>
+                    <li><a href="{{url_for('logout')}}"><i class="bi bi-box-arrow-left"></i><span
+                                class="text">Logout</span></a></li>
+                </ul>
 
-                <div class="account">
-                    <div class="name">
-                        <h4>CSBS</h4>
-                    </div>
+            </nav>
+
+            <div class="account">
+                <div class="name">
+                    <h4>CSBS</h4>
                 </div>
             </div>
         </div>
-
-        <!-- Page Content -->
-        <div class="page">
-            <br>
-            <h1>Projects</h1>
-            <p>
-                <form action="{{ url_for('create_project') }}">
-                    <button class="grey-button" type="submit">Create Project</button>
-                </form>
-            </p>
-
-            <table>
-                <tr>
-                    <th class="greenishTextblackTextBox">  Title  </th>
-                    <th class="greenishTextblackTextBox">  Date Created  </th>
-                </tr>
-
-                {% for project in projects %}
-                    <tr>
-                        <td class="greenishTextblackTextBox"><a href="{{ url_for('project_overview', project_id=project.id) }}">{{ project.title }}</a></td>
-                        <td class="greenishTextblackTextBox">{{ project.created }}</td>
-                        <td>
-                            <form action="{{ url_for('update_project', project_id=project.id) }}">
-                                <button class="grey-button" type="submit">Edit</button>
-                            </form>
-                        </td>
-                        <td>
-                            <form action="{{ url_for('delete_project', project_id=project.id) }}" method="post">
-                                <button class="grey-button" type="submit">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                {% endfor %}
-            </table>
+    </div>
+   
+        <div class="notehome1">
+            <h1>Welcome  to the Projects!</h1>
+            
         </div>
-    </body>
+ 
+    <!-- Page Content -->
+    <div class="notehome">
+        
 
+        <p>
+        <form action="{{ url_for('create_project') }}">
+            <button class="grey-button" type="submit">Create Project</button>
+        </form>
+        </p>
+
+        <table class="center1">
+            <tr class="noteTitle">
+                <th> Title </th>
+                <th> Date Created </th>
+            </tr>
+
+            {% for project in projects %}
+            <tr>
+                <td><a class="link" href="{{ url_for('project_overview', project_id=project.id) }}">{{ project.title
+                        }}</a></td>
+                <td class="dates">{{ project.created }}</td>
+                <td>
+                    <form action="{{ url_for('update_project', project_id=project.id) }}">
+                        <button class="grey-button" type="submit">Edit</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="{{ url_for('delete_project', project_id=project.id) }}" method="post">
+                        <button class="red-button" type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+<script src="{{ url_for('static', filename='init.js') }}"></script>
 </html>

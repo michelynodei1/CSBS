@@ -272,8 +272,6 @@ function changeTextColor() {
     else {
         document.getElementById("animals").style.color = 'white';
     }
-    
-
 }
 
 function hideResults() {
