@@ -20,8 +20,8 @@
     <!-- TEMPORARY NAV LINKS: Most links are for easy navigation while testing -Rachel -->
     <ul class="topnav">
         <li><img class="logo1" src="{{url_for('static', filename='csbs1.png')}}" width="110" height="30" alt=""></li>
-        <li><a class="active" href="{{ url_for('overview') }}">Overview</a></li>
-        <li><a href="{{ url_for('projects_list') }}">Projects</a></li>
+        <li ><a class="active" href="{{ url_for('overview') }}">Overview</a></li>
+        <li ><a href="{{ url_for('projects_list') }}">Projects</a></li>
         <li><a href="{{ url_for('create_project') }}">Add Project</a></li>
     </ul>
 
@@ -85,7 +85,7 @@
 
     <!-- Page Content -->
     <div class="page-title"><h1><strong>OVERVIEW</strong></h1></div>
-    <div class="page-title"><h2><strong>Projects</strong></h2></div>
+    <div class="page-title"><h2 class="bi bi-journal"><strong>Projects</strong></h2></div>
     <div class="page-content">
         {% for project in projects %}
             <div class="project">

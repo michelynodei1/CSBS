@@ -70,7 +70,7 @@
             {% else %}
                 <form action="create-project" method="post">
             {% endif %}
-                    <p><label><strong>Title</strong></label></p>
+                    <p><label class="bi bi-card-text"><strong>Title</strong></label></p>
                     <p class="input-box"><input type="text" name="title" value="{% if project %}{{project.title}} {% endif %}"/></p>
                     <p class="grey-button">
                         {% if project %}

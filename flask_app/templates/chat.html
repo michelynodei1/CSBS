@@ -13,7 +13,7 @@
          <!--Navigation Top Bar-->
          <ul class="topnav">
             <li> <img class="logo1" src="{{url_for('static', filename='csbs1.png')}}"  width="80" height="30"></li>
-            <li><a href="#news">News</a></li>
+            
         </ul>
     </head>
 
@@ -63,11 +63,11 @@
         <h1 class="mychat">My Chat App </h1>
         <form action="/chatroom">
             <div>
-                <label>Enter your username:</label>
+                <label class="bi bi-person">Enter your username:</label>
                 <input type="text" name="username">
             </div>
             <div>
-                <label>Enter your room id:</label>
+                <label class="bi bi-person-bounding-box">Enter your room id:</label>
                 <input type="text" name="room">
             </div>
             <button type="submit">Submit</button>
