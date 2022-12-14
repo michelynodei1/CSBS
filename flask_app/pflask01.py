@@ -487,9 +487,16 @@ def calendars():
 
 
 
+# - Settings -
+@app.route('/settings')
+def settings():
+    return render_template("settings.html")
 
 
-# testing the push
+# - Progress -
+@app.route('/progress')
+def progress():
+    return render_template("progressbar.html")
 
 
 
