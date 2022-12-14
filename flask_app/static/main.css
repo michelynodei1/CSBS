@@ -1454,3 +1454,32 @@ textarea {
 .coverWall {
     background-color: #ddd;
 }
+
+/* Progress Bar */
+
+.progress {
+    margin-top: 180px;
+    margin-left: 460px;
+    position: relative;
+    width: 600px;
+    height: 100px;
+    background: #3aa36f;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.progress__fill {
+    width: 0%;
+    height: 100%;
+    background: #07743d;
+    transition: all 0.2s;
+}
+
+.progress__text {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    font: bold 30px 'Quicksand', san-serif;
+    color: #ffffff;
+}

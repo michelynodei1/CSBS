@@ -33,23 +33,6 @@ with app.app_context():
     db.create_all()  # Run under the app context
 
 
-# ///// EVENTS /////
-events = [
-    {
-        'title': 'Update Notes',
-        'start': '2022-12-20',
-        'end': '2022-12-20',
-        'url': 'http://youtube.com',
-    },
-    {
-        'title': 'Update List',
-        'start': '2022-12-08',
-        'end': '',
-        'url': 'http://127.0.0.1:5000/taskList',
-    },
-]
-
-
 # ///// ROUTES /////
 # - Home -
 @app.route('/')
@@ -487,9 +470,16 @@ def calendars():
 
 
 
+# - Settings -
+@app.route('/settings')
+def settings():
+    return render_template("settings.html")
 
 
-# testing the push
+# - Progress -
+@app.route('/progress')
+def progress():
+    return render_template("progressbar.html")
 
 
 
