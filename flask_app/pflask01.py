@@ -242,6 +242,33 @@ def delete_task(project_id, task_id):
     else:
         return redirect(url_for('login'))
 
+
+# -----------------------------------------------
+
+# # - Progress Bar for Project Tasks -
+# @app.route('/progress')
+# def progress():
+#     return render_template("progress.html")
+
+# # - Completed Tasks -
+# @app.route('/progress/done')
+# def task_done(task_id):
+#     if session.get('user'):
+#         # retrieve task from database
+#         total_tasks = db.session.query(Task).count()
+
+#     return render_template("progress.html")
+
+
+# # - Incomplete Tasks -
+# @app.route('/progress/done')
+# def task_done(task_id):
+#     if session.get('user'):
+#         # retrieve task from database
+#         total_tasks = db.session.query(Task).count()
+
+#     return render_template("progress.html")
+
 # -----------------------------------------------
 
 
@@ -492,11 +519,6 @@ def calendars():
 def settings():
     return render_template("settings.html")
 
-
-# - Progress -
-@app.route('/progress')
-def progress():
-    return render_template("progressbar.html")
 
 
 
