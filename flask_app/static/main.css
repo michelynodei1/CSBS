@@ -1411,7 +1411,7 @@ textarea {
 /*SearchBar Formatting  */
 #searchbar {
     margin-left: 10%;
-    padding: 15px;
+    padding: 10px;
     border-radius: 15px;
     outline: 2px solid black;
 }

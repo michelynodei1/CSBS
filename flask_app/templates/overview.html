@@ -24,25 +24,6 @@
         <li ><a href="{{ url_for('projects_list') }}">Projects</a></li>
         <li><a href="{{ url_for('create_project') }}">Add Project</a></li>
     </ul>
-
-{#    <!-- Search Bar -->#}
-{#    <div>#}
-{#        <label for="searchbar"></label>#}
-{#        <input id="searchbar" onkeyup="search_animal()" type="text" name="search" placeholder="Searchbar..">#}
-{##}
-{#        <ol class="centerText">#}
-{#            <a href="{{ url_for('get_notes') }}" class="animals"><b>Bring me to my notes</b></a>#}
-{#            <a href="{{ url_for('get_notes') }}" class="animals"><b>Display my notes</b></a>#}
-{#            <a href="{{ url_for('calendar') }}" class="animals"><b>Show me my Calendar</b></a>#}
-{#            <a href="{{ url_for('calendar') }}" class="animals"><b>Find me what I need to do for the next couple weeks</b></a>#}
-{#            <a href="{{ url_for('taskList') }}" class="animals"><b>Show me a List of My Tasks</b></a>#}
-{#            <a href="{{ url_for('chat') }}" class="animals"><b>Bring me to the chatroom</b></a>#}
-{#            <a href="{{ url_for('new_note') }}" class="animals"><b>Create a New Note</b></a>#}
-{#            <a href="{{ url_for('myWork') }}" class="animals"><b>Show Me My Work</b></a>#}
-{#            <a href="{{ url_for('projects_list')}}" class="animals"><b>Show Me My projects</b></a>#}
-{#            <a href="{{ url_for('chat') }}" class="animals"><b>Send a Direct Message</b></a>#}
-{#        </ol>#}
-{#    </div>#}
 </head>
 
 <body class="topNavBody">
@@ -99,6 +80,25 @@
 
             </div>
         {% endfor %}
+    </div>
+
+            <!-- Search Bar -->
+    <div class="center">
+        <label for="searchbar"></label>
+        <input id="searchbar" onkeyup="search_animal()" type="text" name="search" placeholder="Searchbar..">
+
+        <ol class="centerText">
+            <a href="{{ url_for('get_notes') }}" class="animals"><b>Bring me to my notes</b></a>
+            <a href="{{ url_for('get_notes') }}" class="animals"><b>Display my notes</b></a>
+            <a href="{{ url_for('calendar') }}" class="animals"><b>Show me my Calendar</b></a>
+            <a href="{{ url_for('calendar') }}" class="animals"><b>Find me what I need to do for the next couple weeks</b></a>
+            <a href="{{ url_for('taskList') }}" class="animals"><b>Show me a List of My Tasks</b></a>
+            <a href="{{ url_for('chat') }}" class="animals"><b>Bring me to the chatroom</b></a>
+            <a href="{{ url_for('new_note') }}" class="animals"><b>Create a New Note</b></a>
+            <a href="{{ url_for('myWork') }}" class="animals"><b>Show Me My Work</b></a>
+            <a href="{{ url_for('projects_list')}}" class="animals"><b>Show Me My projects</b></a>
+            <a href="{{ url_for('chat') }}" class="animals"><b>Send a Direct Message</b></a>
+        </ol>
     </div>
 
 </body>
