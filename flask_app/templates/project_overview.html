@@ -21,8 +21,7 @@
     <ul class="topnav">
         <li><img class="logo1" src="{{url_for('static', filename='csbs1.png')}}" width="110" height="30"></li>
         <li><a href="{{ url_for('overview') }}">Overview</a></li>
-        <li><a class="active" href="{{ url_for('projects_list') }}">Projects</a></li>
-        <li><a href="{{ url_for('create_project') }}">Create Project</a></li>
+       
     </ul>
 </head>
 
@@ -67,19 +66,20 @@
     <!-- Page Content -->
     <div class="page">
         <br>
-        <div class="notehome1">
-            <h1>{{ project.title }}</h1>
-        </div>
+       
+            <h1 class="notehome4">Project Name: {{ project.title }}</h1>
+        
         <br>
         <br>
-        <h2> Tasks </h2>
+        
         <div class="notehome3">
-
+           
             <form action="{{ url_for('add_task', project_id=project.id) }}">
-                <button class="grey-button" type="submit">Add Task</button>
+                <button class="grey-button1" type="submit">Add Task</button>
             </form>
+            
             <br>
-            <br>
+            <h2 class="mychat1"> Tasks </h2>
             <table class="center1">
                 <tr class="noteTitle2">
                     <th> Title </th>

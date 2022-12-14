@@ -21,8 +21,7 @@
     <ul class="topnav">
         <li><img class="logo1" src="{{url_for('static', filename='csbs1.png')}}" width="110" height="30"></li>
         <li><a href="{{ url_for('overview') }}">Overview</a></li>
-        <li><a class="active" href="{{ url_for('projects_list') }}">Projects</a></li>
-        <li><a href="{{ url_for('create_project') }}">Create Project</a></li>
+        
     </ul>
 </head>
 
@@ -64,10 +63,10 @@
         </div>
     </div>
    
-        <div class="notehome1">
-            <h1>Welcome  to the Projects!</h1>
+        
+            <h1 class="notehome4">Welcome  to the Projects!</h1>
             
-        </div>
+        
  
     <!-- Page Content -->
     <div class="notehome">
@@ -87,15 +86,15 @@
 
             {% for project in projects %}
             <tr>
-                <td><a class="link" href="{{ url_for('project_overview', project_id=project.id) }}">{{ project.title
+                <td class="notesdata"><a class="link" href="{{ url_for('project_overview', project_id=project.id) }}">{{ project.title
                         }}</a></td>
-                <td class="dates">{{ project.created }}</td>
-                <td>
+                <td class="notesdata">{{ project.created }}</td>
+                <td class="notesdata">
                     <form action="{{ url_for('update_project', project_id=project.id) }}">
                         <button class="grey-button" type="submit">Edit</button>
                     </form>
                 </td>
-                <td>
+                <td class="notesdata">
                     <form action="{{ url_for('delete_project', project_id=project.id) }}" method="post">
                         <button class="red-button" type="submit">Delete</button>
                     </form>
