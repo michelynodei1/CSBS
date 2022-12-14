@@ -22,7 +22,7 @@
             <li><img class="logo1" src="{{url_for('static', filename='csbs1.png')}}"  width="110" height="30"></li>
             <li><a href="{{ url_for('overview') }}">Overview</a></li>
             <li><a class="active" href="{{ url_for('projects_list') }}">Projects</a></li>
-            <li><a href="{{ url_for('create_project') }}">Add Project</a></li>
+            <li><a href="{{ url_for('create_project') }}">Create Project</a></li>
         </ul>
     </head>
 
@@ -63,8 +63,8 @@
         </div>
 
         <!-- Page Content -->
-        <div class="page">
-            <h1>Add Task</h1>
+        <div class="notehome">
+            <h1 class="mychat1">Add Task</h1>
             <br>
 
             {% if task %}
@@ -72,25 +72,27 @@
             {% else %}
                 <form action="add-task" method="post">
             {% endif %}
-                    <p><label><strong>Title</strong></label></p>
-                    <p class="input-box"><input type="text" name="title" value="{% if task %}{{task.title}} {% endif %}"/></p>
-                    <p><label><strong>Description</strong></label></p>
+            <div class="center2">
+            <p class="noteTitle"><label>Title</label></p>
+                    <p><input type="text" name="title" value="{% if task %}{{task.title}} {% endif %}"/></p>
+                    <p class="noteTitle"><label>Description</label></p>
                     <p>
-                        <textarea name="description" rows="6" cols="0">
+                        <textarea name="description" rows="10" cols="50">
                             {% if task %}
                                 {{ task.description }}
                             {% endif %}
                         </textarea>
                     </p>
-                    <p class="grey-button">
+                    <div class="grey-button">
                         {% if task %}
                             <input type="submit" value="Update Task"/>
                         {% else %}
                             <input type="submit" value="Add Task"/>
                         {% endif %}
-                    </p>
+                    </div>
                 </form>
         </div>
+    </div>
     </body>
 
 

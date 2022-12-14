@@ -100,14 +100,14 @@
             <a  class="link1" href="{{ url_for('new_note') }}">Add Note</a> 
     
         </nav>
+        
         <h1 class="mychat1">Listing Notes</h1>
         <table class="center1">
-
             <tr class="noteTitle">
                 <th>Title</th>
                 <th>Date</th>
             </tr>
-
+       
             {% for note in notes %}
             <tr>
                 <td><a class="link" href="{{ url_for('get_note', note_id=note.id) }}">{{ note.title }}</a></td>

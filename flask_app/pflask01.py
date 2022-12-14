@@ -33,6 +33,9 @@ with app.app_context():
     db.create_all()  # Run under the app context
 
 
+
+
+
 # ///// ROUTES /////
 # - Home -
 @app.route('/')
