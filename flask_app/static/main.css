@@ -16,22 +16,75 @@ h2.welcome {
 
 
 
-/* ////////////////////////////// OVERVIEW CSS ////////////////////////////// */
-
-.project {
-    flex: 20%;
-    padding: 10px;
-    margin: 5px;
-    background-color: #f3f3f3;
-    inline-size: 100%;
+/* //////////////////// OVERVIEW CSS //////////////////// */
+.page-title {
+    padding-top: 2%;
+    padding-left: 12%;
 }
 
-.ptitle .plink {
+.page-container {
+    padding-top: 2%;
+    padding-right: 5%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.page {
+    padding-top: 5%;
+    padding-left: 12%;
+    padding-right: 5%;
+}
+
+.page h1 {
+    color:rgb(171, 151, 4);
+}
+
+.page h2{
+    font-size: 27px;
+}
+
+.project-container {
+    position: relative;
+    padding-top: 20px;
+    padding-left: 20px;
+    margin: 10px;
+    width: 300px;
+    height: 150px;
+    display: block;
+    /*background: url("bg-images/bg-mountains.jpg");*/
+    /*opacity: 0.3;*/
+    /*background-size: cover;*/
+}
+
+.project-container::before {
+    content: "";
+    background: url("bg-images/bg-mountains.jpg");
+    background-size: cover;
+    border-radius: 20px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0.3;
+}
+
+.proj-title {
+    position: relative;
     color: #00a36f;
     text-decoration: none;
+    font-size: 18px;
 }
 
-.grey-button {
+/*.comment {*/
+/*    padding: 10px;*/
+/*    margin: 10px;*/
+/*    background-color: #fff;*/
+/*}*/
+
+.green-button-center {
     background-color: #04AA6D;
     border-radius: 8px;
     border-width: 0;
@@ -42,12 +95,13 @@ h2.welcome {
     line-height: 20px;
     list-style: none;
     margin: 0;
-    padding: 10px 12px;
+    padding: 10px 10px;
     text-align: center;
     vertical-align: baseline;
+    box-sizing: border-box;
 }
 
-.grey-button1 {
+.green-button-left {
     background-color: #04AA6D;
     border-radius: 8px;
     border-width: 0;
@@ -61,10 +115,11 @@ h2.welcome {
     padding: 10px 12px;
     text-align: left;
     vertical-align: baseline;
+    box-sizing: border-box;
 }
 
 .red-button {
-    background-color: red;
+    background-color: #e31e1e;
     border-radius: 8px;
     border-width: 0;
     color: #ffffff;
@@ -79,34 +134,7 @@ h2.welcome {
     vertical-align: baseline;
 }
 
-.page-title {
-    padding-top: 2%;
-    padding-left: 12%;
-}
-
-.page-content {
-    padding-top: 2%;
-    padding-left: 12%;
-    padding-right: 5%;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.page {
-    padding-top: 2%;
-    padding-left: 12%;
-    padding-right: 5%;
-}
-
-/*.comment {*/
-/*    padding: 10px;*/
-/*    margin: 10px;*/
-/*    background-color: #fff;*/
-/*}*/
-
-/* /////////////////////////////////////////////////////////////////////////////////////////////// */
+/* ///////////////////////////////////////////////////// */
 
 
 
@@ -1127,7 +1155,7 @@ input:checked ~ .bubble::after {
 }
 .notehome4 {
 font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    float: center;
+    /*float: center;*/
     width: 90%;
     height: 100%;
     overflow: auto;

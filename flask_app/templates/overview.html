@@ -1,3 +1,10 @@
+<?php
+  $bg = array('bg-01.jpg', 'bg-02.jpg', 'bg-03.jpg', 'bg-04.jpg', 'bg-05.jpg', 'bg-06.jpg', 'bg-07.jpg' );
+
+  $i = rand(0, count($bg)-1);
+  $selectedBg = "$bg[$i]";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,23 +70,42 @@
     </div>
 
     <!-- Page Content -->
-    <div class="page-title"><h1><strong>OVERVIEW</strong></h1></div>
-    <div class="page-title"><h2 class="bi bi-journal"><strong>Projects</strong></h2>
-    <a class="link3"href="{{ url_for('create_project') }}">Add Project</a></div>
-    <div class="page-content">
+    <div class="page">
+        <h1><strong>OVERVIEW</strong></h1>
+        <form action="{{ url_for('create_project') }}">
+            <button class="green-button-center" type="submit">Add Project</button>
+        </form>
+        <br>
+        <br>
+    <br>
+        <h2 class="bi bi-journal"><strong> Team Projects</strong></h2>
 
-        {% for project in projects %}
-            <div class="project">
-                <b>
-                    <p class="ptitle">
-                        <a class="plink" href="{{ url_for('project_overview', project_id=project.id) }}">
+        <div class="page-container">
+            {% for project in team_projects %}
+                <div class="project-container">
+                    <strong>
+                        <a class="proj-title" href="{{ url_for('project_overview', project_id=project.id) }}">
                             {{ project.title }}
                         </a>
-                    </p>
-                </b>
+                    </strong>
+                </div>
+            {% endfor %}
+        </div>
 
-            </div>
-        {% endfor %}
+        <br>
+        <h2 class="bi bi-journal"><strong> Your Projects</strong></h2>
+
+        <div class="page-container">
+            {% for project in projects %}
+                <div class="project-container">
+                    <strong>
+                        <a class="proj-title" href="{{ url_for('project_overview', project_id=project.id) }}">
+                            {{ project.title }}
+                        </a>
+                    </strong>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 </body>
 

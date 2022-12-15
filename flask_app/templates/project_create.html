@@ -72,11 +72,11 @@
             <div class="center3">
             <p class="noteTitle"><label>Title</label></p>
                     <p><input type="text" name="title" value="{% if project %}{{project.title}} {% endif %}"/></p>
-                    <p class="grey-button">
+                    <p class="green-button-center">
                         {% if project %}
                             <input type="submit" value="Update Project"/>
                         {% else %}
-                            <input type="submit" value="Create Project"/>
+                            <input class="green-button-center" type="submit" value="Create Project"/>
                         {% endif %}
                     </p>
 

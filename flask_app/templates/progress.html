@@ -107,7 +107,7 @@
         <br>
         <h2> Tasks </h2>
         <form action="{{ url_for('add_task', project_id=project.id) }}">
-            <button class="grey-button" type="submit">Add Task</button>
+            <button class="green-button-center" type="submit">Add Task</button>
         </form>
         <br>
         <br>
@@ -119,7 +119,7 @@
                 <td class="greenishTextblackTextBox">{{ task.description }}</td>
                 <td>
                     <form action="{{ url_for('update_task', project_id=task.project_id, task_id=task.id) }}">
-                        <button class="grey-button" type="submit">Done</button>
+                        <button class="green-button-center" type="submit">Done</button>
                     </form>
                 </td>
             </tr>

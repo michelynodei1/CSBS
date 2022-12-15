@@ -49,8 +49,9 @@ def home():
 def overview():
     if session.get('user'):
         my_projects = db.session.query(Project).filter_by(user_id=session['user_id']).all()
+        team_projects = db.session.query(Project).filter_by(user_id=1).all()
 
-        return render_template('overview.html', projects=my_projects, user=session['user'])
+        return render_template('overview.html', projects=my_projects, team_projects=team_projects, user=session['user'])
     else:
         return redirect(url_for('login'))
 
