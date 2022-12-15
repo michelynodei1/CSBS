@@ -375,7 +375,7 @@ def new_note():
 
             return redirect(url_for('get_notes'))
         else:
-            a_user = db.session.query(User).filter_by(email='xdarkoh@uncc.edu').one()
+            
             return render_template('new.html', user=session['user'])
     else:
         return redirect(url_for('login'))
