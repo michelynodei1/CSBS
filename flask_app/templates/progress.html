@@ -83,7 +83,6 @@
 
         <!-- Navbar items -->
         <div class="nav-links">
-            <a href="{{ url_for('progress') }}">Progress</a>
             <a href="{{ url_for('calendar') }}">Calendar</a>
             <a href="{{ url_for('taskList') }}">To-Do List</a>
             <a href="{{ url_for('get_notes') }}">Notes</a>
@@ -100,6 +99,7 @@
         <h1>See how much you've completed!</h1>
         <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
 
+<<<<<<< Updated upstream
 
         <br>
         <h1>{{ project.title }}</h1>
@@ -126,6 +126,8 @@
             {% endfor %}
         </table>
 
+=======
+>>>>>>> Stashed changes
     </div>
 
     <!--Progress Bar-->
@@ -136,6 +138,7 @@
 
     <script>
         function updateProgressBar(progressBar, value) {
+            // value = "{{ tasks_done }}"
             progressBar.querySelector(".progress__fill").style.width = `${value}%`;
             progressBar.querySelector(".progress__text").textContent = `${value}%`;
         }

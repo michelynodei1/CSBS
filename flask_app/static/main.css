@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
+.dark-mode {
+    filter: invert(1) hue-rotate(180deg);
+ }
+ 
+
 body {
     padding: 30px 30px;
     overflow: scroll;
@@ -11,7 +16,7 @@ h1 .welcome {
 
 h2.welcome {
     color: gold;
-    background: green;
+    background-color: green;
 }
 
 
@@ -862,14 +867,14 @@ button {
     appearance: none;
     border: none;
     outline: none;
-    background: none;
+    background-color: none;
     cursor: initial;
 }
 
 /* End of Resets */
 
 .taskBody {
-    background: var(--light);
+    background-color: var(--light);
     color: var(--dark);
 }
 
@@ -1629,4 +1634,147 @@ textarea {
 
 .coverWall {
     background-color: #ddd;
+<<<<<<< Updated upstream
 }
+=======
+}
+
+
+/* ///// OVERVIEW CSS /////*/
+.project {
+    flex: 20%;
+    padding: 10px;
+    margin: 5px;
+    background-color: #f3f3f3;
+    inline-size: 100%;
+}
+
+.ptitle .plink {
+    color: #00a36f;
+    text-decoration: none;
+}
+
+.grey-button {
+    background-color: #04AA6D;
+    border-radius: 8px;
+    border-width: 0;
+    color: #ffffff;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 10px 12px;
+    text-align: center;
+    vertical-align: baseline;
+}
+
+.grey-button1 {
+    background-color: #04AA6D;
+    border-radius: 8px;
+    border-width: 0;
+    color: #ffffff;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 10px 12px;
+    text-align: left;
+    vertical-align: baseline;
+}
+
+.red-button {
+    background-color: red;
+    border-radius: 8px;
+    border-width: 0;
+    color: #ffffff;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 10px 12px;
+    text-align: center;
+    vertical-align: baseline;
+}
+
+/* task is not done */
+.yellow-button {
+    background-color: rgb(171, 151, 4);
+    border-radius: 8px;
+    border-width: 1px;
+    border-color: rgb(171, 151, 4);
+    color: #ffffff;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 10px 12px;
+    text-align: center;
+    vertical-align: baseline;
+}
+
+.page-title {
+    padding-top: 2%;
+    padding-left: 12%;
+}
+
+.page-content {
+    padding-top: 2%;
+    padding-left: 12%;
+    padding-right: 5%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+/* Progress Bar*/
+.progress {
+    margin-left: 300px;
+    position: relative;
+    width: 700px;
+    padding-top: 7%;
+    background-color: #9dc0a2;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress__fill {
+    width: 50%;
+    height: 100%;
+    background-color: green;
+    transition: all 0.2s;
+}
+
+.progress__text {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    font: bold 30px 'Quicksand', san-serif;
+    color: #ffffff;
+}
+
+.progress_label {
+    color:green;
+    display: inline-block;
+    margin: auto;
+}
+
+#icon {
+    width: 35px;
+    cursor: pointer;
+ }
+ nav ul {
+    flex: 1;
+    text-align: center;
+ }
+ 
+>>>>>>> Stashed changes

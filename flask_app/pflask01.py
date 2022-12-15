@@ -238,35 +238,59 @@ def delete_task(project_id, task_id):
     else:
         return redirect(url_for('login'))
 
+<<<<<<< Updated upstream
 # -----------------------------------------------
 
 
 # ---------- Task Completion  ----------
+=======
+
+>>>>>>> Stashed changes
 # # - Progress Bar for Project Tasks -
-# @app.route('/progress')
-# def progress():
-#     return render_template("progress.html")
+# @app.route('/projects/<project_id>/progress')
+# def progress(project_id):
+#     return redirect(url_for('project_overview', project_id=project_id))
 
 # # - Completed Tasks -
-# @app.route('/progress/done')
-# def task_done(task_id):
+# @app.route('/projects/<project_id>/<task_id>/done', methods=['POST'])
+# def task_done(project_id, task_id):
 #     if session.get('user'):
 #         # retrieve task from database
 #         total_tasks = db.session.query(Task).count()
+#         a_task = db.session.query(Task).filter_by(id=task_id).one()
+#         # update status to 1
+#         a_task.status = 1
+#         db.session.commit()
 
-#     return render_template("progress.html")
+#         tasks_done = db.session.query(Task).filter_by(status=1).count()
+        
+#         value = tasks_done / total_tasks
+        
+#         return redirect(url_for('project_overview', project_id=project_id))
+#     else:
+#         return redirect(url_for('projects_list'))
 
 
 # # - Incomplete Tasks -
-# @app.route('/progress/done')
-# def task_done(task_id):
+# @app.route('/projects/<project_id>/<task_id>/undo')
+# def task_undo(project_id, task_id):
 #     if session.get('user'):
 #         # retrieve task from database
 #         total_tasks = db.session.query(Task).count()
+#         a_task = db.session.query(Task).filter_by(id=task_id).one()
+#         # update status to 0
+#         a_task.status = 0
+#         db.session.commit()
 
-#     return render_template("progress.html")
+#         tasks_done = db.session.query(Task).filter_by(status=1).count()
+        
+#         value = tasks_done / total_tasks
+        
+#         return redirect(url_for('project_overview', project_id=project_id))
+#     else:
+#         return redirect(url_for('projects_list'))
 
-# -----------------------------------------------
+# # -----------------------------------------------
 
 
 # ---------- Chat ----------
@@ -511,6 +535,12 @@ def calendars():
 
 
 
+<<<<<<< Updated upstream
+=======
+
+
+
+>>>>>>> Stashed changes
 # ///// HOST & PORT CONFIG /////
 if __name__ == '__main__':
     # socketio.run(app, debug=True)

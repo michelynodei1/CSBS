@@ -49,11 +49,10 @@
                                 Work</span></a></li>
                     <li><a href="{{ url_for('chat') }}"><i class="bi bi-chat"></i><span class="text">Chat</span></a>
                     </li>
-                    <li><a href="{{ url_for('settings') }}"><i class="bi bi-gear"></i><span class="text">Settings</span></a></li>
                     <li><a href="{{url_for('logout')}}"><i class="bi bi-box-arrow-left"></i><span
                                 class="text">Logout</span></a></li>
                 </ul>
-
+                <img src="static/moon.png" id="icon">
             </nav>
 
 
@@ -131,7 +130,18 @@
     </div>
 
 
+    <script>
+        var icon = document.getElementById("icon");
 
+        icon.onclick = function () {
+            document.body.classList.toggle("dark-mode");
+            if (document.body.classList.contains("dark-mode")) {
+                icon.src = "static/sun.png";
+            } else {
+                icon.src = "static/moon.png";
+            }
+        }
+    </script>
 
 <script src="{{url_for('static', filename='script.js')}}"></script>
 <script src="{{url_for('static', filename='init.js')}}"></script>

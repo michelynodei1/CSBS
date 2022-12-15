@@ -21,7 +21,7 @@
     <ul class="topnav">
         <li><img class="logo1" src="{{url_for('static', filename='csbs1.png')}}" width="110" height="30"></li>
         <li><a href="{{ url_for('overview') }}">Overview</a></li>
-       
+
     </ul>
 </head>
 
@@ -48,11 +48,10 @@
                                 Work</span></a></li>
                     <li><a href="{{ url_for('chat') }}"><i class="bi bi-chat"></i><span class="text">Chat</span></a>
                     </li>
-                    <li><a href="#"><i class="bi bi-gear"></i><span class="text">Settings</span></a></li>
                     <li><a href="{{url_for('logout')}}"><i class="bi bi-box-arrow-left"></i><span
                                 class="text">Logout</span></a></li>
                 </ul>
-
+                <img src="static/moon.png" id="icon">
             </nav>
 
             <div class="account">
@@ -66,18 +65,31 @@
     <!-- Page Content -->
     <div class="page">
         <br>
-       
-            <h1 class="notehome4">Project Name: {{ project.title }}</h1>
-        
-        <br>
-        <br>
-        
+
+        <h1 class="notehome4">Project Name: {{ project.title }}</h1>
+
+
+        <!-- <form onsubmit="return updateProgressBar(progress)">
+            <label class="progress_label" for="total">Total # of Tasks</label>
+            <input type="number" id="total" onclick="updateProgressBar(progress)" min="0" max="50">
+
+            <label class=".progress_label" for="completed"># of Tasks Completed</label>
+            <input type="number" id="completed" onclick="updateProgressBar(progress)" min="0" max="50">
+            <input type="submit">
+        </form> -->
+
+        <!--Progress Bar-->
+        <!-- <div class="progress">
+            <div class="progress__fill"></div>
+            <span class="progress__text">50%</span>
+        </div> -->
+
         <div class="notehome3">
-           
+
             <form action="{{ url_for('add_task', project_id=project.id) }}">
                 <button class="green-button-left" type="submit">Add Task</button>
             </form>
-            
+
             <br>
             <h2 class="mychat1"> Tasks </h2>
             <table class="center1">
@@ -103,13 +115,32 @@
                             <button class="red-button" type="submit">Delete</button>
                         </form>
                     </td>
+                    <!-- <td>
+                        <form action="{{ url_for('task_done', project_id=task.project_id, task_id=task.id) }}"
+                            method="post">
+                            <button class="yellow-button" id="change" type="submit">Mark</button>
+                        </form>
+                    </td> -->
                 </tr>
                 {% endfor %}
             </table>
         </div>
     </div>
+
 </body>
 
+<script>
+    var icon = document.getElementById("icon");
+
+    icon.onclick = function () {
+        document.body.classList.toggle("dark-mode");
+        if (document.body.classList.contains("dark-mode")) {
+            icon.src = "static/sun.png";
+        } else {
+            icon.src = "static/moon.png";
+        }
+    }
+</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"

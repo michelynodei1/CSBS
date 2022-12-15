@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
 body {
-    color: #333;
+    color: var(--foreground);
     padding: 0;
     margin: 0;
     position: relative;
@@ -17,7 +17,7 @@ body {
 }
 
 .container .sidebar {
-    background-color: #333;
+    background-color: var(--foreground);
     color: #fff;
     width: 30%;
     height: 100%;

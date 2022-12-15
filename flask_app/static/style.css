@@ -1,6 +1,11 @@
 :root {
   --primary-clr: #04AA6D;
 }
+
+.dark-mode {
+  filter: invert(1) hue-rotate(180deg);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -16,7 +21,7 @@
   border-radius: 50px;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--primary-clr);
+  background-color: var(--primary-clr);
   border-radius: 50px;
 }
 
@@ -25,7 +30,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #fcfcfc;
+  background-color: #fcfcfc; /* both calendars */
 }
 .container {
   position: relative;
@@ -287,15 +292,15 @@ body {
   padding: 0 20px;
   padding-left: 50px;
   color: #fff;
-  background: linear-gradient(90deg, #3f4458, transparent);
+  background-color: linear-gradient(90deg, #3f4458, transparent);
   cursor: pointer;
 }
 /* even event */
 .events .event:nth-child(even) {
-  background: transparent;
+  background-color: transparent;
 }
 .events .event:hover {
-  background: linear-gradient(90deg, var(--primary-clr), transparent);
+  background-color: linear-gradient(90deg, var(--primary-clr), transparent);
 }
 .events .event .title {
   display: flex;
@@ -532,4 +537,13 @@ body {
   .right .today-date {
     padding: 20px;
   }
+}
+
+#icon {
+  width: 35px;
+  cursor: pointer;
+}
+nav ul {
+  flex: 1;
+  text-align: center;
 }

@@ -210,53 +210,53 @@ function DisplayTodos() {
 
 // Overview Javascript on tabs 
 function vopenCity(evt, cityName) {
-	var i, x, tablinks;
-	x = document.getElementsByClassName("city");
-	for (i = 0; i < x.length; i++) {
-	   x[i].style.display = "none";
-	}
-	tablinks = document.getElementsByClassName("tablink");
-	for (i = 0; i < x.length; i++) {
-		tablinks[i].className = tablinks[i].className.replace(" w3-red", ""); 
-	}
-	document.getElementById(cityName).style.display = "block";
-	evt.currentTarget.className += " w3-red";
-  }
-  //chat
-  $(document).ready(function(){
+    var i, x, tablinks;
+    x = document.getElementsByClassName("city");
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < x.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " w3-red";
+}
+//chat
+$(document).ready(function () {
     var socket = io.connect("http://localhost:5000");
-    socket.on( 'connect', function() {
-        socket.send("User connected!" );
+    socket.on('connect', function () {
+        socket.send("User connected!");
     });
-    socket.on( 'message', function(data){
+    socket.on('message', function (data) {
         $('#messages').append($('<p>').text(data));
     });
-    $('#sendBtn').on('click',function() {
-        socket.send($('#username').val()+':'+$('#message').val());
+    $('#sendBtn').on('click', function () {
+        socket.send($('#username').val() + ':' + $('#message').val());
         $('#message').val('');
     });
 })
-  
 
 
 
 
- 
+
+
 
 
 function search_animal() {
     let input = document.getElementById('searchbar').value
-    input=input.toLowerCase();
-    let x = document.getElementsByClassName('animals');  
+    input = input.toLowerCase();
+    let x = document.getElementsByClassName('animals');
 
-    
-      
-    for (i = 0; i < x.length; i++) { 
+
+
+    for (i = 0; i < x.length; i++) {
         if (!x[i].innerHTML.toLowerCase().includes(input)) {
-            x[i].style.display="none";
+            x[i].style.display = "none";
         }
         else {
-            x[i].style.display="list-item";                 
+            x[i].style.display = "list-item";
         }
     }
 }
@@ -265,10 +265,10 @@ function changeTextColor() {
     let button = document.getElementById("animals"); // access the button by id
 
     let color = button.style.color;
-    
+
     if (color == "white") { // if button color is white change it green otherwise change it to white.
-       document.getElementById("animals").style.color = 'green';
-    } 
+        document.getElementById("animals").style.color = 'green';
+    }
     else {
         document.getElementById("animals").style.color = 'white';
     }
@@ -277,10 +277,48 @@ function changeTextColor() {
 function hideResults() {
     var x = document.getElementsByClassName("animals");
     if (x.style.display === "none") {
-      x.style.display = "block";
+        x.style.display = "block";
     } else {
-      x.style.display = "none";
+        x.style.display = "none";
     }
-  }
+}
 
- 
+
+
+// if task is done, change button color
+var button = document.querySelector('.yellow-button');
+
+button.onclick = function () {
+    this.style.backgroundColor = "rgb(212,208,178)";
+    this.style.color = "rgb(171,151,4)";
+};
+
+
+
+//progress bar
+// function save() {
+//     var total = document.getElementById("total").value;
+//     var completed = document.getElementById("completed").value;
+
+//     value = completed / total;
+//     return value;
+// }
+
+// function updateProgressBar(progressBar) {
+//     var total = document.getElementById("total").value;
+//     var completed = document.getElementById("completed").value;
+
+//     value = completed / total;
+//     progressBar.querySelector(".progress__fill").style.width = `${value}%`;
+//     progressBar.querySelector(".progress__text").textContent = `${value}%`;
+// }
+
+function func() {
+    var x = document.getElementById("myProgress");		  
+    
+    done = document.getElementById("done").value;
+    total = document.getElementById("total").value;
+    fill = done / total
+
+    x.value = document.getElementById("fill").value;
+}
