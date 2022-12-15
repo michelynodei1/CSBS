@@ -13,7 +13,7 @@
          <!--Navigation Top Bar-->
          <ul class="topnav">
             <li> <img class="logo1" src="{{url_for('static', filename='csbs1.png')}}"  width="80" height="30"></li>
-            <li><a href="#news">News</a></li>
+            
         </ul>
     </head>
 
@@ -42,7 +42,7 @@
                     <li><a href="{{url_for('logout')}}"><i class="bi bi-box-arrow-left"></i><span
                                 class="text">Logout</span></a></li>
                 </ul>
-                <img src="static/moon.png" id="icon">
+                <img src="{{url_for('static', filename='moon.png')}}" id="icon">
             </nav>
 
             
