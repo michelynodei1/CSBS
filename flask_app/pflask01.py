@@ -185,6 +185,8 @@ def add_task(project_id):
             today = date.today()
             # format date mm/dd/yyy
             today = today.strftime("%m-%d-%Y")
+            # initialize status to 0
+            #status = 0
 
             new_record = Task(title, desc, today, project_id)
             db.session.add(new_record)

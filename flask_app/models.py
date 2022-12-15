@@ -81,11 +81,9 @@ class Task(db.Model):
     title = db.Column("title", db.String(200), nullable=False)
     description = db.Column("description", db.String(200), nullable=False)
     created = db.Column("created", db.String(50), nullable=False)
-    status = db.Column("status", db.Integer, nullable=False)
 
-    def __init__(self, title, desc, created, proj_id, status):
+    def __init__(self, title, desc, created, proj_id):
         self.title = title
         self.description = desc
         self.created = created
         self.project_id = proj_id
-        self.status = status
