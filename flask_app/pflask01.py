@@ -186,9 +186,9 @@ def add_task(project_id):
             # format date mm/dd/yyy
             today = today.strftime("%m-%d-%Y")
             # initialize status to 0
-            #status = 0
+            status = 0
 
-            new_record = Task(title, desc, today, project_id)
+            new_record = Task(title, desc, today, project_id, status)
             db.session.add(new_record)
             db.session.commit()
             # ready to render response - redirect to projects list
