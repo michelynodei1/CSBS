@@ -14,6 +14,102 @@ h2.welcome {
     background: green;
 }
 
+
+
+/* ////////////////////////////// OVERVIEW CSS ////////////////////////////// */
+
+.project {
+    flex: 20%;
+    padding: 10px;
+    margin: 5px;
+    background-color: #f3f3f3;
+    inline-size: 100%;
+}
+
+.ptitle .plink {
+    color: #00a36f;
+    text-decoration: none;
+}
+
+.grey-button {
+    background-color: #04AA6D;
+    border-radius: 8px;
+    border-width: 0;
+    color: #ffffff;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 10px 12px;
+    text-align: center;
+    vertical-align: baseline;
+}
+
+.grey-button1 {
+    background-color: #04AA6D;
+    border-radius: 8px;
+    border-width: 0;
+    color: #ffffff;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 10px 12px;
+    text-align: left;
+    vertical-align: baseline;
+}
+
+.red-button {
+    background-color: red;
+    border-radius: 8px;
+    border-width: 0;
+    color: #ffffff;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 10px 12px;
+    text-align: center;
+    vertical-align: baseline;
+}
+
+.page-title {
+    padding-top: 2%;
+    padding-left: 12%;
+}
+
+.page-content {
+    padding-top: 2%;
+    padding-left: 12%;
+    padding-right: 5%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.page {
+    padding-top: 2%;
+    padding-left: 12%;
+    padding-right: 5%;
+}
+
+/*.comment {*/
+/*    padding: 10px;*/
+/*    margin: 10px;*/
+/*    background-color: #fff;*/
+/*}*/
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+
 /* /// TOP NAVIGATION BAR /// */
 .topnav {
     list-style-type: none;
@@ -1505,82 +1601,4 @@ textarea {
 
 .coverWall {
     background-color: #ddd;
-}
-
-
-/* ///// OVERVIEW CSS /////*/
-.project {
-    flex: 20%;
-    padding: 10px;
-    margin: 5px;
-    background-color: #f3f3f3;
-    inline-size: 100%;
-}
-
-.ptitle .plink {
-    color: #00a36f;
-    text-decoration: none;
-}
-
-.grey-button {
-    background-color: #04AA6D;
-    border-radius: 8px;
-    border-width: 0;
-    color: #ffffff;
-    display: inline-block;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 20px;
-    list-style: none;
-    margin: 0;
-    padding: 10px 12px;
-    text-align: center;
-    vertical-align: baseline;
-}
-
-.grey-button1 {
-    background-color: #04AA6D;
-    border-radius: 8px;
-    border-width: 0;
-    color: #ffffff;
-    display: inline-block;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 20px;
-    list-style: none;
-    margin: 0;
-    padding: 10px 12px;
-    text-align: left;
-    vertical-align: baseline;
-}
-
-.red-button {
-    background-color: red;
-    border-radius: 8px;
-    border-width: 0;
-    color: #ffffff;
-    display: inline-block;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 20px;
-    list-style: none;
-    margin: 0;
-    padding: 10px 12px;
-    text-align: center;
-    vertical-align: baseline;
-}
-
-.page-title {
-    padding-top: 2%;
-    padding-left: 12%;
-}
-
-.page-content {
-    padding-top: 2%;
-    padding-left: 12%;
-    padding-right: 5%;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
 }

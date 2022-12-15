@@ -12,9 +12,12 @@ from models import Project as Project
 from models import Task as Task
 from models import User as User
 
+
+
 # ///// APP CREATION /////
 app = Flask(__name__)  # create an app
 socketio = SocketIO(app)
+
 
 
 # ///// DATABASE CONFIG /////
@@ -30,6 +33,7 @@ db.init_app(app)
 # Setup models
 with app.app_context():
     db.create_all()  # Run under the app context
+
 
 
 # ///// ROUTES /////
@@ -57,9 +61,16 @@ def myWork():
     return render_template('myWork.html')
 
 
+# - About Us -
 @app.route('/aboutUs')
 def aboutUs():
     return render_template('aboutUs.html')
+
+
+# - Settings -
+@app.route('/settings')
+def settings():
+    return render_template("settings.html")
 
 
 # ---------- Projects ----------
@@ -226,9 +237,10 @@ def delete_task(project_id, task_id):
     else:
         return redirect(url_for('login'))
 
-
 # -----------------------------------------------
 
+
+# ---------- Task Completion  ----------
 # # - Progress Bar for Project Tasks -
 # @app.route('/progress')
 # def progress():
@@ -495,15 +507,6 @@ def calendars():
     return render_template("calendars.html")
 
 # -----------------------------------------------
-
-
-
-# - Settings -
-@app.route('/settings')
-def settings():
-    return render_template("settings.html")
-
-
 
 
 
