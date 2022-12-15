@@ -1,21 +1,23 @@
 # ///// IMPORTS /////
 from __future__ import print_function
-import os, sys, json, flask, flask_socketio, httplib2, uuid, bcrypt, sqlite3
-from flask import Flask, Response, render_template, request, redirect, url_for, jsonify, session
-from flask_sqlalchemy import SQLAlchemy
+import bcrypt
+import os
+from flask import Flask, render_template, request, redirect, url_for, session
+from flask_socketio import SocketIO, join_room
 from database import db
-from models import User as User
-from models import Note as Note
+from forms import RegisterForm, LoginForm, CommentForm
 from models import Comment as Comment
+from models import Note as Note
 from models import Project as Project
 from models import Task as Task
-from forms import RegisterForm, LoginForm, CommentForm
-from flask_socketio import SocketIO, join_room
+from models import User as User
+
 
 
 # ///// APP CREATION /////
 app = Flask(__name__)  # create an app
 socketio = SocketIO(app)
+
 
 
 # ///// DATABASE CONFIG /////
@@ -33,22 +35,6 @@ with app.app_context():
     db.create_all()  # Run under the app context
 
 
-# ///// EVENTS /////
-events = [
-    {
-        'title': 'Update Notes',
-        'start': '2022-12-20',
-        'end': '2022-12-20',
-        'url': 'http://youtube.com',
-    },
-    {
-        'title': 'Update List',
-        'start': '2022-12-08',
-        'end': '',
-        'url': 'http://127.0.0.1:5000/taskList',
-    },
-]
-
 
 # ///// ROUTES /////
 # - Home -
@@ -63,8 +49,9 @@ def home():
 def overview():
     if session.get('user'):
         my_projects = db.session.query(Project).filter_by(user_id=session['user_id']).all()
+        team_projects = db.session.query(Project).filter_by(user_id=1).all()
 
-        return render_template('overview.html', projects=my_projects, user=session['user'])
+        return render_template('overview.html', projects=my_projects, team_projects=team_projects, user=session['user'])
     else:
         return redirect(url_for('login'))
 
@@ -75,9 +62,16 @@ def myWork():
     return render_template('myWork.html')
 
 
+# - About Us -
 @app.route('/aboutUs')
 def aboutUs():
     return render_template('aboutUs.html')
+
+
+# - Settings -
+@app.route('/settings')
+def settings():
+    return render_template("settings.html")
 
 
 # ---------- Projects ----------
@@ -244,34 +238,59 @@ def delete_task(project_id, task_id):
     else:
         return redirect(url_for('login'))
 
-
+<<<<<<< Updated upstream
 # -----------------------------------------------
 
+
+# ---------- Task Completion  ----------
+=======
+
+>>>>>>> Stashed changes
 # # - Progress Bar for Project Tasks -
-# @app.route('/progress')
-# def progress():
-#     return render_template("progress.html")
+# @app.route('/projects/<project_id>/progress')
+# def progress(project_id):
+#     return redirect(url_for('project_overview', project_id=project_id))
 
 # # - Completed Tasks -
-# @app.route('/progress/done')
-# def task_done(task_id):
+# @app.route('/projects/<project_id>/<task_id>/done', methods=['POST'])
+# def task_done(project_id, task_id):
 #     if session.get('user'):
 #         # retrieve task from database
 #         total_tasks = db.session.query(Task).count()
+#         a_task = db.session.query(Task).filter_by(id=task_id).one()
+#         # update status to 1
+#         a_task.status = 1
+#         db.session.commit()
 
-#     return render_template("progress.html")
+#         tasks_done = db.session.query(Task).filter_by(status=1).count()
+        
+#         value = tasks_done / total_tasks
+        
+#         return redirect(url_for('project_overview', project_id=project_id))
+#     else:
+#         return redirect(url_for('projects_list'))
 
 
 # # - Incomplete Tasks -
-# @app.route('/progress/done')
-# def task_done(task_id):
+# @app.route('/projects/<project_id>/<task_id>/undo')
+# def task_undo(project_id, task_id):
 #     if session.get('user'):
 #         # retrieve task from database
 #         total_tasks = db.session.query(Task).count()
+#         a_task = db.session.query(Task).filter_by(id=task_id).one()
+#         # update status to 0
+#         a_task.status = 0
+#         db.session.commit()
 
-#     return render_template("progress.html")
+#         tasks_done = db.session.query(Task).filter_by(status=1).count()
+        
+#         value = tasks_done / total_tasks
+        
+#         return redirect(url_for('project_overview', project_id=project_id))
+#     else:
+#         return redirect(url_for('projects_list'))
 
-# -----------------------------------------------
+# # -----------------------------------------------
 
 
 # ---------- Chat ----------
@@ -516,15 +535,12 @@ def calendars():
 
 
 
-# - Settings -
-@app.route('/settings')
-def settings():
-    return render_template("settings.html")
+<<<<<<< Updated upstream
+=======
 
 
 
-
-
+>>>>>>> Stashed changes
 # ///// HOST & PORT CONFIG /////
 if __name__ == '__main__':
     # socketio.run(app, debug=True)

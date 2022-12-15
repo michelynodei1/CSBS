@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
+.dark-mode {
+    filter: invert(1) hue-rotate(180deg);
+ }
+ 
+
 body {
     padding: 30px 30px;
     overflow: scroll;
@@ -11,8 +16,132 @@ h1 .welcome {
 
 h2.welcome {
     color: gold;
-    background: green;
+    background-color: green;
 }
+
+
+
+/* //////////////////// OVERVIEW CSS //////////////////// */
+.page-title {
+    padding-top: 2%;
+    padding-left: 12%;
+}
+
+.page-container {
+    padding-top: 2%;
+    padding-right: 5%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.page {
+    padding-top: 5%;
+    padding-left: 12%;
+    padding-right: 5%;
+}
+
+.page h1 {
+    color:rgb(171, 151, 4);
+}
+
+.page h2{
+    font-size: 27px;
+}
+
+.project-container {
+    position: relative;
+    padding-top: 20px;
+    padding-left: 20px;
+    margin: 10px;
+    width: 300px;
+    height: 150px;
+    display: block;
+    /*background: url("bg-images/bg-mountains.jpg");*/
+    /*opacity: 0.3;*/
+    /*background-size: cover;*/
+}
+
+.project-container::before {
+    content: "";
+    background: url("bg-images/bg-mountains.jpg");
+    background-size: cover;
+    border-radius: 20px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0.3;
+}
+
+.proj-title {
+    position: relative;
+    color: #00a36f;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/*.comment {*/
+/*    padding: 10px;*/
+/*    margin: 10px;*/
+/*    background-color: #fff;*/
+/*}*/
+
+.green-button-center {
+    background-color: #04AA6D;
+    border-radius: 8px;
+    border-width: 0;
+    color: #ffffff;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 10px 10px;
+    text-align: center;
+    vertical-align: baseline;
+    box-sizing: border-box;
+}
+
+.green-button-left {
+    background-color: #04AA6D;
+    border-radius: 8px;
+    border-width: 0;
+    color: #ffffff;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 10px 12px;
+    text-align: left;
+    vertical-align: baseline;
+    box-sizing: border-box;
+}
+
+.red-button {
+    background-color: #e31e1e;
+    border-radius: 8px;
+    border-width: 0;
+    color: #ffffff;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 10px 12px;
+    text-align: center;
+    vertical-align: baseline;
+}
+
+/* ///////////////////////////////////////////////////// */
+
+
 
 /* /// TOP NAVIGATION BAR /// */
 .topnav {
@@ -738,14 +867,14 @@ button {
     appearance: none;
     border: none;
     outline: none;
-    background: none;
+    background-color: none;
     cursor: initial;
 }
 
 /* End of Resets */
 
 .taskBody {
-    background: var(--light);
+    background-color: var(--light);
     color: var(--dark);
 }
 
@@ -1031,7 +1160,7 @@ input:checked ~ .bubble::after {
 }
 .notehome4 {
 font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    float: center;
+    /*float: center;*/
     width: 90%;
     height: 100%;
     overflow: auto;
@@ -1505,6 +1634,9 @@ textarea {
 
 .coverWall {
     background-color: #ddd;
+<<<<<<< Updated upstream
+}
+=======
 }
 
 
@@ -1570,6 +1702,24 @@ textarea {
     vertical-align: baseline;
 }
 
+/* task is not done */
+.yellow-button {
+    background-color: rgb(171, 151, 4);
+    border-radius: 8px;
+    border-width: 1px;
+    border-color: rgb(171, 151, 4);
+    color: #ffffff;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 10px 12px;
+    text-align: center;
+    vertical-align: baseline;
+}
+
 .page-title {
     padding-top: 2%;
     padding-left: 12%;
@@ -1584,3 +1734,47 @@ textarea {
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+/* Progress Bar*/
+.progress {
+    margin-left: 300px;
+    position: relative;
+    width: 700px;
+    padding-top: 7%;
+    background-color: #9dc0a2;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress__fill {
+    width: 50%;
+    height: 100%;
+    background-color: green;
+    transition: all 0.2s;
+}
+
+.progress__text {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    font: bold 30px 'Quicksand', san-serif;
+    color: #ffffff;
+}
+
+.progress_label {
+    color:green;
+    display: inline-block;
+    margin: auto;
+}
+
+#icon {
+    width: 35px;
+    cursor: pointer;
+ }
+ nav ul {
+    flex: 1;
+    text-align: center;
+ }
+ 
+>>>>>>> Stashed changes
