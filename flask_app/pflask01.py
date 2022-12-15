@@ -238,14 +238,6 @@ def delete_task(project_id, task_id):
     else:
         return redirect(url_for('login'))
 
-<<<<<<< Updated upstream
-# -----------------------------------------------
-
-
-# ---------- Task Completion  ----------
-=======
-
->>>>>>> Stashed changes
 # # - Progress Bar for Project Tasks -
 # @app.route('/projects/<project_id>/progress')
 # def progress(project_id):
@@ -535,12 +527,9 @@ def calendars():
 
 
 
-<<<<<<< Updated upstream
-=======
 
 
 
->>>>>>> Stashed changes
 # ///// HOST & PORT CONFIG /////
 if __name__ == '__main__':
     # socketio.run(app, debug=True)

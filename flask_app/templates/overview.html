@@ -70,23 +70,6 @@
     </div>
 
     <!-- Page Content -->
-<<<<<<< Updated upstream
-    <div class="page">
-        <h1><strong>OVERVIEW</strong></h1>
-        <form action="{{ url_for('create_project') }}">
-            <button class="green-button-center" type="submit">Add Project</button>
-        </form>
-        <br>
-        <br>
-    <br>
-        <h2 class="bi bi-journal"><strong> Team Projects</strong></h2>
-
-        <div class="page-container">
-            {% for project in team_projects %}
-                <div class="project-container">
-                    <strong>
-                        <a class="proj-title" href="{{ url_for('project_overview', project_id=project.id) }}">
-=======
     <div class="page-title"><h1><strong>OVERVIEW</strong></h1></div>
     <div class="page-title"><h2 class="bi bi-journal"><strong>Projects</strong></h2></div>
     <div class="page-content">
@@ -95,7 +78,6 @@
                 <b>
                     <p class="ptitle">
                         <a class="plink" href="{{ url_for('project_overview', project_id=project.id) }}">
->>>>>>> Stashed changes
                             {{ project.title }}
                         </a>
                     </strong>
